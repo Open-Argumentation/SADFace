@@ -20,8 +20,13 @@ def add_resource(content):
     res = new_resource(content)
     sd["resources"].append(res)
 
-def add_node(new_node):
-    sd["nodes"].append(new_node)
+def add_atom(text):
+    atom = new_atom(text)
+    sd["nodes"].append(atom)
+
+def add_scheme(name):
+    scheme = new_scheme(name)
+    sd["nodes"].append(scheme)
 
 def add_source(atom, resource):
     atom["sources"].append(resource)
@@ -159,14 +164,16 @@ if __name__ == "__main__":
             add_resource("goodbye cruel world")
             add_resource_metadata("test", "one", "two")
 
-            t1 = new_source("ididid", "hello world", 124, 54)
-            a1 = new_atom("hello world")
-            add_source(a1, t1)
-            add_source(a1, t1)
-            add_node(a1)
+            #t1 = new_source("ididid", "hello world", 124, 54)
+            #a1 = new_atom("hello world")
+            #add_source(a1, t1)
+            #add_source(a1, t1)
+            #add_node(a1)
+            add_atom("an argument atom")
+            add_scheme("expert_opinion")
 
-            s1 = new_scheme("expert opinion")
-            add_node(s1)
+            #s1 = new_scheme("expert opinion")
+            #add_node(s1)
         
             add_edge("1", "2")
             add_edge("1", "3")
