@@ -32,9 +32,13 @@ def add_scheme(name):
     sd["nodes"].append(scheme)
     return scheme
 
-def add_source(atom, resource):
-    atom["sources"].append(resource)
-    return atom
+def add_source(atom_id, resource_id, text, offset, length):
+    source = new_source(resource_id, text, offset, length)
+    for node in sd["nodes"]:
+        if "atom" == node["type"]:
+            if atom_id == node["id"]:
+                node["sources"].append(source)
+                return source
 
 def add_node_metadata(node_id, key, value):
     for node in sd["nodes"]:
@@ -82,9 +86,9 @@ def new_scheme(name):
     new_scheme = {"id":new_uuid(), "type":"scheme", "name":name, "metadata":{}}
     return new_scheme
 
-def new_source(uuid, text, offset, length):
-    new_text = {"resource_id":uuid, "text":text, "offset":offset, "length":length}
-    return new_text
+def new_source(resource_id, text, offset, length):
+    new_source = {"resource_id":resource_id, "text":text, "offset":offset, "length":length}
+    return new_source
 
 def new_uuid():
     return str(uuid.uuid4())
@@ -168,16 +172,9 @@ if __name__ == "__main__":
             add_resource("goodbye cruel world")
             add_resource_metadata("test", "one", "two")
 
-            #t1 = new_source("ididid", "hello world", 124, 54)
-            #a1 = new_atom("hello world")
-            #add_source(a1, t1)
-            #add_source(a1, t1)
-            #add_node(a1)
-            add_atom("an argument atom")
+            a = add_atom("an argument atom")
+            add_source(a["id"], "1234", "a source text", 150, 57)
             add_scheme("expert_opinion")
-
-            #s1 = new_scheme("expert opinion")
-            #add_node(s1)
         
             add_edge("1", "2")
             add_edge("1", "3")
