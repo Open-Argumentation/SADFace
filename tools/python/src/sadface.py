@@ -93,9 +93,6 @@ def save():
 def set_analyst(analyst):
     sd["analyst"] = analyst
 
-def set_creator(creator):
-    sd["creator"] = creator
-
 def set_created(timestamp):
     sd["timestamp"] = timestamp
 
