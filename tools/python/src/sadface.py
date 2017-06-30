@@ -90,20 +90,21 @@ def save():
     with open('data.json', 'w') as outfile:
         json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
-def set_analyst(analyst):
-    sd["analyst"] = analyst
-
-def set_created(timestamp):
-    sd["timestamp"] = timestamp
-
-def set_id(id):
-    sd["id"] = id
-
-def set_edited(timestamp):
-    sd["edited"] = timestamp
-
 def update():
     sd["edited"] = now()
+
+def update_analyst(analyst):
+    sd["analyst"] = analyst
+
+def update_created(timestamp):
+    sd["timestamp"] = timestamp
+
+def update_id(id):
+    sd["id"] = id
+
+def update_edited(timestamp):
+    sd["edited"] = timestamp
+
 
 
 class REPL(cmd.Cmd):
