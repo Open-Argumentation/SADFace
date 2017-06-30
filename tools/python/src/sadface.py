@@ -65,15 +65,15 @@ def new_resource(content):
     new_resource = {"id":new_uuid(), "content":content, "type":"text", "metadata":{}}
     return new_resource
 
-def new_atom_node(text):
+def new_atom(text):
     new_atom = {"id":new_uuid(), "type":"atom", "canonical_text":text, "sources":[], "metadata":{}}
     return new_atom
 
-def new_scheme_node(name):
+def new_scheme(name):
     new_scheme = {"id":new_uuid(), "type":"scheme", "name":name, "metadata":{}}
     return new_scheme
 
-def new_atom_source(uuid, text, offset, length):
+def new_source(uuid, text, offset, length):
     new_text = {"resource_id":uuid, "text":text, "offset":offset, "length":length}
     return new_text
 
@@ -104,7 +104,6 @@ def update_id(id):
 
 def update_edited(timestamp):
     sd["edited"] = timestamp
-
 
 
 class REPL(cmd.Cmd):
@@ -160,13 +159,13 @@ if __name__ == "__main__":
             add_resource("goodbye cruel world")
             add_resource_metadata("test", "one", "two")
 
-            t1 = new_atom_source("ididid", "hello world", 124, 54)
-            a1 = new_atom_node("hello world")
+            t1 = new_source("ididid", "hello world", 124, 54)
+            a1 = new_atom("hello world")
             add_source(a1, t1)
             add_source(a1, t1)
             add_node(a1)
 
-            s1 = new_scheme_node("expert opinion")
+            s1 = new_scheme("expert opinion")
             add_node(s1)
         
             add_edge("1", "2")
