@@ -15,18 +15,22 @@ sd = {}
 def add_edge(source, target):
     edge = new_edge(source, target)
     sd["edges"].append(edge)
+    return edge
 
 def add_resource(content):
     res = new_resource(content)
     sd["resources"].append(res)
+    return res
 
 def add_atom(text):
     atom = new_atom(text)
     sd["nodes"].append(atom)
+    return atom
 
 def add_scheme(name):
     scheme = new_scheme(name)
     sd["nodes"].append(scheme)
+    return scheme
 
 def add_source(atom, resource):
     atom["sources"].append(resource)
