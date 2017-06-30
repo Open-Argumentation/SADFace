@@ -40,10 +40,11 @@ def add_source(atom_id, resource_id, text, offset, length):
                 node["sources"].append(source)
                 return source
 
-def add_node_metadata(node_id, key, value):
+def add_atom_metadata(atom_id, key, value):
     for node in sd["nodes"]:
-        if node["id"] == node_id:
-            node["metadata"][key] = value
+        if "atom" == node["type"]:
+            if atom_id == node["id"]:
+                node["metadata"][key] = value
 
 def add_resource_metadata(resource_id, key, value):
     for res in sd["resources"]:
@@ -83,7 +84,7 @@ def new_atom(text):
     return new_atom
 
 def new_scheme(name):
-    new_scheme = {"id":new_uuid(), "type":"scheme", "name":name, "metadata":{}}
+    new_scheme = {"id":new_uuid(), "type":"scheme", "name":name}
     return new_scheme
 
 def new_source(resource_id, text, offset, length):
