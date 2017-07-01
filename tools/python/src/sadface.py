@@ -54,8 +54,17 @@ def add_resource_metadata(resource_id, key, value):
 def add_sadface_metadata(key, value):
     sd["metadata"][key] = value
 
+def delete_edge(edge_id):
+    edge = get_edge(edge_id)
+    sd["edges"].remove(edge)
+
 def export_json():
     return json.dumps(sd)
+
+def get_edge(edge_id):
+    for edge in sd["edges"]:
+        if edge_id == edge["id"]:
+            return edge
 
 def import_json(json_string):
     return json.loads(json_string)
@@ -177,8 +186,10 @@ if __name__ == "__main__":
             add_source(a["id"], "1234", "a source text", 150, 57)
             add_scheme("expert_opinion")
         
-            add_edge("1", "2")
-            add_edge("1", "3")
+            e = add_edge("1", "2")
+            edge = get_edge(e["id"])
+            print prettyprint()
+            delete_edge(e["id"])
 
             print prettyprint()
             save()
