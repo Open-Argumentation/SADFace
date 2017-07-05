@@ -195,7 +195,7 @@ if __name__ == "__main__":
             e = add_edge("1", "2")
             edge = get_edge(e["id"])
             print prettyprint()
-            delete_edge(e["id"])
+#            delete_edge(e["id"])
 
             print prettyprint()
             save()
