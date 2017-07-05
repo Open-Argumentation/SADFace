@@ -71,6 +71,11 @@ def get_edge(edge_id):
         if edge_id == edge["id"]:
             return edge
 
+def get_scheme(scheme_id):
+    for node in sd["nodes"]:
+        if scheme_id == node["id"]:
+            return node
+
 def import_json(json_string):
     return json.loads(json_string)
 
