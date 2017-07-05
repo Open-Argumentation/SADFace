@@ -58,6 +58,10 @@ def delete_edge(edge_id):
     edge = get_edge(edge_id)
     sd["edges"].remove(edge)
 
+def delete_atom(atom_id):
+    atom = get_atom(atom_id)
+    sd["nodes"].remove(atom)
+
 def export_json():
     return json.dumps(sd)
 
