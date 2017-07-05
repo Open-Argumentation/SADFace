@@ -54,13 +54,13 @@ def add_source(atom_id, resource_id, text, offset, length):
                 node["sources"].append(source)
                 return source
 
-def delete_edge(edge_id):
-    edge = get_edge(edge_id)
-    sd["edges"].remove(edge)
-
 def delete_atom(atom_id):
     atom = get_atom(atom_id)
     sd["nodes"].remove(atom)
+
+def delete_edge(edge_id):
+    edge = get_edge(edge_id)
+    sd["edges"].remove(edge)
 
 def export_json():
     return json.dumps(sd)
