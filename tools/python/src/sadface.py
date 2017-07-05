@@ -62,6 +62,10 @@ def delete_edge(edge_id):
     edge = get_edge(edge_id)
     sd["edges"].remove(edge)
 
+def delete_resource(resource_id):
+    resource = get_resource(resource_id)
+    sd["resources"].remove(resource)
+
 def delete_scheme(scheme_id):
     scheme = get_scheme(scheme_id)
     sd["nodes"].remove(scheme)
