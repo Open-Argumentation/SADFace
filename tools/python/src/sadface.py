@@ -61,6 +61,11 @@ def delete_edge(edge_id):
 def export_json():
     return json.dumps(sd)
 
+def get_atom(atom_id):
+    for node in sd["nodes"]:
+        if atom_id == node["id"]:
+            return node
+
 def get_edge(edge_id):
     for edge in sd["edges"]:
         if edge_id == edge["id"]:
