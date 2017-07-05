@@ -139,6 +139,9 @@ class REPL(cmd.Cmd):
         self.prompt = '> '
         self.intro = "The SADFace REPL. Type 'help' or 'help <command>' for assistance"
     
+    def default(self, arg):
+        print "I do not understand that command. Type 'help' for a list of commands."
+
     def do_add_resource(self, args):
         add_resource("hello world")
         print prettyprint()
