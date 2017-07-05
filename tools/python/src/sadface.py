@@ -62,6 +62,10 @@ def delete_edge(edge_id):
     edge = get_edge(edge_id)
     sd["edges"].remove(edge)
 
+def delete_scheme(scheme_id):
+    scheme = get_scheme(scheme_id)
+    sd["nodes"].remove(scheme)
+
 def export_json():
     return json.dumps(sd)
 
