@@ -81,6 +81,12 @@ def get_scheme(scheme_id):
         if scheme_id == node["id"]:
             return node
 
+def get_source(atom_id, source_id):
+    atom = get_atom(atom_id)
+    for source in atom["sources"]:
+        if source_id == source["resource_id"]:
+            return source
+
 def import_json(json_string):
     return json.loads(json_string)
 
