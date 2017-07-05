@@ -17,15 +17,29 @@ def add_edge(source, target):
     sd["edges"].append(edge)
     return edge
 
+def add_atom(text):
+    atom = new_atom(text)
+    sd["nodes"].append(atom)
+    return atom
+
+def add_atom_metadata(atom_id, key, value):
+    for node in sd["nodes"]:
+        if "atom" == node["type"]:
+            if atom_id == node["id"]:
+                node["metadata"][key] = value
+
 def add_resource(content):
     res = new_resource(content)
     sd["resources"].append(res)
     return res
 
-def add_atom(text):
-    atom = new_atom(text)
-    sd["nodes"].append(atom)
-    return atom
+def add_resource_metadata(resource_id, key, value):
+    for res in sd["resources"]:
+        if res["id"] == resource_id:
+            res["metadata"][key] = value
+
+def add_sadface_metadata(key, value):
+    sd["metadata"][key] = value
 
 def add_scheme(name):
     scheme = new_scheme(name)
@@ -39,20 +53,6 @@ def add_source(atom_id, resource_id, text, offset, length):
             if atom_id == node["id"]:
                 node["sources"].append(source)
                 return source
-
-def add_atom_metadata(atom_id, key, value):
-    for node in sd["nodes"]:
-        if "atom" == node["type"]:
-            if atom_id == node["id"]:
-                node["metadata"][key] = value
-
-def add_resource_metadata(resource_id, key, value):
-    for res in sd["resources"]:
-        if res["id"] == resource_id:
-            res["metadata"][key] = value
-
-def add_sadface_metadata(key, value):
-    sd["metadata"][key] = value
 
 def delete_edge(edge_id):
     edge = get_edge(edge_id)
