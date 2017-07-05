@@ -71,6 +71,11 @@ def get_edge(edge_id):
         if edge_id == edge["id"]:
             return edge
 
+def get_resource(resource_id):
+    for resource in sd["resources"]:
+        if resource_id == resource["id"]:
+            return resource
+
 def get_scheme(scheme_id):
     for node in sd["nodes"]:
         if scheme_id == node["id"]:
