@@ -155,6 +155,9 @@ class REPL(cmd.Cmd):
         print prettyprint()
 
     def do_quit(self, args):
+        """
+        Quit the SADRace REPL.
+        """
         return True
 
     def help_init(self):
