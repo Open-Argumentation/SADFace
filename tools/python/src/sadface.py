@@ -449,6 +449,7 @@ class REPL(cmd.Cmd):
         cmd.Cmd.__init__(self)
         self.prompt = '> '
         self.intro = "The SADFace REPL. Type 'help' or 'help <command>' for assistance"
+        REPL.do_init(self, None)
     
     def default(self, arg):
         print "I do not understand that command. Type 'help' for a list of commands."
