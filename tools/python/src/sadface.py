@@ -363,6 +363,18 @@ def update_edited(timestamp):
     """
     sd["edited"] = timestamp
 
+def update_scheme(scheme_id, scheme_name):
+    """
+    Given an ID for an existing scheme node, update the name associated with it and return the scheme node.
+    
+    Returns: Updated scheme dict
+    """
+    scheme = get_scheme(scheme_id)
+    if(scheme is not None):
+        scheme["name"] = scheme_name
+        return scheme
+    else:
+        raise Exception("Could not update the name of scheme: "+scheme_id)
 
 class REPL(cmd.Cmd):
     """
