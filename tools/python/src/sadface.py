@@ -31,10 +31,6 @@ def add_argument(conclusion, premises):
 
     Returns: a dict
     """
-    print conclusion
-    for premise in premises:
-        print premise
-
     c = add_atom(conclusion)
     s = add_scheme("support")
     try:
