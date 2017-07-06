@@ -462,8 +462,11 @@ class REPL(cmd.Cmd):
         global sd
         sd = init()
         print sd
-        
+    
     def do_print(self, args):
+        print sd
+
+    def do_prettyprint(self, args):
         print prettyprint()
 
     def do_save(self, args):
