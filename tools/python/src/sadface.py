@@ -481,7 +481,9 @@ class REPL(cmd.Cmd):
     def help_init(self):
         print "Creates a default SADFace document"
 
+    do_p = do_print
     do_q = do_quit
+    do_s = do_save
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="This is the SADFace Python tool")
