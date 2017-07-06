@@ -12,6 +12,50 @@ config = ConfigParser.ConfigParser()
 config_location = "etc/defaults.cfg"
 sd = {}
 
+def add_argument(conclusion, premises):
+    """
+    Syntactic sugar to create an argument structure from a set of texts.
+    Given a conclusion text & a list of premise texts, create an intermediate,
+    default "support" scheme.
+
+    This makes it easier to build a SADFace document without manually creating
+    and organising individual nodes.
+
+    Returns an argument dict, e.g.
+
+    {
+        "conclusion": atom,
+        "scheme": atom,
+        "premises": [atom(s)]
+    }
+
+    Returns: a dict
+    """
+    print conclusion
+    for premise in premises:
+        print premise
+
+    c = add_atom(conclusion)
+    s = add_scheme("support")
+    try:
+        add_edge(s["id"], c["id"])
+    except Exception as ex:
+        print ex
+        raise Exception("Could not create new argument")
+
+    p_list = []
+    for premise in premises:
+        atom = add_atom(premise)
+        p_list.append(atom)
+        try:
+            add_edge(atom["id"], s["id"])
+        except Exception as ex:
+            print ex
+            raise Exception("Could not create new argument")
+
+    arg = {"conclusion":c, "scheme":s, "premises":p_list}
+    return arg
+
 def add_edge(source_id, target_id):
     """
     Given a source atom ID & a target atom ID, create an 
