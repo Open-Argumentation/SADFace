@@ -365,11 +365,15 @@ def prettyprint():
     """
     return json.dumps(sd, indent=4, sort_keys=True)
 
-def save():
+def save(filename=None):
     """
     Write the prettyprinted SADFace document to a JSON file on disk
     """
-    with open('data.json', 'w') as outfile:
+    if filename is None:
+        f = config.get("file","name")
+    else:
+        f = filename
+    with open(f, 'w') as outfile:
         json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
 def update():
