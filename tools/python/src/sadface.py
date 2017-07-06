@@ -15,13 +15,18 @@ sd = {}
 def add_edge(source_id, target_id):
     """
     Given a source atom ID & a target atom ID, create an 
-    edge linking the two and add it to the sadface doc, "sd".
+    edge linking the two and add it to the sadface doc,
+    "sd" & return the dict representing the edge. If
+    either of source or target IDs is invalid then an
+    exception is raised.
 
-    Returns: a dict describing the new edge
+    Returns: a dict 
     """
-    edge = new_edge(source_id, target_id)
-    sd["edges"].append(edge)
-    return edge
+    if ((get_node(source_id) is not None) and (get_node(target_id) is not None)):
+        edge = new_edge(source_id, target_id)
+        sd["edges"].append(edge)
+        return edge
+    raise Exception("Could not create new edge between: "+source_id+" & "+target_id)
 
 def add_atom(text):
     """
