@@ -466,6 +466,12 @@ class REPL(cmd.Cmd):
     def do_print(self, args):
         print prettyprint()
 
+    def do_save(self, args):
+        if('' != args):
+            save(args)
+        else:
+            save()
+
     def do_quit(self, args):
         """
         Quit the SADRace REPL.
