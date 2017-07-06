@@ -451,31 +451,31 @@ class REPL(cmd.Cmd):
         self.intro = "The SADFace REPL. Type 'help' or 'help <command>' for assistance"
         REPL.do_init(self, None)
     
-    def default(self, arg):
+    def default(self, line):
         print "I do not understand that command. Type 'help' for a list of commands."
 
-    def do_add_resource(self, args):
+    def do_add_resource(self, line):
         add_resource("hello world")
         print prettyprint()
 
-    def do_init(self, args):
+    def do_init(self, line):
         global sd
         sd = init()
         print sd
     
-    def do_print(self, args):
+    def do_print(self, line):
         print sd
 
-    def do_prettyprint(self, args):
+    def do_prettyprint(self, line):
         print prettyprint()
 
-    def do_save(self, args):
-        if('' != args):
-            save(args)
+    def do_save(self, line):
+        if('' != line):
+            save(line)
         else:
             save()
 
-    def do_quit(self, args):
+    def do_quit(self, line):
         """
         Quit the SADRace REPL.
         """
