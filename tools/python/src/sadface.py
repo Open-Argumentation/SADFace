@@ -237,7 +237,7 @@ def new_edge(source_id, target_id):
 
     Returns: A Python dict representing the new edge
     """
-    new_edge = {"id":new_uuid(), "source":source_id, "target":target_id}
+    new_edge = {"id":new_uuid(), "source_id":source_id, "target_id":target_id}
     return new_edge
 
 def new_sadface():
