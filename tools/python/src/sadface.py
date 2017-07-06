@@ -169,6 +169,17 @@ def get_edge(edge_id):
         if edge_id == edge["id"]:
             return edge
 
+def get_node(node_id):
+    """
+    Given a node's ID but no indication of node type, return the node if 
+    it exists or else indicate that it doesn't to the caller.
+
+    Returns: A node dict or None
+    """
+    for node in sd["nodes"]:
+        if node_id == node["id"]:
+            return node
+
 def get_resource(resource_id):
     """
     Retrieve the resource dict identified by the supplied resource ID
