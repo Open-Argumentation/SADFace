@@ -340,6 +340,22 @@ def update_analyst(analyst):
     """
     sd["analyst"] = analyst
 
+def update_atom_text(atom_id, new_text):
+    """
+    An atoms text key:value pair is the canonical representation of a portion of text 
+    that exists in an argument. This should be updatable so that the overall document 
+    makes sense. Links to original source texts are maintained via the source list 
+    which indexes original text portions of linked resources.
+
+    Returns: The updated atom dict
+    """
+    atom = get_atom(atom_id)
+    if(atom is not None):
+        atom["text"] = new_text
+        return atom
+    else:
+        raise Exception("Could not update the text value for atom: "+atom_id)
+
 def update_created(timestamp):
     """
     Updates the creation timestamp for the SADFace document to the supplied timestamp.
