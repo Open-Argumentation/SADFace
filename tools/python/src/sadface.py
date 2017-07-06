@@ -221,14 +221,14 @@ def init():
         print "Could not read configs from ", config_location
     return new_sadface()
 
-def new_edge(source, target):
+def new_edge(source_id, target_id):
     """
     Creates & returns a new edge dict using the supplied source & 
     target IDs
 
     Returns: A Python dict representing the new edge
     """
-    new_edge = {"id":new_uuid(), "source":source, "target":target}
+    new_edge = {"id":new_uuid(), "source":source_id, "target":target_id}
     return new_edge
 
 def new_sadface():
