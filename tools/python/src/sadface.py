@@ -481,6 +481,9 @@ class REPL(cmd.Cmd):
         """
         return True
 
+    def emptyline(self):
+        pass
+
     def help_init(self):
         print "Creates a default SADFace document"
 
