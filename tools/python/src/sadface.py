@@ -221,6 +221,15 @@ def init():
         print "Could not read configs from ", config_location
     return new_sadface()
 
+def new_atom(text):
+    """
+    Creates a new SADFace atom node (Python dict) using the supplied text
+
+    Returns: A Python dict representing the new SADFace atom
+    """
+    new_atom = {"id":new_uuid(), "type":"atom", "canonical_text":text, "sources":[], "metadata":{}}
+    return new_atom
+
 def new_edge(source_id, target_id):
     """
     Creates & returns a new edge dict using the supplied source & 
@@ -248,15 +257,6 @@ def new_resource(content):
     """
     new_resource = {"id":new_uuid(), "content":content, "type":"text", "metadata":{}}
     return new_resource
-
-def new_atom(text):
-    """
-    Creates a new SADFace atom node (Python dict) using the supplied text
-
-    Returns: A Python dict representing the new SADFace atom
-    """
-    new_atom = {"id":new_uuid(), "type":"atom", "canonical_text":text, "sources":[], "metadata":{}}
-    return new_atom
 
 def new_scheme(name):
     """
