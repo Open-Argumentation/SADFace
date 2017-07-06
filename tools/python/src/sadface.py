@@ -12,14 +12,14 @@ config = ConfigParser.ConfigParser()
 config_location = "etc/defaults.cfg"
 sd = {}
 
-def add_edge(source, target):
+def add_edge(source_id, target_id):
     """
     Given a source atom ID & a target atom ID, create an 
     edge linking the two and add it to the sadface doc, "sd".
 
     Returns: a dict describing the new edge
     """
-    edge = new_edge(source, target)
+    edge = new_edge(source_id, target_id)
     sd["edges"].append(edge)
     return edge
 
