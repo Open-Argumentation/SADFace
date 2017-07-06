@@ -487,6 +487,8 @@ class REPL(cmd.Cmd):
     do_p = do_print
     do_q = do_quit
     do_s = do_save
+    do_pp = do_prettyprint
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="This is the SADFace Python tool")
