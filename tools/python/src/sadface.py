@@ -450,7 +450,22 @@ class REPL(cmd.Cmd):
         self.prompt = '> '
         self.intro = "The SADFace REPL. Type 'help' or 'help <command>' for assistance"
         REPL.do_init(self, None)
-    
+
+    def do_arg(self, line):
+        """
+        Arguments are depicted in a Prolog style, e.g. conclusion:=premise1,premise2
+
+        The line is split on the ':=" to get the conclusion then it is split on the
+        comma delimters to retrieve each premise.
+        """
+        head,tail = line.split(':=')
+        conc = head
+        prems = []
+        for element in tail.split(','):
+            prems.append(element)
+        arg = add_argument(conc, prems)
+        print arg
+
     def default(self, line):
         print "I do not understand that command. Type 'help' for a list of commands."
 
