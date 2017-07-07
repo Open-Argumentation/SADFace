@@ -354,13 +354,17 @@ def now():
     """
     return datetime.datetime.now().replace(microsecond=0).isoformat()
 
-def prettyprint():
+def prettyprint(doc=None):
     """
-    Nicely formatted output of the SADFace document encoded as a String
+    Print nicely formatted output of the passed in string or
+    otherwise the SADFace document encoded as a String
 
     Returns: A String
     """
-    return json.dumps(sd, indent=4, sort_keys=True)
+    string = sd
+    if(doc is not None):
+        string = doc
+    return json.dumps(string, indent=4, sort_keys=True)
 
 def save(filename=None):
     """
