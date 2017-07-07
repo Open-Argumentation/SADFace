@@ -13,7 +13,7 @@ config = ConfigParser.ConfigParser()
 config_location = "etc/defaults.cfg"
 sd = {}
 
-def add_argument(conclusion, premises):
+def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
     """
     Syntactic sugar to create an argument structure from a set of texts.
     Given a conclusion text & a list of premise texts, create an intermediate,
@@ -32,26 +32,43 @@ def add_argument(conclusion, premises):
 
     Returns: a dict
     """
-    c = add_atom(conclusion)
-    s = add_scheme("support")
-    try:
-        add_edge(s["id"], c["id"])
-    except Exception as ex:
-        print ex
-        raise Exception("Could not create new argument")
+    if((con_text is not None or con_id is not None) and (prem_text is not None or prem_id is not None)):
 
-    p_list = []
-    for premise in premises:
-        atom = add_atom(premise)
-        p_list.append(atom)
+        if con_text is not None:
+            c = add_atom(con_text)
+        else:
+            c = get_atom(con_id)
+
+        s = add_scheme("support")
         try:
-            add_edge(atom["id"], s["id"])
+            add_edge(s["id"], c["id"])
         except Exception as ex:
             print ex
             raise Exception("Could not create new argument")
 
-    arg = {"conclusion":c, "scheme":s, "premises":p_list}
-    return arg
+        p_list = []
+        if(prem_text is not None):
+            for text in prem_text:
+                atom = add_atom(text)
+                p_list.append(atom)
+                try:
+                    add_edge(atom["id"], s["id"])
+                except Exception as ex:
+                    print ex
+                    raise Exception("Could not create new argument")
+        if(prem_id is not None):
+            for atom_id in prem_id:
+                atom = get_atom(atom_id)
+                p_list.append(atom)
+                try:
+                    add_edge(atom["id"], s["id"])
+                except Exception as ex:
+                    print ex
+                    raise Exception("Could not create new argument")
+
+        arg = {"conclusion":c, "scheme":s, "premises":p_list}
+        return arg
+    return None
 
 def add_edge(source_id, target_id):
     """
