@@ -471,17 +471,31 @@ class REPL(cmd.Cmd):
 
     def do_arg(self, line):
         """
-        Arguments are depicted in a Prolog style, e.g. conclusion:=premise1,premise2
+        Arguments are depicted in the following fashion e.g. premise1,premise2~>conclusion
+        premises are a comma separated list of strings where each string depicts a single
+        premise. The conclusion is written at the end of the premise list using `~>` to
+        indicate a defeasible Modus Ponens rule.
 
-        The line is split on the ':=" to get the conclusion then it is split on the
-        comma delimters to retrieve each premise.
+        The line is split initially on the '~>" to yield the premises (in the head)
+        and the conclusion in the tail. The head is further split on the comma delimiters
+        to retrieve each individual premise.
         """
-        head,tail = line.split(':=')
-        conc = head
-        prems = []
-        for element in tail.split(','):
-            prems.append(element)
-        arg = add_argument(conc, prems)
+        conid = None
+        contxt = None
+
+        head,tail = line.split("~>")
+        if tail.startswith("id="):
+            conid = tail.replace("id=", "")
+        else:
+            contxt = tail
+        premtext = []
+        premid = []
+        for element in head.split(","):
+            if element.startswith("id="):
+                premid.append(element.replace("id=", ""))
+            else:
+                premtext.append(element)
+        arg = add_argument(con_text=contxt, prem_text=premtext, con_id=conid, prem_id=premid)
         print arg
 
     def default(self, line):
