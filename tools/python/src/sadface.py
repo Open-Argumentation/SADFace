@@ -482,21 +482,28 @@ class REPL(cmd.Cmd):
         """
         conid = None
         contxt = None
-
-        head,tail = line.split("~>")
-        if tail.startswith("id="):
-            conid = tail.replace("id=", "")
-        else:
-            contxt = tail
-        premtext = []
-        premid = []
-        for element in head.split(","):
-            if element.startswith("id="):
-                premid.append(element.replace("id=", ""))
+        if "~>" in line:
+            head,tail = line.split("~>")
+            if tail.startswith("id="):
+                conid = tail.replace("id=", "")
             else:
-                premtext.append(element)
-        arg = add_argument(con_text=contxt, prem_text=premtext, con_id=conid, prem_id=premid)
-        print arg
+                contxt = tail
+            premtext = []
+            premid = []
+            for element in head.split(","):
+                if element.startswith("id="):
+                    premid.append(element.replace("id=", ""))
+                else:
+                    if (len(element) >0 ):
+                        premtext.append(element)
+
+            if ((conid is not None or contxt is not None) and (len(premtext)!=0 or len(premid) != 0)):
+                arg = add_argument(con_text=contxt, prem_text=premtext, con_id=conid, prem_id=premid)
+                #print arg
+            else:
+                print "USAGE: arg premise,premise,...~>conclusion"
+        else:
+            print "USAGE: arg premise,premise,...~>conclusion"
 
     def default(self, line):
         print "I do not understand that command. Type 'help' for a list of commands."
