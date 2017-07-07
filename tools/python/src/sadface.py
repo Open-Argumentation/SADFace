@@ -6,6 +6,7 @@ import codecs
 import ConfigParser
 import datetime
 import json
+import sys
 import uuid
 
 config = ConfigParser.ConfigParser()
@@ -514,28 +515,12 @@ if __name__ == "__main__":
     if args.config:
         config_location = args.config
 
-    if args.interactive:
-        REPL().cmdloop()
+    if args.load:
+        sd = import_json(args.load)
     else:
-        if args.load:
-            sd = import_json(args.load)
+        if args.interactive:
+            REPL().cmdloop()
         else:
-            sd = init()
-            add_sadface_metadata("hello","world")
-            add_sadface_metadata("some","shit")
-            add_resource("hello world")
-            add_resource("goodbye cruel world")
-            add_resource_metadata("test", "one", "two")
-
-            a = add_atom("an argument atom")
-            add_source(a["id"], "1234", "a source text", 150, 57)
-            add_scheme("expert_opinion")
-        
-            e = add_edge("1", "2")
-            edge = get_edge(e["id"])
-            print prettyprint()
-#            delete_edge(e["id"])
-
-            print prettyprint()
-            save()
+            parser.print_help()
+            sys.exit(0)
 
