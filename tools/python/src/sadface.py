@@ -220,9 +220,10 @@ def export_dot():
     """
     edge_str = " -> "
     dot = "digraph SADFace {"
+    dot += "node [style=\"filled\"]"
     for node in sd["nodes"]:
         if "text" in node:
-            line = '"{}"'.format(node['id']) + " [label=\"" + node["text"] + "\"]" + " [shape=box];\r\n"
+            line = '"{}"'.format(node['id']) + " [label=\"" + node["text"] + "\"]" + " [shape=box, style=rounded];\r\n"
             dot += line
         elif "name" in node:
             line = '"{}"'.format(node['id']) + " [label=\"" + node["name"] + "\"]" + " [shape=diamond];\r\n"
