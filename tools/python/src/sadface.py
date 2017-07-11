@@ -427,16 +427,22 @@ def prettyprint(doc=None):
         string = doc
     return json.dumps(string, indent=4, sort_keys=True)
 
-def save(filename=None):
+def save(filename=None, filetype="json"):
     """
     Write the prettyprinted SADFace document to a JSON file on disk
     """
+    f = filename
     if filename is None:
         f = config.get("file","name")
+    f += "."
+    f += filetype
+
+    if ("dot" == filetype):
+        with codecs.open(f, 'w', 'utf-8') as outfile:
+            outfile.write(export_dot())
     else:
-        f = filename
-    with open(f, 'w') as outfile:
-        json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
+        with open(f, 'w') as outfile:
+            json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
 def update():
     """
