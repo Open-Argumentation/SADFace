@@ -84,7 +84,7 @@ This is what a simple SADFace document looks like:
 
 This is what the argument contained in that document looks like when exported to the Dot format:
 
-![alt text](examples/hangback/data.svg "Extract from the Hang Back analysis")
+![alt text](https://raw.githubusercontent.com/siwells/SADFace/master/examples/hangback/data.png "Extract from the Hang Back analysis")
 
 
 ## QuickStart
