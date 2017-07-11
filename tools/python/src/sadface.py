@@ -525,7 +525,8 @@ class REPL(cmd.Cmd):
             if tail.startswith("id="):
                 conid = tail.replace("id=", "")
             else:
-                contxt = tail
+                if (len(tail)>0):
+                    contxt = tail
             premtext = []
             premid = []
             for element in head.split(","):
