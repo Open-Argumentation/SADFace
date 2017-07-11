@@ -51,7 +51,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         if(prem_text is not None):
             for text in prem_text:
                 atom = add_atom(text)
-                p_list.append(atom)
+                p_list.append(atom["id"])
                 try:
                     add_edge(atom["id"], s["id"])
                 except Exception as ex:
@@ -60,7 +60,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         if(prem_id is not None):
             for atom_id in prem_id:
                 atom = get_atom(atom_id)
-                p_list.append(atom)
+                p_list.append(atom["id"])
                 try:
                     add_edge(atom["id"], s["id"])
                 except Exception as ex:
