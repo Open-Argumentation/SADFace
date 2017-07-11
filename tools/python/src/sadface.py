@@ -228,10 +228,10 @@ def export_dot():
             txt = node["text"]
             if len(txt) > max_length:
                 txt = "\r\n".join(textwrap.wrap(txt, 25))
-            line = '"{}"'.format(node['id']) + " [label=\"" + txt + "\"]" + " [shape=box, style=rounded];\r\n"
+            line = '"{}"'.format(node['id']) + " [label=\"" + txt + "\"]" + " [shape=box, style=rounded];\n"
             dot += line
         elif "name" in node:
-            line = '"{}"'.format(node['id']) + " [label=\"" + node["name"] + "\"]" + " [shape=diamond];\r\n"
+            line = '"{}"'.format(node['id']) + " [label=\"" + node["name"] + "\"]" + " [shape=diamond];\n"
             dot += line
 
     for edge in sd["edges"]:
@@ -250,7 +250,7 @@ def export_dot():
         elif "scheme" == target["type"]:
             dot += '"{}"'.format(target["id"])
         
-        dot += ";\r\n"
+        dot += ";\n"
 
     dot += "}"
     
