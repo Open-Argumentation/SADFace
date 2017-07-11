@@ -212,6 +212,44 @@ def export_json():
     """
     return json.dumps(sd)
 
+def export_dot():
+    """
+    Exports a subset of SADFace to the DOT graph description language
+
+    Returns: String-encoded DOT document
+    """
+    edge_str = " -> "
+    dot = "digraph SADFace {"
+    for node in sd["nodes"]:
+        if "text" in node:
+            line = '"{}"'.format(node['id']) + " [label=\"" + node["text"] + "\"]" + " [shape=box];\r\n"
+            dot += line
+        elif "name" in node:
+            line = '"{}"'.format(node['id']) + " [label=\"" + node["name"] + "\"]" + " [shape=diamond];\r\n"
+            dot += line
+
+    for edge in sd["edges"]:
+        source = get_node(edge["source_id"])
+        target = get_node(edge["target_id"])
+        
+        if("atom" == source["type"]):
+            dot += '"{}"'.format(source["id"])
+        elif "scheme" == source["type"]:
+            dot += '"{}"'.format(source["id"])
+        
+        dot += edge_str
+
+        if("atom" == target["type"]):
+            dot += '"{}"'.format(target["id"])
+        elif "scheme" == target["type"]:
+            dot += '"{}"'.format(target["id"])
+        
+        dot += ";\r\n"
+
+    dot += "}"
+    
+    return dot
+
 def get_atom(atom_id):
     """
     Retrieve the atom dict identified by the supplied atom ID
