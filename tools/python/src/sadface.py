@@ -7,6 +7,7 @@ import ConfigParser
 import datetime
 import json
 import sys
+import textwrap
 import uuid
 
 config = ConfigParser.ConfigParser()
@@ -218,12 +219,16 @@ def export_dot():
 
     Returns: String-encoded DOT document
     """
+    max_length = 25
     edge_str = " -> "
     dot = "digraph SADFace {"
     dot += "node [style=\"filled\"]"
     for node in sd["nodes"]:
         if "text" in node:
-            line = '"{}"'.format(node['id']) + " [label=\"" + node["text"] + "\"]" + " [shape=box, style=rounded];\r\n"
+            txt = node["text"]
+            if len(txt) > max_length:
+                txt = "\r\n".join(textwrap.wrap(txt, 25))
+            line = '"{}"'.format(node['id']) + " [label=\"" + txt + "\"]" + " [shape=box, style=rounded];\r\n"
             dot += line
         elif "name" in node:
             line = '"{}"'.format(node['id']) + " [label=\"" + node["name"] + "\"]" + " [shape=diamond];\r\n"
