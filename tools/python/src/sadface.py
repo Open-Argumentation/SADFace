@@ -91,7 +91,7 @@ def add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=Non
     Returns: a dict
     """
     if((arg_text is not None or arg_id is not None) and (conflict_text is not None or conflict_id is not None)):
-
+        
         if arg_text is not None:
             a = add_atom(arg_text)
         else:
