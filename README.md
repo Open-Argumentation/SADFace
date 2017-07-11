@@ -89,4 +89,23 @@ This is what the argument contained in that document looks like when exported to
 
 ## QuickStart
 
+SADFace can currently be used in two ways, as a Python library, to builds SADFace documents from an existing argument tool, or as a command line app using the interactive argument when invoking the tool.
+
+### Library
+
+### Command Line Tool
+
+Invoke the tool as follows: 
+
+~~~~
+ $ python src/sadface.py -i
+~~~~
+
+This will launch SADFace in interactive mode. If you have a config file then this can be passed in using the -c argument, e.g.
+
+~~~~
+ $ python src/sadface.py -c etc/simon.cfg -i
+~~~~
+
+
 
