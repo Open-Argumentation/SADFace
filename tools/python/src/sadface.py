@@ -71,6 +71,55 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         return arg
     return None
 
+def add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=None):
+    """
+    Conflicts play an important role in arguments. We depict conflict
+    through the use of schemes that represent the conflict relationship. This
+    function will instantiate a conflict scheme between two nodes (either
+    pre-existing & identifed by node IDs or created from supplied texts, or a
+    mixture of the two).
+
+    Returns a conflict dict, e.g.
+
+    {
+        "argument": atom,
+        "scheme": atom,
+        "conflict": atom
+    }
+    (where the scheme just happens to depict a conflict)
+
+    Returns: a dict
+    """
+    if((arg_text is not None or arg_id is not None) and (conflict_text is not None or conflict_id is not None)):
+
+        if arg_text is not None:
+            a = add_atom(arg_text)
+        else:
+            a = get_atom(arg_id)
+
+        s = add_scheme("conflict")
+
+        try:
+            add_edge(s["id"], a["id"])
+        except Exception as ex:
+            print ex
+            raise Exception("Could not create new argument")
+
+        if conflict_text is not None:
+            c = add_atom(conflict_text)
+        else:
+            c = get_atom(conflict_id)
+
+        try:
+            add_edge(c["id"], s["id"])
+        except Exception as ex:
+            print ex
+            raise Exception("Could not create new argument")
+
+        arg = {"argument":a, "scheme":s, "conflict":c}
+        return arg
+    return None
+
 def add_edge(source_id, target_id):
     """
     Given a source atom ID & a target atom ID, create an 
