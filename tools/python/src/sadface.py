@@ -393,6 +393,14 @@ def export_dot():
     
     return dot
 
+def export_json():
+    """
+    Dump the current sadface document to a JSON string
+
+    Returns: String-encoded JSON
+    """
+    return json.dumps(sd)
+
 def get_atom(atom_id):
     """
     Retrieve the atom dict identified by the supplied atom ID
