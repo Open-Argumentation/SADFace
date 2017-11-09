@@ -254,13 +254,101 @@ def delete_scheme(scheme_id):
     scheme = get_scheme(scheme_id)
     sd["nodes"].remove(scheme)
 
-def export_json():
+def export_cytoscape():
     """
-    Dump the current sadface document to a JSON string
+    Cytoscape.js is a useful graph visualisation library for Javascript. However
+    it uses some slightly different keynames and includes description of visual
+    elements, useful to Cytoscape's visualisation, but having no place in SADFace.
 
-    Returns: String-encoded JSON
+    Both nodes & edges in a Cytoscape graph are collated together into a single
+    eleents object so we need to do that to the SADFace nodea & edges. Furthemore,
+    each node and edge object must contain a data object. After that conversion is
+    a relatively straightforward mapping:
+
+    EDGES
+        id -> id
+        source_id -> source
+        target_id -> target
+
+        e.g. 
+        {
+            "data": {
+                "source": "a1",
+                "id": "a1s1",
+                "target": "s1"
+            }
+        }
+
+    NODES - ATOMS    
+        id -> id
+        type -> type
+        text -> content
+        + "classes":"atom-label"
+        + "typeshape":"roundrectangle"
+
+        e.g.
+        {
+            "classes": "atom-label",
+            "data": {
+                "content": "Every person is going to die",
+                "type": "atom",
+                "id": "a1",
+                "typeshape": "roundrectangle"
+            }
+        }
+
+
+    NODES - SCHEMES
+        id -> id
+        type -> type
+        name -> content
+        + "classes":"scheme-label"
+        + "typeshape":"diamond"
+        
+        e.g.
+        {
+            "classes": "scheme-label",
+            "data": {
+                "content": "Default\nSupport",
+                "type": "scheme",
+                "id": "s1",
+                "typeshape": "diamond"
+            }
+        }
+
     """
-    return json.dumps(sd)
+    cy = {}
+    cy['elements'] = {}
+    cy['elements']['nodes'] = []
+    cy['elements']['edges'] = []
+
+    for edge in sd['edges']:
+        e = {}
+        e['data'] = {}
+        e['data']['id'] = edge['id']
+        e['data']['source'] = edge['source_id']
+        e['data']['target'] = edge['target_id']
+
+        cy['elements']['edges'].append(e)
+
+    for node in sd['nodes']:
+        n = {}
+        n['data'] = {}
+        n['data']['id'] = node['id']
+        n['data']['type'] = node['type']
+        if n['data']['type'] == "atom":
+            n['classes'] = "atom-label"
+            n['data']['typeshape'] = "roundrectangle"
+            n['data']['content'] = node['text']
+
+        else:
+            n['classes'] = "scheme-label"
+            n['data']['typeshape'] = "diamond"
+            n['data']['content'] = node['name']
+
+        cy['elements']['nodes'].append(n)
+
+    return  json.dumps(cy)
 
 def export_dot():
     """
