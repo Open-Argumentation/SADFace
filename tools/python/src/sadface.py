@@ -546,8 +546,12 @@ def new_scheme(name):
 def new_source(resource_id, text, offset, length):
     """
     Create a new SADFace source (Python dict) using the supplied resource ID (a source always
-    refers to an existing resource) and identifying a section of text in the resource as well
-    as an offset & segment length for locating the text in the original resource.
+    refers to an existing resource object) and identifying a section of text in the resource 
+    as well as an offset & segment length for locating the text in the original resource.
+
+    As the resource object is enhanced to account for newer "types" of resource, so the
+    source object must be enhanced to keep track and enable sources to index sub-parts of
+    resources.
 
     Returns: A Python dict representing the new SADFace source
     """
