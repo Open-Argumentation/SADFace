@@ -516,6 +516,18 @@ def new_resource(content):
     """
     Given the supplied content (Python String), create a new resource dict
 
+    The arguments that SADFace describes are either constructed directly in a tool that writes
+    them to this format, or else are sourced from elsewhere, e.g. an argumentative text or
+    webpage, or else perhaps another medium, such as audio or video. Currently SADFace supports
+    textual resources which are stored in the content key. Optionally a 
+        "url":"some web location"
+    pair can be added to the metadata to indicate a specific web location. Alternatively:
+        "doi":"digital object identifier" - resolvable by dx.doi.org
+        "magnet-link":"a torrent file"
+        "isbn":"for books"
+    Metadata may also store additional bibliographic or referencing/citation information
+    as defined in bibtex formats.
+
     Returns: A Python dict representing the new SADFace resource
     """
     new_resource = {"id":new_uuid(), "content":content, "type":"text", "metadata":{}}
