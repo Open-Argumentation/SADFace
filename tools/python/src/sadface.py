@@ -603,7 +603,7 @@ def save(filename=None, filetype="json"):
     elif("cytoscape" == filetype):
         f += '.json'
         with codecs.open(f, 'w', 'utf-8') as outfile:
-            outfile.write(export_cytoscape())
+            outfile.write(prettyprint(json.loads(export_cytoscape())))
     else:
         f += '.json'
         with open(f, 'w') as outfile:
