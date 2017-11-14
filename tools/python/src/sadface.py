@@ -595,13 +595,17 @@ def save(filename=None, filetype="json"):
     f = filename
     if filename is None:
         f = config.get("file","name")
-    f += "."
-    f += filetype
 
     if ("dot" == filetype):
+        f += '.dot'
         with codecs.open(f, 'w', 'utf-8') as outfile:
             outfile.write(export_dot())
+    elif("cytoscape" == filetype):
+        f += '.json'
+        with codecs.open(f, 'w', 'utf-8') as outfile:
+            outfile.write(export_cytoscape())
     else:
+        f += '.json'
         with open(f, 'w') as outfile:
             json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
