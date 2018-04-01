@@ -744,6 +744,12 @@ class REPL(cmd.Cmd):
         else:
             save()
 
+    def do_save_to_dot(self, line):
+        if('' != line):
+            save(line, filetype="dot")
+        else:
+            save(filetype="dot")
+
     def do_quit(self, line):
         """
         Quit the SADRace REPL.
@@ -759,6 +765,7 @@ class REPL(cmd.Cmd):
     do_p = do_print
     do_q = do_quit
     do_s = do_save
+    do_sd = do_save_to_dot
     do_pp = do_prettyprint
 
 
