@@ -504,6 +504,24 @@ def init():
         print "Could not read configs from ", config_location
     return new_sadface()
 
+def list_atoms():
+    """
+    Return a list of atoms and their associated ID contained in the current 
+    document, using the following format
+
+    [ { 'id':'id-value', 'text':'text-value' } ]
+
+    """
+    atoms = []
+    for node in sd["nodes"]:
+        if "atom" == node["type"]:
+            tmp = {}
+            tmp["id"] = node["id"]
+            tmp["text"] = node["text"]
+            atoms.append(tmp)
+    return atoms
+
+
 def new_atom(text):
     """
     Creates a new SADFace atom node (Python dict) using the supplied text
@@ -752,6 +770,11 @@ class REPL(cmd.Cmd):
         global sd
         sd = init()
         print sd
+
+    def do_list_atoms(self, line):
+        atoms = list_atoms()
+        for a in atoms:
+            print(a["id"]+", "+a["text"])
     
     def do_print(self, line):
         print sd
