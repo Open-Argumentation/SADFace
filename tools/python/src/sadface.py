@@ -142,8 +142,16 @@ def add_atom(text):
 
     Returns: the new atom dict
     """
-    atom = new_atom(text)
-    sd["nodes"].append(atom)
+    atomid = contains_atom(text)
+    atom = None
+
+    if atomid is not None:
+        atom = get_atom(atomid)
+
+    else:
+        atom = new_atom(text)
+        sd["nodes"].append(atom)
+    
     return atom
 
 def add_atom_metadata(atom_id, key, value):
@@ -209,6 +217,16 @@ def add_source(atom_id, resource_id, text, offset, length):
             if atom_id == node["id"]:
                 node["sources"].append(source)
                 return source
+
+def contains_atom(atom_text):
+    """
+
+    """
+    for node in sd["nodes"]:
+        if "atom" == node["type"]:
+            if atom_text == node["text"]:
+                return node["id"]
+    return None
 
 def delete_atom(atom_id):
     """
