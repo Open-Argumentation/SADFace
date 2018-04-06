@@ -800,28 +800,13 @@ if __name__ == "__main__":
 
     if args.load:
         sd = import_json(args.load)
+        
     else:
         if args.interactive:
             REPL().cmdloop()
-        else:
-#            parser.print_help()
-#            sys.exit(0)
             
-            sd = init()
-            try:
-#                add_argument("conc", ["prem1", "prem2"])
-#                add_argument("Harry is a British subject", ["He was born in Bermuda", "Anyone born in Bermuda is a British subject"])
-                a1 = add_argument("The 'Hang Back' campaign video should not have been published, and should be withdrawn.", ["The 'Hang Back' advert does not clearly express the intended message", "The 'Hang Back' campaign was the wrong campaign to run"])
-                c1 = add_conflict(arg_id=a1["premises"][1], conflict_text="Road users have a responsibility to make our roads safer by being more vigilant.")
-#                add_conflict(arg_text="X is good", conflict_text="x is bad")
-            except Exception as ex:
-                print ex
-
-#            print export_dot()
-
-#            print prettyprint()
-            save()
-            save(filetype="dot")
-            save(filename="cytoscape", filetype="cytoscape")
-#            print export_cytoscape()
+        else:
+            parser.print_help()
+            sys.exit(0)
+            
 
