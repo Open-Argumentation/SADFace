@@ -725,11 +725,12 @@ class REPL(cmd.Cmd):
             premtext = []
             premid = []
             for element in head.split(","):
-                if element.startswith("id="):
-                    premid.append(element.replace("id=", ""))
+                t = element.strip()
+                if t.startswith("id="):
+                    premid.append(t.replace("id=", ""))
                 else:
-                    if (len(element) >0 ):
-                        premtext.append(element)
+                    if (len(t) >0 ):
+                        premtext.append(t)
             if ((conid is not None or contxt is not None) and (premtext or premid)):
                 arg = add_argument(con_text=contxt, prem_text=premtext, con_id=conid, prem_id=premid)
                 print arg
