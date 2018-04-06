@@ -686,19 +686,19 @@ class REPL(cmd.Cmd):
 
     def do_arg(self, line):
         """
-        Arguments are depicted in the following fashion e.g. premise1,premise2~>conclusion
+        Arguments are depicted in the following fashion e.g. premise1,premise2^conclusion
         premises are a comma separated list of strings where each string depicts a single
-        premise. The conclusion is written at the end of the premise list using `~>` to
+        premise. The conclusion is written at the end of the premise list using `^` to
         indicate a defeasible Modus Ponens rule.
 
-        The line is split initially on the '~>" to yield the premises (in the head)
+        The line is split initially on the '^" to yield the premises (in the head)
         and the conclusion in the tail. The head is further split on the comma delimiters
         to retrieve each individual premise.
         """
         conid = None
         contxt = None
-        if "~>" in line:
-            head,tail = line.split("~>")
+        if "^" in line:
+            head,tail = line.split("^")
             if tail.startswith("id="):
                 conid = tail.replace("id=", "")
             else:
@@ -716,9 +716,9 @@ class REPL(cmd.Cmd):
                 arg = add_argument(con_text=contxt, prem_text=premtext, con_id=conid, prem_id=premid)
                 print arg
             else:
-                print "USAGE: arg premise,premise,...~>conclusion"
+                print "USAGE: arg premise,premise,...^conclusion"
         else:
-            print "USAGE: arg premise,premise,...~>conclusion"
+            print "USAGE: arg premise,premise,...^conclusion"
 
     def default(self, line):
         print "I do not understand that command. Type 'help' for a list of commands."
