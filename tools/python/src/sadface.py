@@ -220,7 +220,9 @@ def add_source(atom_id, resource_id, text, offset, length):
 
 def contains_atom(atom_text):
     """
-
+    Searches the sadface document for an existing atom containing
+    the supplied text. If found, returns the id of that atom,
+    otherwise None
     """
     for node in sd["nodes"]:
         if "atom" == node["type"]:
