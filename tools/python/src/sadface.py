@@ -741,7 +741,7 @@ class REPL(cmd.Cmd):
                 conid = tail.replace("id=", "")
             else:
                 if (len(tail)>0):
-                    contxt = tail
+                    contxt = tail.strip()
             premtext = []
             premid = []
             for element in head.split(","):
