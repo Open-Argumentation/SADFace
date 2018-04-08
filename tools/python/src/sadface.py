@@ -664,6 +664,19 @@ def save(filename=None, filetype="json"):
         with open(f, 'w') as outfile:
             json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
+def set_claim(atom_id):
+    """
+    Enables a given atom to be nominated as the claim for the argument captured
+    by this sadface document. A useful way to explicitly set the atom that should
+    be considered to be the main claim.
+    """
+    atom = get_atom(atom_id)
+    if(atom is not None): 
+        sd["metadata"]["claim"] = atom_id
+    else:
+        raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
+
+
 def update():
     """
     Updates the last edited timestamp for the SADFace doc to now
