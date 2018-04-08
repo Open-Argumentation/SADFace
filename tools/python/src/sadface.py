@@ -218,6 +218,15 @@ def add_source(atom_id, resource_id, text, offset, length):
                 node["sources"].append(source)
                 return source
 
+def add_title(text):
+    """
+    Add a metadata entry for the document that contains a title. This is a
+    useful but non-essential addendum to the base sadface document when
+    building systems that make use of sadface.
+    """
+    sd["metadata"]["title"] = text
+
+
 def contains_atom(atom_text):
     """
     Searches the sadface document for an existing atom containing
