@@ -164,6 +164,14 @@ def add_atom_metadata(atom_id, key, value):
             if atom_id == node["id"]:
                 node["metadata"][key] = value
 
+def add_notes(text):
+    """
+    Add a metadata entry for the document that contains notes. Notes
+    are miscellaneous, unstructured free text.
+    """
+    sd["metadata"]["notes"] = text
+
+
 def add_resource(content):
     """
     Create a new resource dict using the supplied content string
