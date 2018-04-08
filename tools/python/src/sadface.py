@@ -774,7 +774,7 @@ class REPL(cmd.Cmd):
     def do_list_atoms(self, line):
         atoms = list_atoms()
         for a in atoms:
-            print(a["id"]+", "+a["text"])
+            print(a["id"]+" | "+a["text"])
     
     def do_print(self, line):
         print sd
