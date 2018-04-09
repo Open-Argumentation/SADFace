@@ -823,9 +823,9 @@ class REPL(cmd.Cmd):
         print prettyprint()
 
     def do_init(self, line):
-        global sd
-        
-        sd = init()
+        if not sd:
+            global sd
+            sd = init()
         print sd
 
     def do_list_atoms(self, line):
@@ -895,6 +895,5 @@ if __name__ == "__main__":
             
         else:
             parser.print_help()
-            sys.exit(0)
-            
+            sys.exit(0)            
 
