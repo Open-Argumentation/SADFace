@@ -866,14 +866,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="This is the SADFace Python tool")
     parser.add_argument("-c", "--config", help="Supply a config file for SADFace to use.")
     parser.add_argument("-i", "--interactive", action="store_true", help="Use the SADFace REPL")
-    parser.add_argument("-l", "--load", help="Load a JSON document into SADFace")
+    parser.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
     args = parser.parse_args()
 
     if args.config:
         config_location = args.config
 
-    if args.load:
-        sd = import_json(args.load)
+    if args.raw:
+        sd = import_json(args.raw)
+        print prettyprint()
         
     else:
         if args.interactive:
@@ -882,5 +883,8 @@ if __name__ == "__main__":
         else:
             parser.print_help()
             sys.exit(0)
+
+            except Exception as ex:
+                print ex
             
 
