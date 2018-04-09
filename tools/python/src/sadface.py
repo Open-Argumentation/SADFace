@@ -469,6 +469,12 @@ def get_node(node_id):
         if node_id == node["id"]:
             return node
 
+def get_notes():
+    """
+    Retrieve the notes metadata entry from the document
+    """
+    return sd["metadata"].get("notes")
+
 def get_resource(resource_id):
     """
     Retrieve the resource dict identified by the supplied resource ID
