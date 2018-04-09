@@ -448,6 +448,12 @@ def get_atom(atom_id):
         if atom_id == node["id"]:
             return node
 
+def get_claim():
+    """
+    Retrieve the claim metadata entry from the document
+    """
+    return get_atom(sd["metadata"].get("claim"))
+
 def get_edge(edge_id):
     """
     Retrieve the edge dict identified by the supplied edge ID
