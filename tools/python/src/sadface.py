@@ -873,9 +873,10 @@ class REPL(cmd.Cmd):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="This is the SADFace Python tool")
     parser.add_argument("-c", "--config", help="Supply a config file for SADFace to use.")
-    parser.add_argument("-i", "--interactive", action="store_true", help="Use the SADFace REPL")
+    parser.add_argument("-i", "--interactive", help="Use the SADFace REPL", action="store_true")
     parser.add_argument("-l", "--load", help="Load a Sadface document from a file")
     parser.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
+    parser.add_argument("-s", "--save", help="Save the loaded document to a SADFace formatted JSON file")
     args = parser.parse_args()
 
     if args.config:
@@ -883,11 +884,12 @@ if __name__ == "__main__":
 
     if args.raw:
         sd = import_json(args.raw)
-        print prettyprint()
     
     if args.load:
         sd = load_from_file(args.load)
-        print prettyprint()
+
+    if args.save:
+        save(args.save)
         
     else:
         if args.interactive:
