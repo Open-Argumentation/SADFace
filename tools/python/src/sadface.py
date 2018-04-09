@@ -877,6 +877,7 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--load", help="Load a Sadface document from a file")
     parser.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
     parser.add_argument("-s", "--save", help="Save the loaded document to a SADFace formatted JSON file")
+    parser.add_argument("--pretty", help="Pretty print the SADFace document", action="store_true")
     args = parser.parse_args()
 
     if args.config:
@@ -890,6 +891,9 @@ if __name__ == "__main__":
 
     if args.save:
         save(args.save)
+
+    if args.pretty:
+        print prettyprint()
         
     else:
         if args.interactive:
