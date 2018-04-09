@@ -823,8 +823,8 @@ class REPL(cmd.Cmd):
         print prettyprint()
 
     def do_init(self, line):
+        global sd
         if not sd:
-            global sd
             sd = init()
         print sd
 
