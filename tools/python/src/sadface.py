@@ -897,11 +897,6 @@ if __name__ == "__main__":
     if args.pretty:
         print prettyprint()
         
-    else:
-        if args.interactive:
-            REPL().cmdloop()
+    if args.interactive:
+        REPL().cmdloop()
             
-        else:
-            parser.print_help()
-            sys.exit(0)            
-
