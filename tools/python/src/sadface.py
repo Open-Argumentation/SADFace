@@ -500,6 +500,13 @@ def get_source(atom_id, resource_id):
         if resource_id == source["resource_id"]:
             return atom, source
 
+def get_title():
+    """
+    Retrieve the title metadata entry from the document
+    """
+    return sd["metadata"].get("title")
+
+
 def import_json(json_string):
     """
     Take a string-encoded JSON document and loads it into a Python dict
