@@ -557,6 +557,14 @@ def list_atoms():
             atoms.append(tmp)
     return atoms
 
+def load_from_file(filename):
+    """
+    Load the sadface document stored in the file identifed by the supplied
+    filename.
+    """
+    with open(filename) as sadface_file:
+        return json.load(sadface_file)
+
 
 def new_atom(text):
     """
@@ -695,7 +703,6 @@ def set_claim(atom_id):
     else:
         raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
 
-
 def update():
     """
     Updates the last edited timestamp for the SADFace doc to now
@@ -817,6 +824,7 @@ class REPL(cmd.Cmd):
 
     def do_init(self, line):
         global sd
+        
         sd = init()
         print sd
 
@@ -866,6 +874,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="This is the SADFace Python tool")
     parser.add_argument("-c", "--config", help="Supply a config file for SADFace to use.")
     parser.add_argument("-i", "--interactive", action="store_true", help="Use the SADFace REPL")
+    parser.add_argument("-l", "--load", help="Load a Sadface document from a file")
     parser.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
     args = parser.parse_args()
 
@@ -875,6 +884,10 @@ if __name__ == "__main__":
     if args.raw:
         sd = import_json(args.raw)
         print prettyprint()
+    
+    if args.load:
+        sd = load_from_file(args.load)
+        print prettyprint()
         
     else:
         if args.interactive:
@@ -883,8 +896,5 @@ if __name__ == "__main__":
         else:
             parser.print_help()
             sys.exit(0)
-
-            except Exception as ex:
-                print ex
             
 
