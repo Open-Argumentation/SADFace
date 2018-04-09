@@ -874,8 +874,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="This is the SADFace Python tool")
     parser.add_argument("-c", "--config", help="Supply a config file for SADFace to use.")
     parser.add_argument("-i", "--interactive", help="Use the SADFace REPL", action="store_true")
-    parser.add_argument("-l", "--load", help="Load a Sadface document from a file")
-    parser.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
+
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-l", "--load", help="Load a Sadface document from a file")
+    group.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
+
     parser.add_argument("-s", "--save", help="Save the loaded document to a SADFace formatted JSON file")
     parser.add_argument("--pretty", help="Pretty print the SADFace document", action="store_true")
     args = parser.parse_args()
@@ -885,8 +888,7 @@ if __name__ == "__main__":
 
     if args.raw:
         sd = import_json(args.raw)
-    
-    if args.load:
+    elif args.load:
         sd = load_from_file(args.load)
 
     if args.save:
