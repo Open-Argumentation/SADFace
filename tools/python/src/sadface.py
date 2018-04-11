@@ -536,9 +536,10 @@ def init():
     """
     try:
         config.read(config_location)
+        return new_sadface()
     except:
         print "Could not read configs from ", config_location
-    return new_sadface()
+        exit(1)
 
 def list_atoms():
     """
