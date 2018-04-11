@@ -678,17 +678,19 @@ def save(filename=None, filetype="json"):
     if filename is None:
         f = config.get("file","name")
 
+    d = config.get("file","dir")
+
     if ("dot" == filetype):
         f += '.dot'
-        with codecs.open(f, 'w', 'utf-8') as outfile:
+        with codecs.open(d+f, 'w', 'utf-8') as outfile:
             outfile.write(export_dot())
     elif("cytoscape" == filetype):
         f += '.json'
-        with codecs.open(f, 'w', 'utf-8') as outfile:
+        with codecs.open(d+f, 'w', 'utf-8') as outfile:
             outfile.write(prettyprint(json.loads(export_cytoscape())))
     else:
         f += '.json'
-        with open(f, 'w') as outfile:
+        with open(d+f, 'w') as outfile:
             json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
 def set_claim(atom_id):
@@ -890,6 +892,8 @@ if __name__ == "__main__":
         sd = import_json(args.raw)
     elif args.load:
         sd = load_from_file(args.load)
+    else:
+        sd = init()
 
     if args.save:
         save(args.save)
