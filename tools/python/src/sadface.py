@@ -284,7 +284,7 @@ def delete_resource(resource_id):
 
 def delete_scheme(scheme_id):
     """
-    Remove the schemee from the sadface document identified by the
+    Remove the scheme from the sadface document identified by the
     supplied scheme ID
 
     """
