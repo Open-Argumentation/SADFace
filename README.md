@@ -61,7 +61,8 @@ This is what a simple SADFace document looks like:
             "type": "atom"
         }, 
         {
-            "id": "49a786ce-9066-4230-8e18-42086882a160", 
+            "id": "49a786ce-9066-4230-8e18-42086882a160",
+            "metadata": {},
             "name": "support", 
             "type": "scheme"
         }, 
@@ -80,7 +81,8 @@ This is what a simple SADFace document looks like:
             "type": "atom"
         }, 
         {
-            "id": "5760a93a-55e7-447c-a245-7f8d7e7e4434", 
+            "id": "5760a93a-55e7-447c-a245-7f8d7e7e4434",
+            "metadata": {},
             "name": "conflict", 
             "type": "scheme"
         }, 
