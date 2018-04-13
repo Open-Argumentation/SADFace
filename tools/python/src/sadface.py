@@ -623,7 +623,7 @@ def new_scheme(name):
 
     Returns: A Python dict representing the new SADFace scheme
     """
-    new_scheme = {"id":new_uuid(), "type":"scheme", "name":name}
+    new_scheme = {"id":new_uuid(), "type":"scheme", "name":name, "metadata":{}}
     return new_scheme
 
 def new_source(resource_id, text, offset, length):
