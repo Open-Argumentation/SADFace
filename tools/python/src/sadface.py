@@ -454,6 +454,17 @@ def get_claim():
     """
     return get_atom(sd["metadata"].get("claim"))
 
+def get_connections(node_id):
+    """
+    Given a node id, retrieve a list of all edges that connnect it
+    to other nodes
+    """
+    conn =  []
+    for edge in sd["edges"]:
+        if node_id == edge["source_id"] or node_id == edge["target_id"]:
+            conn.append(edge)
+    return conn
+
 def get_edge(edge_id):
     """
     Retrieve the edge dict identified by the supplied edge ID
