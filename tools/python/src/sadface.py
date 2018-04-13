@@ -255,6 +255,10 @@ def delete_atom(atom_id):
     atom = get_atom(atom_id)
     sd["nodes"].remove(atom)
 
+    conns = get_connections(atom_id)
+    for c in conns:
+        delete_edge(c["id"])
+
 def delete_edge(edge_id):
     """
     Remove the edge from the sadface document identified by the
@@ -290,6 +294,10 @@ def delete_scheme(scheme_id):
     """
     scheme = get_scheme(scheme_id)
     sd["nodes"].remove(scheme)
+
+    conns = get_connections(scheme_id)
+    for c in conns:
+        delete_edge(c["id"])
 
 def export_cytoscape():
     """
