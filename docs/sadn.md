@@ -5,8 +5,8 @@ SADN is a simple, text oriented, notation for describing arguments
 ## Simple Argument Description Notation (SADN)
 
 - **<\>** = conflicts with
-- **\>** = attacks
-- **<** = attacked by
+- **\>** = attacks/opposes
+- **<** = attacked/opposed by
 - **}** = supports
 - **{** = supported by
 - Statements are identifiers, e.g. 1,2,3, UUIDS, or Double-quoted Strings
