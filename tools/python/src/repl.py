@@ -118,7 +118,16 @@ if __name__ == "__main__":
     fileinput.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
 
     parser.add_argument("-s", "--save", help="Save the loaded document to a SADFace formatted JSON file")
-    parser.add_argument("--pretty", help="Pretty print the SADFace document", action="store_true")
+    
+    export = parser.add_mutually_exclusive_group()
+    export.add_argument("--printdoc", 
+        help="Print the SADFace document to the screen", action="store_true")
+    export.add_argument("--pretty", 
+        help="Pretty print the SADFace document", action="store_true")
+    export.add_argument("--exportdot", 
+        help="Export the SADFace document to dot format", action="store_true")
+
+
     args = parser.parse_args()
 
     if args.config:
@@ -134,9 +143,14 @@ if __name__ == "__main__":
     if args.save:
         sadface.save(args.save)
 
-    if args.pretty:
+    if args.printdoc:
+        print sadface.print_doc()
+    elif args.pretty:
         print sadface.prettyprint()
-        
+    elif args.exportdot:
+        print sadface.export_dot()
+    
     if args.interactive:
         REPL().cmdloop()
+        
             
