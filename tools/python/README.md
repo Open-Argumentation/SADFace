@@ -24,7 +24,8 @@ SADFace can be used as a standard CLI tool. SADFace files can be loaded, manipul
 The CLI tool will interact with other CLI tools using standard pipes to move data between apps. For example, the following pipeline will, assuming you have the GraphViz dot tool installed, convert the SADFace document into a png:
 
 ~~~~
- $ python src/repl.py -c deploy/etc/simon.cfg -l deploy/out/death.json --exportdot | dot -Tpng -o death.png~~~~
+ $ python src/repl.py -c deploy/etc/simon.cfg -l deploy/out/death.json --exportdot | dot -Tpng -o death.png
+~~~~
 
 
 ### REPL
