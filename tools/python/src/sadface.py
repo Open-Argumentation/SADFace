@@ -747,6 +747,18 @@ def prettyprint(doc=None):
         string = doc
     return json.dumps(string, indent=4, sort_keys=True)
 
+def print_doc(doc=None):
+    """
+    Retrieve a string encoded version of the SADFace document
+
+    Returns: A String
+    """
+    string = sd
+    if(doc is not None):
+        string = doc
+    return json.dumps(string,sort_keys=True)
+
+
 def save(filename=None, filetype="json"):
     """
     Write the prettyprinted SADFace document to a JSON file on disk
