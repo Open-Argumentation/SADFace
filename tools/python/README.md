@@ -27,6 +27,14 @@ The CLI tool will interact with other CLI tools using standard pipes to move dat
  $ python src/repl.py -c deploy/etc/simon.cfg -l deploy/out/death.json --exportdot | dot -Tpng -o death.png
 ~~~~
 
+Import an Argument Markup Language (AML) file and parse into a SADFace document:
+
+~~~~
+$ python src/repl.py -c deploy/etc/simon.cfg --aml file.aml --pretty
+~~~~
+
+Note that AML support is experimental. It supports extraction of ROOT, AU, CA, LA, REFUTATION, PROP, & TEXT nodes. Support for extraction of scheme information is in the SADFace development plan.
+
 
 ### REPL
 
