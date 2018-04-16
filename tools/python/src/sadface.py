@@ -17,8 +17,8 @@ sd = {}
 def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
     """
     Syntactic sugar to create an argument structure from a set of texts.
-    Given a conclusion text & a list of premise texts, create an intermediate,
-    default "support" scheme.
+    Given a conclusion text & a list of premise texts. Creates an intermediate,
+    default "inference" scheme.
 
     This makes it easier to build a SADFace document without manually creating
     and organising individual nodes.
@@ -40,7 +40,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         else:
             c = get_atom(con_id)
 
-        s = add_scheme("support")
+        s = add_scheme("inference")
         try:
             add_edge(s["id"], c["id"])
         except Exception as ex:
@@ -119,6 +119,64 @@ def add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=Non
         arg = {"argument":a, "scheme":s, "conflict":c}
         return arg
     return None
+
+def add_support(con_text=None, prem_text=None, con_id=None, prem_id=None):
+    """
+    Syntactic sugar to create an argument structure from a set of texts.
+    Given a conclusion text & a list of premise texts. Creates an intermediate,
+    default "support" scheme.
+
+    This makes it easier to build a SADFace document without manually creating
+    and organising individual nodes.
+
+    Returns an argument dict, e.g.
+
+    {
+        "conclusion": atom,
+        "scheme": atom,
+        "premises": [atom(s)]
+    }
+
+    Returns: a dict
+    """
+    if((con_text is not None or con_id is not None) and (prem_text is not None or prem_id is not None)):
+
+        if con_text is not None:
+            c = add_atom(con_text)
+        else:
+            c = get_atom(con_id)
+
+        s = add_scheme("support")
+        try:
+            add_edge(s["id"], c["id"])
+        except Exception as ex:
+            print ex
+            raise Exception("Could not create new argument")
+
+        p_list = []
+        if(prem_text is not None):
+            for text in prem_text:
+                atom = add_atom(text)
+                p_list.append(atom["id"])
+                try:
+                    add_edge(atom["id"], s["id"])
+                except Exception as ex:
+                    print ex
+                    raise Exception("Could not create new argument")
+        if(prem_id is not None):
+            for atom_id in prem_id:
+                atom = get_atom(atom_id)
+                p_list.append(atom["id"])
+                try:
+                    add_edge(atom["id"], s["id"])
+                except Exception as ex:
+                    print ex
+                    raise Exception("Could not create new argument")
+
+        arg = {"conclusion":c, "scheme":s, "premises":p_list}
+        return arg
+    return None
+
 
 def add_edge(source_id, target_id):
     """
