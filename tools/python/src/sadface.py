@@ -871,8 +871,8 @@ class REPL(cmd.Cmd):
         """
         conid = None
         contxt = None
-        if "^" in line:
-            head,tail = line.split("^")
+        if "}" in line:
+            head,tail = line.split("}")
             if tail.startswith("id="):
                 conid = tail.replace("id=", "")
             else:
@@ -891,9 +891,9 @@ class REPL(cmd.Cmd):
                 arg = add_argument(con_text=contxt, prem_text=premtext, con_id=conid, prem_id=premid)
                 print arg
             else:
-                print "USAGE: arg premise,premise,...^conclusion"
+                print "USAGE: arg premise,premise,...}conclusion"
         else:
-            print "USAGE: arg premise,premise,...^conclusion"
+            print "USAGE: arg premise,premise,...}conclusion"
 
     def default(self, line):
         print "I do not understand that command. Type 'help' for a list of commands."
