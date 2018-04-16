@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import aml
 import sadface
 
 import argparse
@@ -116,6 +117,7 @@ if __name__ == "__main__":
     fileinput = parser.add_mutually_exclusive_group()
     fileinput.add_argument("-l", "--load", help="Load a Sadface document from a file")
     fileinput.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
+    fileinput.add_argument("--aml", help="Load a legacy AML document from a file")
 
     parser.add_argument("-s", "--save", help="Save the loaded document to a SADFace formatted JSON file")
     
@@ -137,6 +139,8 @@ if __name__ == "__main__":
         sadface.sd = sadface.import_json(args.raw)
     elif args.load:
         sadface.sd = sadface.load_from_file(args.load)
+    elif args.aml:
+        aml.init(args.aml)
     else:
         sadface.sd = sadface.init()
 
