@@ -2,7 +2,7 @@
 
 ## QuickStart
 
-SADFace can currently be used in two ways, as a Python library, to builds SADFace documents from an existing argument tool, or as a command line app using the interactive argument when invoking the tool.
+SADFace can currently be used in three ways, as a Python library, to builds SADFace documents from an existing argument tool, as a command line application, and using the inbuilt REPL.
 
 ### Library
 
