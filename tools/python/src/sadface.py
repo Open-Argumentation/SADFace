@@ -738,8 +738,7 @@ def now():
 
 def prettyprint(doc=None):
     """
-    Print nicely formatted output of the passed in string or
-    otherwise the SADFace document encoded as a String
+    Retrieve a nicely formatted string encoded version of the SADFace document
 
     Returns: A String
     """
