@@ -17,7 +17,6 @@ class REPL(cmd.Cmd):
         cmd.Cmd.__init__(self)
         self.prompt = '> '
         self.intro = "The SADFace REPL. Type 'help' or 'help <command>' for assistance"
-        #REPL.do_init(self, None)
 
     def do_arg(self, line):
         """
