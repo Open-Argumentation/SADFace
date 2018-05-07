@@ -21,12 +21,13 @@ class REPL(cmd.Cmd):
 
     def do_arg(self, line):
         """
-        Arguments are depicted in the following fashion e.g. premise1,premise2^conclusion
+        Arguments are depicted in the following fashion e.g. premise1,premise2}conclusion
         premises are a comma separated list of strings where each string depicts a single
-        premise. The conclusion is written at the end of the premise list using `^` to
-        indicate a defeasible Modus Ponens rule.
+        premise. The conclusion is written at the end of the premise list using `}` to
+        indicate a defeasible Modus Ponens rule. This uses the Simple Argument Description
+        Notation (SADN).
 
-        The line is split initially on the '^" to yield the premises (in the head)
+        The line is split initially on the '}" to yield the premises (in the head)
         and the conclusion in the tail. The head is further split on the comma delimiters
         to retrieve each individual premise.
         """
