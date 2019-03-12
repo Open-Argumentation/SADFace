@@ -290,7 +290,7 @@ def add_title(text):
     useful but non-essential addendum to the base sadface document when
     building systems that make use of sadface.
     """
-    sd["metadata"]["title"] = text
+    sd["metadata"]["root"]["title"] = text
 
 
 def contains_atom(atom_text):
@@ -593,7 +593,7 @@ def get_title():
     """
     Retrieve the title metadata entry from the document
     """
-    return sd["metadata"].get("title")
+    return sd["metadata"].get("root").get("title")
 
 
 def import_json(json_string):
@@ -669,7 +669,7 @@ def new_sadface():
 
     Returns: A Python dict representing the new SADFace document
     """
-    new_doc = {"id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now(), "metadata":{}, "resources":[], "nodes":[], "edges":[]}
+    new_doc = {"id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now(), "metadata":{ "root":{}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
