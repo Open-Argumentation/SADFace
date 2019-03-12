@@ -483,7 +483,7 @@ def export_dot(trad=True):
         if "text" in node:
             txt = node["text"]
             if len(txt) > max_length:
-                txt = "\r\n".join(textwrap.wrap(txt, 25))
+                txt = "\\n".join(textwrap.wrap(txt, max_length))
             line = '"{}"'.format(node['id']) + " [label=\"" + txt + "\"]" + " [shape=box, style=rounded];\n"
             dot += line
         elif "name" in node:
