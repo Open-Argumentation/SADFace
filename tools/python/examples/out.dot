@@ -1,0 +1,22 @@
+digraph SADFace {node [style="filled"]"98065126-12f9-4085-b29a-541ecb2010de" [label="You should treasure every
+moment"] [shape=box, style=rounded];
+"52811614-50b0-471e-b7bf-b9db5334e619" [label="inference"] [colorscheme=X11, fillcolor=cornsilk4, shape=diamond];
+"daca4f24-4a99-49be-b3e3-e30321613fe6" [label="if you are going to die
+then you should treasure
+every moment"] [shape=box, style=rounded];
+"6cec2482-2fa9-412d-8828-fd39dead9afb" [label="You are going to die"] [shape=box, style=rounded];
+"f48ab0d2-f5c5-4ce9-b7ff-34f08f8a00a0" [label="support"] [colorscheme=X11, fillcolor=darkolivegreen3, shape=diamond];
+"fb4c91f2-7cc3-45e0-a2bb-80a4da168555" [label="Every person is going to
+die"] [shape=box, style=rounded];
+"36ac8cd6-3bad-4b2f-b2e1-a9f412a7fb6d" [label="You are a person"] [shape=box, style=rounded];
+"96c9b268-3a62-42f2-a4a1-061e424522bc" [label="conflict"] [colorscheme=X11, fillcolor=firebrick2, shape=diamond];
+"62471cc3-855b-440b-9825-3f2a0d0bd86b" [label="YOLO"] [shape=box, style=rounded];
+"52811614-50b0-471e-b7bf-b9db5334e619" -> "98065126-12f9-4085-b29a-541ecb2010de";
+"daca4f24-4a99-49be-b3e3-e30321613fe6" -> "52811614-50b0-471e-b7bf-b9db5334e619";
+"6cec2482-2fa9-412d-8828-fd39dead9afb" -> "52811614-50b0-471e-b7bf-b9db5334e619";
+"f48ab0d2-f5c5-4ce9-b7ff-34f08f8a00a0" -> "6cec2482-2fa9-412d-8828-fd39dead9afb";
+"fb4c91f2-7cc3-45e0-a2bb-80a4da168555" -> "f48ab0d2-f5c5-4ce9-b7ff-34f08f8a00a0";
+"36ac8cd6-3bad-4b2f-b2e1-a9f412a7fb6d" -> "f48ab0d2-f5c5-4ce9-b7ff-34f08f8a00a0";
+"96c9b268-3a62-42f2-a4a1-061e424522bc" -> "6cec2482-2fa9-412d-8828-fd39dead9afb";
+"62471cc3-855b-440b-9825-3f2a0d0bd86b" -> "96c9b268-3a62-42f2-a4a1-061e424522bc";
+}
