@@ -284,6 +284,20 @@ def add_source(atom_id, resource_id, text, offset, length):
                 node["sources"].append(source)
                 return source
 
+def append_notes(text):
+    """
+    Append new text to an existing notes entry
+    """
+    sd["metadata"]["root"]["notes"] += text
+
+
+def clear_notes():
+    """
+    Remove any existing notes
+    """
+    sd["metadata"]["root"]["notes"] = ""
+
+
 def contains_atom(atom_text):
     """
     Searches the sadface document for an existing atom containing
