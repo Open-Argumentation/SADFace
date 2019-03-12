@@ -284,15 +284,6 @@ def add_source(atom_id, resource_id, text, offset, length):
                 node["sources"].append(source)
                 return source
 
-def add_title(text):
-    """
-    Add a metadata entry for the document that contains a title. This is a
-    useful but non-essential addendum to the base sadface document when
-    building systems that make use of sadface.
-    """
-    sd["metadata"]["root"]["title"] = text
-
-
 def contains_atom(atom_text):
     """
     Searches the sadface document for an existing atom containing
@@ -793,6 +784,14 @@ def set_claim(atom_id):
         sd["metadata"]["claim"] = atom_id
     else:
         raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
+
+def set_title(text):
+    """
+    Set a metadata entry for the document that contains a title. This is a
+    useful but non-essential addendum to the base sadface document when
+    building systems that make use of sadface.
+    """
+    sd["metadata"]["root"]["title"] = text
 
 def update():
     """
