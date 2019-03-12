@@ -787,9 +787,11 @@ def set_claim(atom_id):
 
 def set_config_location(location):
     """
-    
+    Enable the location of custom configuration files to be supplied
     """
+    global config_location
     config_location = location
+
 
 def set_title(text):
     """
