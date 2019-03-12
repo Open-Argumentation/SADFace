@@ -785,6 +785,12 @@ def set_claim(atom_id):
     else:
         raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
 
+def set_config_location(location):
+    """
+    
+    """
+    config_location = location
+
 def set_title(text):
     """
     Set a metadata entry for the document that contains a title. This is a
