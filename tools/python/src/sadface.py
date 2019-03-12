@@ -227,7 +227,7 @@ def add_notes(text):
     Add a metadata entry for the document that contains notes. Notes
     are miscellaneous, unstructured free text.
     """
-    sd["metadata"]["root"]["notes"] = text
+    sd["metadata"]["core"]["notes"] = text
 
 
 def add_resource(content):
@@ -254,7 +254,7 @@ def add_sadface_metadata(key, value):
     """
     Add metadata, a key:value pair to the base sadface doc
     """
-    sd["metadata"]["root"][key] = value
+    sd["metadata"]["core"][key] = value
 
 def add_scheme(name):
     """
@@ -288,14 +288,14 @@ def append_notes(text):
     """
     Append new text to an existing notes entry
     """
-    sd["metadata"]["root"]["notes"] += text
+    sd["metadata"]["core"]["notes"] += text
 
 
 def clear_notes():
     """
     Remove any existing notes
     """
-    sd["metadata"]["root"]["notes"] = ""
+    sd["metadata"]["core"]["notes"] = ""
 
 
 def contains_atom(atom_text):
@@ -561,7 +561,7 @@ def get_notes():
     """
     Retrieve the notes metadata entry from the document
     """
-    return sd["metadata"].get("root").get("notes")
+    return sd["metadata"].get("core").get("notes")
 
 def get_resource(resource_id):
     """
@@ -598,8 +598,13 @@ def get_title():
     """
     Retrieve the title metadata entry from the document
     """
-    return sd["metadata"].get("root").get("title")
+    return sd["metadata"].get("core").get("title")
 
+def get_description():
+    """
+    Retrieve the description metadata entry from the document
+    """
+    return sd["metadata"].get("core").get("description")
 
 def import_json(json_string):
     """
@@ -674,7 +679,7 @@ def new_sadface():
 
     Returns: A Python dict representing the new SADFace document
     """
-    new_doc = {"id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now(), "metadata":{ "root":{}}, "resources":[], "nodes":[], "edges":[]}
+    new_doc = {"id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now(), "metadata":{ "core":{}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
@@ -806,6 +811,12 @@ def set_config_location(location):
     global config_location
     config_location = location
 
+def set_description(text):
+    """
+    Set a metadata entry for the document that contains a description.
+    """
+    sd["metadata"]["core"]["description"] = text
+
 
 def set_title(text):
     """
@@ -813,7 +824,7 @@ def set_title(text):
     useful but non-essential addendum to the base sadface document when
     building systems that make use of sadface.
     """
-    sd["metadata"]["root"]["title"] = text
+    sd["metadata"]["core"]["title"] = text
 
 def update():
     """
