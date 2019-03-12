@@ -12,7 +12,7 @@ This file shows the basic steps involved in creating a SADFace document using a 
 
 ### GraphViz/Dot Rendering
 
-You can convert the exported dot file to a PDF using a comman like the following:
+You can convert the exported dot file to a PDF using a command like the following (assuming you have Dot/GraphViz installed):
 
       $ dot out.dot -Tpdf -o out.pdf
 
