@@ -227,7 +227,7 @@ def add_notes(text):
     Add a metadata entry for the document that contains notes. Notes
     are miscellaneous, unstructured free text.
     """
-    sd["metadata"]["notes"] = text
+    sd["metadata"]["root"]["notes"] = text
 
 
 def add_resource(content):
@@ -254,7 +254,7 @@ def add_sadface_metadata(key, value):
     """
     Add metadata, a key:value pair to the base sadface doc
     """
-    sd["metadata"][key] = value
+    sd["metadata"]["root"][key] = value
 
 def add_scheme(name):
     """
@@ -556,7 +556,7 @@ def get_notes():
     """
     Retrieve the notes metadata entry from the document
     """
-    return sd["metadata"].get("notes")
+    return sd["metadata"].get("root").get("notes")
 
 def get_resource(resource_id):
     """
