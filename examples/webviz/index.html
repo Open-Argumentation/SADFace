@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Visualising SADFace Documents</title>
+</head>
+<body>
+<h1>Here is an argument, represented using a SADFace document. Visualised:</h1>
+
+<img id="argviz" alt="Visualisation of an argument"></img>
+
+<script src="args.js"></script>
+<script src="viz.js"></script>
+<script src="full.render.js"></script>
+<script>
+  const workerURL = 'full.render.js';
+  let viz = new Viz({ workerURL });
+  
+  viz.renderSVGElement(arg1)
+  .then(function(element) 
+  {
+    let xml = (new XMLSerializer).serializeToString(element);
+    document.getElementById('argviz').src = "data:image/svg+xml;charset=utf-8,"+xml;
+  })
+  .catch(error =>
+  {
+    viz = new Viz({ workerURL });
+    console.error(error);
+  });
+</script>  
+</body>
+</html>

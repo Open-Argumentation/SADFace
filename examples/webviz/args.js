@@ -1,0 +1,18 @@
+var arg1 = `digraph SADFace {node [style="filled"]"5b928261-ada0-4ef8-920d-6eea3b437cd7" [label="You should treasure every\nmoment"] [shape=box, style=rounded];
+"21b10850-6724-4733-adf6-e097e77dccea" [label="inference"] [colorscheme=X11, fillcolor=cornsilk4, shape=diamond];
+"cb604e4b-301f-4aca-acf7-3fc3ed6c6272" [label="if you are going to die\nthen you should treasure\nevery moment"] [shape=box, style=rounded];
+"93d1216d-eb20-45ed-b566-8c8ad864fcbe" [label="You are going to die"] [shape=box, style=rounded];
+"03b82b41-464e-40b3-8c4c-24196769981f" [label="support"] [colorscheme=X11, fillcolor=darkolivegreen3, shape=diamond];
+"17081c3e-230d-44a8-9e84-248cd4cfaaf0" [label="Every person is going to\ndie"] [shape=box, style=rounded];
+"f3661041-ffcb-4381-9c09-a412f118a7b7" [label="You are a person"] [shape=box, style=rounded];
+"66af0b60-9891-4f58-8880-3a08fd6c5473" [label="conflict"] [colorscheme=X11, fillcolor=firebrick2, shape=diamond];
+"6a02c8b0-5b40-499e-aedd-6f805f546fef" [label="YOLO"] [shape=box, style=rounded];
+"21b10850-6724-4733-adf6-e097e77dccea" -> "5b928261-ada0-4ef8-920d-6eea3b437cd7";
+"cb604e4b-301f-4aca-acf7-3fc3ed6c6272" -> "21b10850-6724-4733-adf6-e097e77dccea";
+"93d1216d-eb20-45ed-b566-8c8ad864fcbe" -> "21b10850-6724-4733-adf6-e097e77dccea";
+"03b82b41-464e-40b3-8c4c-24196769981f" -> "93d1216d-eb20-45ed-b566-8c8ad864fcbe";
+"17081c3e-230d-44a8-9e84-248cd4cfaaf0" -> "03b82b41-464e-40b3-8c4c-24196769981f";
+"f3661041-ffcb-4381-9c09-a412f118a7b7" -> "03b82b41-464e-40b3-8c4c-24196769981f";
+"66af0b60-9891-4f58-8880-3a08fd6c5473" -> "93d1216d-eb20-45ed-b566-8c8ad864fcbe";
+"6a02c8b0-5b40-499e-aedd-6f805f546fef" -> "66af0b60-9891-4f58-8880-3a08fd6c5473";
+}`;
