@@ -915,7 +915,7 @@ def update_created(timestamp):
     This can be useful when moving analysed argument data between formats whilst
     maintaining original metadata.
     """
-    sd["timestamp"] = timestamp
+    sd["created"] = timestamp
 
 def update_id(id):
     """
