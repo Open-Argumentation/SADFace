@@ -563,7 +563,7 @@ def get_claim():
     """
     Retrieve the claim metadata entry from the document
     """
-    return get_atom(sd["metadata"].get("claim"))
+    return sd["metadata"].get("core").get("claim")
 
 def get_connections(node_id):
     """
@@ -855,7 +855,7 @@ def set_claim(atom_id):
     """
     atom = get_atom(atom_id)
     if(atom is not None): 
-        sd["metadata"]["claim"] = atom_id
+        sd["metadata"]["core"]["claim"] = atom_id
     else:
         raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
 
@@ -885,13 +885,13 @@ def update():
     """
     Updates the last edited timestamp for the SADFace doc to now
     """
-    sd["edited"] = now()
+    sd["metadata"]["core"]["edited"] = now()
 
 def update_analyst(analyst):
     """
     Updates the name of the argument analyst in the SADFace doc to the supplied name
     """
-    sd["analyst"] = analyst
+    sd["metadata"]["core"]["analyst"] = analyst
 
 def update_atom_text(atom_id, new_text):
     """
@@ -922,7 +922,7 @@ def update_id(id):
     Update the SADFace document ID to match the supplied ID. This can be useful when 
     moving analysed argument data between formats whilst maintaining original metadata.
     """
-    sd["id"] = id
+    sd["metadata"]["core"]["id"] = id
 
 def update_edited(timestamp):
     """
@@ -930,7 +930,7 @@ def update_edited(timestamp):
     timestamp. This can be useful when moving analysed argument data between formats 
     whilst maintaining original metadata.
     """
-    sd["edited"] = timestamp
+    sd["metadata"]["core"]["edited"] = timestamp
 
 def update_scheme(scheme_id, scheme_name):
     """
