@@ -646,6 +646,21 @@ def get_description():
     """
     return sd["metadata"].get("core").get("description")
 
+def get_version():
+    """
+    Return a string indicating the version of the loaded SADFace document
+    If no version parameter then version is less than <0.1
+    Versioning introduced in v0.2 with introduction of version key to
+        {"metadata":{ "core": { "version": "0.1"} }, ...}
+    """
+    version = sd["metadata"].get("core").get("version")
+    if None == version:
+        print("no explicit version so 0.1")
+        version = "0.1"
+
+    return version
+
+
 def import_json(json_string):
     """
     Take a string-encoded JSON document and loads it into a Python dict
@@ -719,7 +734,7 @@ def new_sadface():
 
     Returns: A Python dict representing the new SADFace document
     """
-    new_doc = {"id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now(), "metadata":{ "core":{}}, "resources":[], "nodes":[], "edges":[]}
+    new_doc = {"id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now(), "metadata":{ "core":{"version":"0.2"}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
