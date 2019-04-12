@@ -734,7 +734,7 @@ def new_sadface():
 
     Returns: A Python dict representing the new SADFace document
     """
-    new_doc = {"id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now(), "metadata":{ "core":{"version":"0.2"}}, "resources":[], "nodes":[], "edges":[]}
+    new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
