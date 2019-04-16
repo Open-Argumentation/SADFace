@@ -1,17 +1,20 @@
 #!/usr/bin/python
 
-import configparser as cp
+from configparser import ConfigParser
 
-current = cp.ConfigParser()
+current = None
 config_location = "etc/defaults.cfg"
 
 def load():
     """
     """
     try:
+        global current
+        current = ConfigParser()
         current.read(config_location)
-    except:
+    except Exception as e:
         print("Could not read configs from "+ config_location)
+        print(e)
         exit(1) 
 
 def set_config_location(location):
