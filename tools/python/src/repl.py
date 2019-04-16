@@ -2,6 +2,7 @@
 
 import aml
 import sadface
+import config
 
 import argparse
 import cmd
@@ -51,18 +52,18 @@ class REPL(cmd.Cmd):
                         premtext.append(t)
             if ((conid is not None or contxt is not None) and (premtext or premid)):
                 arg = sadface.add_argument(con_text=contxt, prem_text=premtext, con_id=conid, prem_id=premid)
-                print arg
+                print(arg)
             else:
-                print "USAGE: arg premise,premise,...}conclusion"
+                print("USAGE: arg premise,premise,...}conclusion")
         else:
-            print "USAGE: arg premise,premise,...}conclusion"
+            print("USAGE: arg premise,premise,...}conclusion")
 
     def default(self, line):
-        print "I do not understand that command. Type 'help' for a list of commands."
+        print("I do not understand that command. Type 'help' for a list of commands.")
 
     def do_add_resource(self, line):
         sadface.add_resource("hello world")
-        print sadface.prettyprint()
+        print(sadface.prettyprint())
 
     def do_clear(self, line):
         sadface.sd = {}
@@ -74,10 +75,10 @@ class REPL(cmd.Cmd):
             print(a["id"]+" | "+a["text"])
     
     def do_print(self, line):
-        print sadface.sd
+        print(sadface.sd)
 
     def do_prettyprint(self, line):
-        print sadface.prettyprint()
+        print(sadface.prettyprint())
 
     def do_save(self, line):
         if('' != line):
@@ -101,7 +102,7 @@ class REPL(cmd.Cmd):
         pass
 
     def help_clear(self):
-        print "Creates a new, empty SADFace document"
+        print("Creates a new, empty SADFace document")
 
     do_p = do_print
     do_q = do_quit
@@ -134,7 +135,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.config:
-        sadface.config_location = args.config
+        config.set_config_location(args.config)
 
     if args.raw:
         sadface.sd = sadface.import_json(args.raw)
@@ -149,11 +150,11 @@ if __name__ == "__main__":
         sadface.save(args.save)
 
     if args.printdoc:
-        print sadface.print_doc()
+        print(sadface.print_doc())
     elif args.pretty:
-        print sadface.prettyprint()
+        print(sadface.prettyprint())
     elif args.exportdot:
-        print sadface.export_dot()
+        print(sadface.export_dot())
     
     if args.interactive:
         REPL().cmdloop()

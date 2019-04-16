@@ -20,7 +20,7 @@ def process_root(root):
         elif child.tag == "AU":
             process_au(child)
         else:
-            print "XML malformed"
+            print("XML malformed")
 
 def process_au(node):
     ch = node.getchildren()
@@ -34,7 +34,7 @@ def process_au(node):
         elif c.tag == "LA":
             process_la(c, node)
         else:
-            print "XML malformed"
+            print("XML malformed")
 
 def process_ca(node, parent):
     """
