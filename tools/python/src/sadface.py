@@ -682,6 +682,8 @@ def init():
 
     Returns: A Python dict representing the new SADFace document
     """
+    if(config.current is None):
+        config.load()
     return new_sadface()
 
 def list_atoms():
