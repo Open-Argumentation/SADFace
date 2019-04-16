@@ -5,8 +5,8 @@ import json
 
 import config
 
-url = ""
-ds = ""
+url = None
+ds = None
 
 def init():
     """
@@ -43,12 +43,9 @@ def create_db(db_name):
     """
     Create the nominated db
     """
-    if url is None:
-        return None
-    else:
-        r = rq.put(url)
-        r.raise_for_status()
-        return r
+    r = rq.put(url)
+    r.raise_for_status()
+    return r
 
 def db_exists(db_name):
     """
