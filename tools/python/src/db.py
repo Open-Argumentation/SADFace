@@ -32,7 +32,7 @@ def init():
         exit(1)
 
 
-def create(doc, docid):
+def add_doc(doc, docid):
     """
     Add the supplied document, identified by docid into the datastore
     """
@@ -57,7 +57,7 @@ def db_exists(db_name):
     else:
         return False
 
-def retrieve(docid, raw=False):
+def retrieve_doc(docid, raw=False):
     """
     Get the JSON document, identified by docid, from the datastore
     """
@@ -70,22 +70,22 @@ def retrieve(docid, raw=False):
         doc.pop("_rev")
         return doc
 
-def update(doc, docid):
+def update_doc(doc, docid):
     """
     Update the document, identified by docid, in the datastore
     """
-    old = retrieve(docid, raw=True)
+    old = retrieve_doc(docid, raw=True)
     rev = old.get("_rev")
     new = json.loads(doc)
     new["_id"] = docid
     new["_rev"] = rev
     r = rq.put(ds + docid, data=json.dumps(new))
 
-def delete(docid):
+def delete_doc(docid):
     """
     Delete the document, identified by docid, from the datastore
     """
-    doc = retrieve(docid, raw=True)
+    doc = retrieve_doc(docid, raw=True)
     rev = doc.get("_rev")
     r = rq.delete(ds + docid + "?rev="+rev)
 
