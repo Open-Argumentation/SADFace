@@ -13,9 +13,8 @@ def load():
         global current
         current = ConfigParser()
         current.read(config_location)
-    except Exception as e:
+    except:
         print("Could not read configs from "+ config_location)
-        print(e)
         exit(1) 
 
 def set_config_location(location):
