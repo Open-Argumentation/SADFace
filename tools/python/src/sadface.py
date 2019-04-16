@@ -3,14 +3,14 @@
 import argparse
 import cmd
 import codecs
-import ConfigParser
+import configparser
 import datetime
 import json
 import sys
 import textwrap
 import uuid
 
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 config_location = "etc/defaults.cfg"
 sd = {}
 
@@ -44,7 +44,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         try:
             add_edge(s["id"], c["id"])
         except Exception as ex:
-            print ex
+            print(ex)
             raise Exception("Could not create new argument")
 
         p_list = []
@@ -55,7 +55,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
                 try:
                     add_edge(atom["id"], s["id"])
                 except Exception as ex:
-                    print ex
+                    print(ex)
                     raise Exception("Could not create new argument")
         if(prem_id is not None):
             for atom_id in prem_id:
@@ -64,7 +64,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
                 try:
                     add_edge(atom["id"], s["id"])
                 except Exception as ex:
-                    print ex
+                    print(ex)
                     raise Exception("Could not create new argument")
 
         arg = {"conclusion":c, "scheme":s, "premises":p_list}
@@ -102,7 +102,7 @@ def add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=Non
         try:
             add_edge(s["id"], a["id"])
         except Exception as ex:
-            print ex
+            print(ex)
             raise Exception("Could not create new argument")
 
         if conflict_text is not None:
@@ -113,7 +113,7 @@ def add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=Non
         try:
             add_edge(c["id"], s["id"])
         except Exception as ex:
-            print ex
+            print(ex)
             raise Exception("Could not create new argument")
 
         arg = {"argument":a, "scheme":s, "conflict":c}
@@ -150,7 +150,7 @@ def add_support(con_text=None, prem_text=None, con_id=None, prem_id=None):
         try:
             add_edge(s["id"], c["id"])
         except Exception as ex:
-            print ex
+            print(ex)
             raise Exception("Could not create new argument")
 
         p_list = []
@@ -161,7 +161,7 @@ def add_support(con_text=None, prem_text=None, con_id=None, prem_id=None):
                 try:
                     add_edge(atom["id"], s["id"])
                 except Exception as ex:
-                    print ex
+                    print(ex)
                     raise Exception("Could not create new argument")
         if(prem_id is not None):
             for atom_id in prem_id:
@@ -170,7 +170,7 @@ def add_support(con_text=None, prem_text=None, con_id=None, prem_id=None):
                 try:
                     add_edge(atom["id"], s["id"])
                 except Exception as ex:
-                    print ex
+                    print(ex)
                     raise Exception("Could not create new argument")
 
         arg = {"conclusion":c, "scheme":s, "premises":p_list}
@@ -680,7 +680,7 @@ def init():
         config.read(config_location)
         return new_sadface()
     except:
-        print "Could not read configs from ", config_location
+        print("Could not read configs from "+ config_location)
         exit(1)
 
 def list_atoms():
