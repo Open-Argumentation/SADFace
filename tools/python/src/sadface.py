@@ -10,6 +10,7 @@ import textwrap
 import uuid
 
 import config
+import db
 
 sd = {}
 
@@ -632,6 +633,12 @@ def get_source(atom_id, resource_id):
     for source in atom["sources"]:
         if resource_id == source["resource_id"]:
             return atom, source
+            
+def get_document_id():
+    """
+    Retrieve the SADFace document's ID
+    """
+    return sd["metadata"].get("core").get("id")
 
 def get_title():
     """
@@ -878,7 +885,7 @@ def update_analyst(analyst):
     """
     Updates the name of the argument analyst in the SADFace doc to the supplied name
     """
-    sd["metadata"]["core"]["analyst"] = analyst
+    sd["metadata"]["core"]["analyst_name"] = analyst
 
 def update_atom_text(atom_id, new_text):
     """
