@@ -1,5 +1,6 @@
 .DS_Store
 *.swp
+*.swo
 deploy/
 
 # Byte-compiled / optimized / DLL files
