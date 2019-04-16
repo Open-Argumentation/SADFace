@@ -7,6 +7,7 @@ config_location = "etc/defaults.cfg"
 
 def load():
     """
+    Load a configuration file from the stored config_location
     """
     try:
         global current
