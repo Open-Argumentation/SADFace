@@ -22,7 +22,11 @@ def init():
         global url, ds
         url = db_protocol + "://" + db_ip + ":" + db_port + "/" + db_name
         ds = url + "/"
-        r = rq.put(url)
+        if not db_exists(db_name):
+            try:
+                create_db(db_name)
+            except rq.exceptions.HTTPError as e:
+                print(e)
     else:
         print("No supported datastore provided")
         exit(1)
@@ -34,6 +38,27 @@ def create(doc, docid):
     """
     r = rq.put(ds + docid, data=doc)
 
+
+def create_db(db_name):
+    """
+    Create the nominated db
+    """
+    if url is None:
+        return None
+    else:
+        r = rq.put(url)
+        r.raise_for_status()
+        return r
+
+def db_exists(db_name):
+    """
+    Check whether a nominated DB exists    
+    """
+    r = rq.get(url)
+    if r.status_code == rq.codes.ok:
+        return True
+    else:
+        return False
 
 def retrieve(docid, raw=False):
     """
