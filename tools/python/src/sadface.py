@@ -3,15 +3,14 @@
 import argparse
 import cmd
 import codecs
-import configparser
 import datetime
 import json
 import sys
 import textwrap
 import uuid
 
-config = configparser.ConfigParser()
-config_location = "etc/defaults.cfg"
+import config
+
 sd = {}
 
 def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
@@ -676,12 +675,7 @@ def init():
 
     Returns: A Python dict representing the new SADFace document
     """
-    try:
-        config.read(config_location)
-        return new_sadface()
-    except:
-        print("Could not read configs from "+ config_location)
-        exit(1)
+    return new_sadface()
 
 def list_atoms():
     """
@@ -734,7 +728,7 @@ def new_sadface():
 
     Returns: A Python dict representing the new SADFace document
     """
-    new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":config.get("analyst", "name"), "analyst_email":config.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
+    new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":config.current.get("analyst", "name"), "analyst_email":config.current.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
@@ -830,9 +824,9 @@ def save(filename=None, filetype="json"):
     """
     f = filename
     if filename is None:
-        f = config.get("file","name")
+        f = config.current.get("file","name")
 
-    d = config.get("file","dir")
+    d = config.current.get("file","dir")
 
     if ("dot" == filetype):
         f += '.dot'
@@ -858,13 +852,6 @@ def set_claim(atom_id):
         sd["metadata"]["core"]["claim"] = atom_id
     else:
         raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
-
-def set_config_location(location):
-    """
-    Enable the location of custom configuration files to be supplied
-    """
-    global config_location
-    config_location = location
 
 def set_description(text):
     """
