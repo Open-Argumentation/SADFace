@@ -1,7 +1,8 @@
 import json
 import os
-import sadface as sf 
 import unittest
+
+import sadface as sf
 
 class TestSADFaceFunctions(unittest.TestCase):
     def setUp(self):
