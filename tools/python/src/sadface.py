@@ -659,7 +659,7 @@ def get_version():
     Versioning introduced in v0.2 with introduction of version key to
         {"metadata":{ "core": { "version": "0.1"} }, ...}
     """
-    version = sd["metadata"].get("core").get("version")
+    version = sd.get("metadata").get("core").get("version")
     if None == version:
         print("no explicit version so 0.1")
         version = "0.1"
