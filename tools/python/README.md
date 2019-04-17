@@ -60,14 +60,19 @@ The SADFace REPL. Type 'help' or 'help <command>' for assistance
 
 ### Run the tests
 
-Relative to the tools/python folder. If sadface isn't on the PYTHONPATH then you first need to add it:
+Relative to the tools/python folder. If sadface and sadface_tests are not on the PYTHONPATH then you first need to add it:
 
 ~~~~
-    $ PYTHONPATH=`pwd`/src/sadface
+    $ PYTHONPATH=`pwd`/src/sadface:`pwd`/src/tests
 ~~~~
 
-Run the tests:
+Now run the tests, either by module:
 
 ~~~~
     $ python -m unittest -v src/tests/sadface_test.py
+~~~~
+
+Or through test discovery:
+~~~~
+    $ python -m unittest discover -s src/tests/ -p '*_test.py' -v
 ~~~~
