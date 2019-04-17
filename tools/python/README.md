@@ -69,5 +69,5 @@ Add application src to the PYTHONPATH:
 Run the tests:
 
 ~~~~
-    $ python test/sadface_test.py
+    $ python test/sadface_test.py -v
 ~~~~
