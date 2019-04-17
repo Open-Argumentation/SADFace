@@ -682,9 +682,9 @@ def init():
 
     Returns: A Python dict representing the new SADFace document
     """
-    if(config.current is None):
-        config.load()
-    return new_sadface()
+    global sd
+    sd = new_sadface()
+    return sd#new_sadface()
 
 def list_atoms():
     """
@@ -737,7 +737,11 @@ def new_sadface():
 
     Returns: A Python dict representing the new SADFace document
     """
-    new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":config.current.get("analyst", "name"), "analyst_email":config.current.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
+    if config.location is None:
+        new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":"A User", "analyst_email":"user@email.address", "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
+
+    else:
+        new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":config.current.get("analyst", "name"), "analyst_email":config.current.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
@@ -826,6 +830,15 @@ def print_doc(doc=None):
         string = doc
     return json.dumps(string,sort_keys=True)
 
+def reset():
+    """
+    Return SADFace to it's initial state
+
+    Basically delete, remove, or nullify any settings that have been applied.
+    """
+    global sd
+    sd = {}
+    config.reset()
 
 def save(filename=None, filetype="json"):
     """
