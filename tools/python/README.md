@@ -60,7 +60,7 @@ The SADFace REPL. Type 'help' or 'help <command>' for assistance
 
 ### Run the tests
 
-Add application src to the PYTHONPATH:
+Relative to the tools/python folder. If sadface isn't on the PYTHONPATH then you first need to add it:
 
 ~~~~
     $ PYTHONPATH=`pwd`/src/sadface
@@ -69,5 +69,5 @@ Add application src to the PYTHONPATH:
 Run the tests:
 
 ~~~~
-    $ python test/sadface_test.py -v
+    $ python -m unittest -v src/tests/sadface_test.py
 ~~~~
