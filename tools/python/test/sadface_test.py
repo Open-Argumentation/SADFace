@@ -8,6 +8,13 @@ class TestSADFaceFunctions(unittest.TestCase):
        pass
     
     def test_init(self):
+        """
+        Tests: sadface.init()
+
+        init() returns a dict containing data, e.g. dates & UUIDs, that can vary on each invokation
+        so the values for these keys are emptied before comparing to a dict loaded from a known
+        good JSON string.
+        """
         out = sf.init()
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
@@ -17,6 +24,11 @@ class TestSADFaceFunctions(unittest.TestCase):
         self.assertEqual(out, expected)
 
     def test_init_with_config(self):
+        """
+        Tests: sadface.init() 
+        
+        Uses a user specified configuration that is different to the default
+        """
         sf.config.set_config_location("deploy/etc/simon.cfg")
         sf.config.load()
         out = sf.init()
@@ -28,6 +40,9 @@ class TestSADFaceFunctions(unittest.TestCase):
 
 
     def test_get_version(self):
+        """
+        Tests: sadface.get_version()
+        """
         sf.sd = sf.init()
         out = sf.get_version();
         expected = "0.2"
