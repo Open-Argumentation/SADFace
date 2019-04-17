@@ -3,7 +3,7 @@
 from configparser import ConfigParser
 
 current = None
-config_location = "etc/defaults.cfg"
+location = None 
 
 def load():
     """
@@ -12,16 +12,25 @@ def load():
     try:
         global current
         current = ConfigParser()
-        current.read(config_location)
+        current.read(location)
     except:
         print("Could not read configs from "+ config_location)
         exit(1) 
 
-def set_config_location(location):
+def reset():
+    """
+    Return config parameters to initial settings
+    """
+    global current
+    global location
+    current = None
+    location = None
+
+def set_location(new_location):
     """
     Enable the location of custom configuration files to be supplied
     """
-    global config_location
-    config_location = location
+    global location
+    location = new_location
 
 
