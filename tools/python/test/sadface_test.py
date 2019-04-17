@@ -6,6 +6,9 @@ import unittest
 class TestSADFaceFunctions(unittest.TestCase):
     def setUp(self):
        pass
+
+    def tearDown(self):
+        pass
     
     def test_init(self):
         """
