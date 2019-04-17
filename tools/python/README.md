@@ -58,4 +58,16 @@ The SADFace REPL. Type 'help' or 'help <command>' for assistance
 
 ~~~~
 
+### Run the tests
 
+Add application src to the PYTHONPATH:
+
+~~~~
+    $ PYTHONPATH=`pwd`/src
+~~~~
+
+Run the tests:
+
+~~~~
+    $ python test/sadface_test.py
+~~~~
