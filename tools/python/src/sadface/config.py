@@ -9,13 +9,17 @@ def load():
     """
     Load a configuration file from the stored config_location
     """
-    try:
-        global current
-        current = ConfigParser()
-        current.read(location)
-    except:
-        print("Could not read configs from "+ config_location)
-        exit(1) 
+    if(location is not None):
+        try:
+            global current
+            current = ConfigParser()
+            current.read(location)
+        except:
+            print("Could not read configs from " + location)
+            exit(1) 
+    else:
+        raise Exception("Tried to load config file but location is set to None")
+        exit(1)
 
 def reset():
     """
