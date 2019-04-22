@@ -2,8 +2,9 @@ import json
 import os
 import unittest
 
+from uuid import UUID
+
 import sadface as sf
-#import sadface.config
 
 class TestCore(unittest.TestCase):
     def setUp(self):
@@ -12,16 +13,7 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
-    def test_get_version(self):
-        """
-        Tests: sadface.get_version()
-        """
-        sf.init()
-        out = sf.get_version()
-        expected = "0.2"
-        self.assertEqual(out, expected)
-
-    def test_get_description(self):
+    def test_default_get_description(self):
         """
         Tests: sadface.get_description() with defaults values
         after init
@@ -31,6 +23,47 @@ class TestCore(unittest.TestCase):
         expected = None
         self.assertEqual(out, expected)
 
+    def test_default_get_document_id(self):
+        """
+
+        """
+        sf.init()
+        out = sf.get_document_id()
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
+    def test_default_get_title(self):
+        """
+        Tests: sadface.get_title() with defaults values
+        after init
+        """
+        sf.init()
+        out = sf.get_title()
+        expected = None
+        self.assertEqual(out, expected)
+
+    def test_default_get_version(self):
+        """
+        Tests: sadface.get_version()
+        """
+        sf.init()
+        out = sf.get_version()
+        expected = "0.2"
+        self.assertEqual(out, expected)
+
+    def test_default_list_atoms(self):
+        """
+
+        """
+        sf.init()
+        out = sf.list_atoms()
+        expected = []
+        self.assertEqual(out, expected)
 
     def test_set_description(self):
         """
@@ -46,17 +79,6 @@ class TestCore(unittest.TestCase):
         expected = d
         self.assertEqual(out, expected)
 
-
-    def test_get_title(self):
-        """
-        Tests: sadface.get_title() with defaults values
-        after init
-        """
-        sf.init()
-        out = sf.get_title()
-        expected = None
-        self.assertEqual(out, expected)
-
     def test_set_title(self):
         """
         Tests: sadface.get_title() & set_title
@@ -67,8 +89,6 @@ class TestCore(unittest.TestCase):
         out = sf.get_title()
         expected = t
         self.assertEqual(out, expected)
-
-
 
 if __name__ == "__main__":
     
