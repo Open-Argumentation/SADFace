@@ -13,6 +13,16 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
+    def test_default_get_claim(self):
+        """
+
+        """
+        sf.init()
+        out = sf.get_claim()
+        print(out)
+        expected = None
+        self.assertEqual(out, expected)
+
     def test_default_get_description(self):
         """
         Tests: sadface.get_description() with defaults values
@@ -36,6 +46,16 @@ class TestCore(unittest.TestCase):
         except:
             pass
         self.assertTrue(result)
+
+    def test_default_get_notes(self):
+        """
+
+        """
+        sf.init()
+        out = sf.get_notes()
+        print(out)
+        expected = None
+        self.assertEqual(out, expected)
 
     def test_default_get_title(self):
         """
