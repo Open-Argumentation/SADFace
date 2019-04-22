@@ -19,81 +19,88 @@ This is what a simple SADFace document looks like:
 
 ~~~~
 {
-    "analyst_email": "siwells@gmail.com", 
-    "analyst_name": "Simon Wells", 
-    "created": "2017-07-11T16:32:36", 
     "edges": [
         {
-            "id": "d7bcef81-0d74-4ae5-96f9-bfb07031f1fa", 
-            "source_id": "49a786ce-9066-4230-8e18-42086882a160", 
-            "target_id": "9bfb7cdc-116f-47f5-b85d-ff7c5d329f45"
-        }, 
+            "id": "3df54ae1-fa41-4ac7-85d5-4badee39215b",
+            "source_id": "70447169-9264-41dc-b8e9-50523f8368c1",
+            "target_id": "ae3f0c7f-9f69-4cab-9db3-3b9c46f56e09"
+        },
         {
-            "id": "f57ecb48-dfd5-4789-b3c5-46f770f4113d", 
-            "source_id": "30c9c0ac-ddef-44e7-897d-52ffee97b837", 
-            "target_id": "49a786ce-9066-4230-8e18-42086882a160"
-        }, 
+            "id": "64430e6e-1300-4623-9b89-3c014587f7ae",
+            "source_id": "f129934f-53d2-49f6-8feb-9afaff9aabcf",
+            "target_id": "70447169-9264-41dc-b8e9-50523f8368c1"
+        },
         {
-            "id": "c48c3d75-a8b3-439a-9a2f-b987eaae2c9a", 
-            "source_id": "02b4009b-1a12-4d53-ab3a-efabe6c44694", 
-            "target_id": "49a786ce-9066-4230-8e18-42086882a160"
-        }, 
+            "id": "1aae6f5e-f1a7-4873-aa64-a606a0e481cd",
+            "source_id": "6cd219cc-3203-4602-88bd-d3639f86fb37",
+            "target_id": "70447169-9264-41dc-b8e9-50523f8368c1"
+        },
         {
-            "id": "86e797aa-ecb0-4fcd-8838-263ceedb099e", 
-            "source_id": "5760a93a-55e7-447c-a245-7f8d7e7e4434", 
-            "target_id": "02b4009b-1a12-4d53-ab3a-efabe6c44694"
-        }, 
+            "id": "bfe3db02-f93f-4d91-bd78-beccee980175",
+            "source_id": "45199aa0-1556-4b94-8940-3ba30aa08e38",
+            "target_id": "f129934f-53d2-49f6-8feb-9afaff9aabcf"
+        },
         {
-            "id": "b2531a60-6559-4560-b57b-320f1f3b8386", 
-            "source_id": "fbaa9b79-0965-45a1-9fd4-60701c2102cf", 
-            "target_id": "5760a93a-55e7-447c-a245-7f8d7e7e4434"
+            "id": "3c2f9db7-3b78-4bc0-b990-3d0eacdca90e",
+            "source_id": "51775eb3-70c0-4d8e-95a5-b34ffba8a280",
+            "target_id": "45199aa0-1556-4b94-8940-3ba30aa08e38"
         }
-    ], 
-    "edited": "2017-07-11T16:32:36", 
-    "id": "94a975db-25ae-4d25-93cc-1c07c932e2f8", 
-    "metadata": {}, 
+    ],
+    "metadata": {
+        "core": {
+            "analyst_email": "siwells@gmail.com",
+            "analyst_name": "Simon Wells",
+            "created": "2019-04-22T23:52:30",
+            "description": "An example SADFace document showing an argument analysis of the Hangback cycle safety campaign from the STCD corpora.",
+            "edited": "2019-04-22T23:52:30",
+            "id": "42e56df7-4074-40d8-8ea1-4fca5321dd31",
+            "notes": "This is incomplete because the analysis in Pangbourne & Wells (2018) has much more argumenative content.",
+            "title": "Hangback Example",
+            "version": "0.2"
+        }
+    },
     "nodes": [
         {
-            "id": "9bfb7cdc-116f-47f5-b85d-ff7c5d329f45", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "The 'Hang Back' campaign video should not have been published, and should be withdrawn.", 
-            "type": "atom"
-        }, 
-        {
-            "id": "49a786ce-9066-4230-8e18-42086882a160",
+            "id": "ae3f0c7f-9f69-4cab-9db3-3b9c46f56e09",
             "metadata": {},
-            "name": "support", 
-            "type": "scheme"
-        }, 
-        {
-            "id": "30c9c0ac-ddef-44e7-897d-52ffee97b837", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "The 'Hang Back' advert does not clearly express the intended message", 
+            "sources": [],
+            "text": "The 'Hang Back' campaign video should not have been published, and should be withdrawn.",
             "type": "atom"
-        }, 
+        },
         {
-            "id": "02b4009b-1a12-4d53-ab3a-efabe6c44694", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "The 'Hang Back' campaign was the wrong campaign to run", 
-            "type": "atom"
-        }, 
-        {
-            "id": "5760a93a-55e7-447c-a245-7f8d7e7e4434",
+            "id": "70447169-9264-41dc-b8e9-50523f8368c1",
             "metadata": {},
-            "name": "conflict", 
+            "name": "support",
             "type": "scheme"
-        }, 
+        },
         {
-            "id": "fbaa9b79-0965-45a1-9fd4-60701c2102cf", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "Road users have a responsibility to make our roads safer by being more vigilant.", 
+            "id": "f129934f-53d2-49f6-8feb-9afaff9aabcf",
+            "metadata": {},
+            "sources": [],
+            "text": "The 'Hang Back' campaign was the wrong campaign to run",
+            "type": "atom"
+        },
+        {
+            "id": "6cd219cc-3203-4602-88bd-d3639f86fb37",
+            "metadata": {},
+            "sources": [],
+            "text": "The 'Hang Back' advert does not clearly express the intended message",
+            "type": "atom"
+        },
+        {
+            "id": "45199aa0-1556-4b94-8940-3ba30aa08e38",
+            "metadata": {},
+            "name": "conflict",
+            "type": "scheme"
+        },
+        {
+            "id": "51775eb3-70c0-4d8e-95a5-b34ffba8a280",
+            "metadata": {},
+            "sources": [],
+            "text": "Road users have a responsibility to make our roads safer by being more vigilant.",
             "type": "atom"
         }
-    ], 
+    ],
     "resources": []
 }
 ~~~~
