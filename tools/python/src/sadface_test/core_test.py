@@ -15,7 +15,7 @@ class TestCore(unittest.TestCase):
 
     def test_default_get_arguments(self):
         """
-
+        Tests: sadface.get_arguments() with default values after init
         """
         sf.init()
         out = sf.get_arguments()
@@ -24,7 +24,7 @@ class TestCore(unittest.TestCase):
 
     def test_default_get_claim(self):
         """
-
+        Tests: sadface.get_claim() with default values after init
         """
         sf.init()
         out = sf.get_claim()
