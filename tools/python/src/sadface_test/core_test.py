@@ -103,6 +103,33 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
+    def test_reset(self):
+        """
+        Tests: sadface.reset()
+
+        A sadface document is created and manipulated then reset is used
+        to return the document to it's initial state
+        """
+
+        # Iniitialise a SADFace document
+        sf.init()
+        expected = None
+        out = sf.get_title()
+        self.assertEqual(out, expected)
+
+        # Explicitly alter it
+        expected = "DAKA DAKA"
+        sf.set_title(expected)
+        out = sf.get_title()
+        self.assertEqual(out, expected)
+
+        # Reset the document - this should now be in the pre-init, empty-dict state
+        sf.reset()
+        expected = {}
+        out = sf.sd
+        self.assertEqual(out, expected)
+
+
     def test_set_description(self):
         """
         Tests: sadface.get_description() & set_description
