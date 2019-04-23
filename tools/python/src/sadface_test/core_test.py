@@ -94,6 +94,15 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
+    def test_default_list_schemes(self):
+        """
+        Tests: sadface.get_arguments() with default values after init
+        """
+        sf.init()
+        out = sf.list_schemes()
+        expected = []
+        self.assertEqual(out, expected)
+
     def test_set_description(self):
         """
         Tests: sadface.get_description() & set_description
