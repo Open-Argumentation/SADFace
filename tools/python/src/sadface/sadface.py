@@ -539,20 +539,6 @@ def export_json():
     """
     return json.dumps(sd)
 
-def get_arguments():
-    """
-    Use to retrieve a list of arguments in the current document. Minimally
-    we expect that each argument contains at least one sceheme node, so, by
-    extension, a list of scheme nodes is also a list of arguments
-
-    Returns: A list of scheme IDs
-    """
-    schemes = []
-    for node in sd["nodes"]:
-        if "scheme" == node["type"]:
-            schemes.append(node.get("id"))
-    return schemes
-
 def get_atom(atom_id):
     """
     Retrieve the atom dict identified by the supplied atom ID
@@ -716,6 +702,21 @@ def list_atoms():
             tmp["text"] = node["text"]
             atoms.append(tmp)
     return atoms
+
+def list_arguments():
+    """
+    Use to retrieve a list of arguments in the current document. Minimally
+    we expect that each argument contains at least one sceheme node, so, by
+    extension, a list of scheme nodes is also a list of arguments
+
+    Returns: A list of scheme IDs
+    """
+    schemes = []
+    for node in sd["nodes"]:
+        if "scheme" == node["type"]:
+            schemes.append(node.get("id"))
+    return schemes
+
 
 def load_from_file(filename):
     """
