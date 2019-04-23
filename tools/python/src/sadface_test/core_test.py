@@ -44,7 +44,7 @@ class TestCore(unittest.TestCase):
 
     def test_default_get_document_id(self):
         """
-
+        Tests: sadface.get_argument_id() with default values after init
         """
         sf.init()
         out = sf.get_document_id()
