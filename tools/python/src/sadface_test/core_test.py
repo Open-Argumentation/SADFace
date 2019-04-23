@@ -87,7 +87,7 @@ class TestCore(unittest.TestCase):
 
     def test_default_list_atoms(self):
         """
-
+        Tests: sadface.list_atoms() with default values after init
         """
         sf.init()
         out = sf.list_atoms()
