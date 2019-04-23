@@ -13,12 +13,12 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
-    def test_default_get_arguments(self):
+    def test_default_list_arguments(self):
         """
         Tests: sadface.get_arguments() with default values after init
         """
         sf.init()
-        out = sf.get_arguments()
+        out = sf.list_arguments()
         expected = []
         self.assertEqual(out, expected)
 
