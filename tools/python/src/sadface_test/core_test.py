@@ -13,6 +13,15 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
+    def test_default_get_arguments(self):
+        """
+
+        """
+        sf.init()
+        out = sf.get_arguments()
+        expected = []
+        self.assertEqual(out, expected)
+
     def test_default_get_claim(self):
         """
 
