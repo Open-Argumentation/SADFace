@@ -13,15 +13,6 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
-    def test_default_list_arguments(self):
-        """
-        Tests: sadface.get_arguments() with default values after init
-        """
-        sf.init()
-        out = sf.list_arguments()
-        expected = []
-        self.assertEqual(out, expected)
-
     def test_default_get_claim(self):
         """
         Tests: sadface.get_claim() with default values after init
@@ -83,6 +74,15 @@ class TestCore(unittest.TestCase):
         sf.init()
         out = sf.get_version()
         expected = "0.2"
+        self.assertEqual(out, expected)
+
+    def test_default_list_arguments(self):
+        """
+        Tests: sadface.get_arguments() with default values after init
+        """
+        sf.init()
+        out = sf.list_arguments()
+        expected = []
         self.assertEqual(out, expected)
 
     def test_default_list_atoms(self):
