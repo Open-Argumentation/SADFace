@@ -58,7 +58,7 @@ class TestCore(unittest.TestCase):
 
     def test_default_get_notes(self):
         """
-
+        Tests: sadface.get_notes() with default values after init
         """
         sf.init()
         out = sf.get_notes()
