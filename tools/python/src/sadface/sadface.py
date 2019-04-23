@@ -717,6 +717,18 @@ def list_arguments():
             schemes.append(node.get("id"))
     return schemes
 
+def list_schemes():
+    """
+    Use to retrieve a list of scheme nodes from the current document.
+
+    Returns: A list of scheme IDs
+    """
+    schemes = []
+    for node in sd["nodes"]:
+        if "scheme" == node["type"]:
+            schemes.append(node.get("id"))
+    return schemes
+
 
 def load_from_file(filename):
     """
