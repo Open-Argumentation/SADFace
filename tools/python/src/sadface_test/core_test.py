@@ -19,7 +19,6 @@ class TestCore(unittest.TestCase):
         """
         sf.init()
         out = sf.get_claim()
-        print(out)
         expected = None
         self.assertEqual(out, expected)
 
@@ -53,7 +52,6 @@ class TestCore(unittest.TestCase):
         """
         sf.init()
         out = sf.get_notes()
-        print(out)
         expected = None
         self.assertEqual(out, expected)
 
