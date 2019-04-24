@@ -45,6 +45,17 @@ class TestCore(unittest.TestCase):
         sf.add_notes(text)
         self.assertEqual(sf.get_notes(), text)
 
+    def test_default_add_scheme(self):
+        """
+        TESTS: sadface.add_scheme() wit default values
+        """
+        sf.init()
+        scheme = sf.add_scheme("test scheme")
+        scheme_id = scheme.get("id")
+        result = sf.get_scheme(scheme_id)
+        result_id = result.get("id")
+        self.assertEqual(result_id, scheme_id)
+
     def test_default_append_notes(self):
         """
         TESTS: sadface.append_notes()
