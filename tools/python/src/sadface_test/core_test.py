@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 import unittest
@@ -228,6 +229,14 @@ class TestCore(unittest.TestCase):
         result = sf.get_scheme(scheme_node_id)
         self.assertEqual(result.get("id"), scheme_node_id)
         self.assertEqual(result.get("text"), scheme_node.get("text"))
+
+    def test_now(self):
+        """
+        TESTS: sadface.now()
+        """
+        current = datetime.datetime.fromisoformat(sf.now())
+        
+        self.assertTrue(type(current) is datetime.datetime)
 
     def test_reset(self):
         """
