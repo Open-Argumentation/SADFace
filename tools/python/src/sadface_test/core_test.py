@@ -300,6 +300,33 @@ class TestCore(unittest.TestCase):
             pass
         self.assertTrue(result)
 
+    def test_new_resource(self):
+        """
+        TESTS: sadface.new_resource()
+        """
+        content = "DAKA DAKA"
+        res = sf.new_resource(content)
+        print(res)
+        
+        self.assertTrue(res.get("id"))
+        out = res.get("id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
+        self.assertTrue(res.get("content"))
+        self.assertEqual(res.get("content"), content)
+
+        self.assertTrue(res.get("type"))
+        self.assertEqual(res.get("type"), "text")
+
+        self.assertTrue(res.get("metadata"))
+        self.assertTrue(type(res.get("metadata")) is dict)
+
 
     def test_new_sadface(self):
         """
