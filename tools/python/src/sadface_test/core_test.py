@@ -13,7 +13,7 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
-    def test_default_add_item(self):
+    def test_default_add_atom(self):
         """
 
         """
