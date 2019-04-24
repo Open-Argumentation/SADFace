@@ -13,6 +13,29 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
+    def test_default_add_item(self):
+        """
+
+        """
+        sf.init()
+
+        # Check we have no atoms in the default document
+        num_atoms = len(sf.list_atoms())
+        self.assertEqual(num_atoms, 0)
+
+        # Add an atom then check how many atoms we have
+        atom_text = "test atom"
+        atom = sf.add_atom(atom_text)
+        atom_id = atom.get("id")
+        num_atoms = len(sf.list_atoms())
+        self.assertEqual(num_atoms, 1)
+
+        # Retrieve the new atom and check that it
+        # contains the expected text
+        atom = sf.get_atom(atom_id)
+        self.assertEqual(atom.get("text"), atom_text)
+        
+
     def test_default_get_claim(self):
         """
         Tests: sadface.get_claim() with default values after init
