@@ -300,6 +300,54 @@ class TestCore(unittest.TestCase):
             pass
         self.assertTrue(result)
 
+
+    def test_new_sadface(self):
+        """
+        TESTS: sadface.new_sadface()
+        """
+        sd = sf.new_sadface()
+
+        self.assertTrue(sd.get("metadata"))
+        self.assertTrue(type(sd.get("metadata")) is dict)
+
+        self.assertTrue(sd.get("metadata").get("core"))
+        self.assertTrue(type(sd.get("metadata").get("core")) is dict)
+
+        self.assertTrue(sd.get("metadata").get("core").get("version"))
+        self.assertTrue(type(sd.get("metadata").get("core").get("version")) is str)
+
+        self.assertTrue(sd.get("metadata").get("core").get("id"))
+        self.assertTrue(type(sd.get("metadata").get("core").get("id")) is str)
+        out = sd.get("metadata").get("core").get("id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+        
+        self.assertTrue(sd.get("metadata").get("core").get("analyst_name"))
+        self.assertTrue(type(sd.get("metadata").get("core").get("analyst_name")) is str)
+        
+        self.assertTrue(sd.get("metadata").get("core").get("analyst_email"))
+        self.assertTrue(type(sd.get("metadata").get("core").get("analyst_email")) is str)
+        
+        self.assertTrue(sd.get("metadata").get("core").get("created"))
+        self.assertTrue(type(sd.get("metadata").get("core").get("created")) is str)
+
+        self.assertTrue(sd.get("metadata").get("core").get("edited"))
+        self.assertTrue(type(sd.get("metadata").get("core").get("edited")) is str)
+
+        self.assertTrue(type(sd.get("resources")) is list)
+        self.assertEqual(len(sd.get("resources")), 0)
+        
+        self.assertTrue(type(sd.get("nodes")) is list)
+        self.assertEqual(len(sd.get("nodes")), 0)
+
+        self.assertTrue(type(sd.get("edges")) is list)
+        self.assertEqual(len(sd.get("edges")), 0)
+
     
     def test_new_uuid(self):
         """
