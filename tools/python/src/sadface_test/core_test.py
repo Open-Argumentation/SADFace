@@ -103,7 +103,7 @@ class TestCore(unittest.TestCase):
 
     def test_default_get_scheme(self):
         """
-
+        TESTS: sadface.get_scheme() with default values
         """
         sf.init()
         result = sf.get_node("invalid-uuid")
