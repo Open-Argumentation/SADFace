@@ -230,6 +230,28 @@ class TestCore(unittest.TestCase):
         self.assertEqual(result.get("id"), scheme_node_id)
         self.assertEqual(result.get("text"), scheme_node.get("text"))
 
+    def test_new_atom(self):
+        """
+        TESTS: sadface.new_atom()
+
+        An atom dict should look like this:
+
+            {"id":new_uuid(), "type":"atom", "text":text, "sources":[], "metadata":{}}
+
+        So we check that it has the right keys and default values
+        """
+        text = "DAKA DAKA"
+        atom = sf.new_atom(text)
+        self.assertTrue(atom.get("id"))
+        self.assertTrue(atom.get("type"))
+        self.assertTrue(atom.get("type"), "atom")
+        self.assertTrue(atom.get("text"))
+        self.assertTrue(atom.get("text"), text)
+        self.assertTrue(type(atom.get("sources")) is list)
+        self.assertEqual(len(atom.get("sources")), 0)
+        self.assertTrue(type(atom.get("metadata")) is dict)
+        self.assertFalse(atom.get("metadata"))
+
     def test_new_uuid(self):
         """
         TESTS: sadface.new_uuid()
@@ -242,7 +264,6 @@ class TestCore(unittest.TestCase):
         except:
             pass
         self.assertTrue(result)
-        
 
     def test_now(self):
         """
