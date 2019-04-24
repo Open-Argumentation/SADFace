@@ -298,7 +298,7 @@ def clear_notes():
     """
     Remove any existing notes
     """
-    sd["metadata"]["core"]["notes"] = ""
+    sd.get("metadata").get("core").pop("notes")
 
 
 def contains_atom(atom_text):
