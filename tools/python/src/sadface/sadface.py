@@ -792,7 +792,7 @@ def new_resource(content):
 
     Returns: A Python dict representing the new SADFace resource
     """
-    new_resource = {"id":new_uuid(), "content":content, "type":"text", "metadata":{}}
+    new_resource = {"id":new_uuid(), "content":content, "type":"text", "metadata":{ "core": {}}}
     return new_resource
 
 def new_scheme(name):
