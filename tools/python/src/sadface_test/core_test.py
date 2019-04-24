@@ -35,6 +35,16 @@ class TestCore(unittest.TestCase):
         atom = sf.get_atom(atom_id)
         self.assertEqual(atom.get("text"), atom_text)
 
+    def test_default_add_notes(self):
+        """
+        Tests: sadface.add_notes()
+        """
+        sf.init()
+        self.assertEqual(sf.get_notes(), None)
+        text = "DAKA DAKA"
+        sf.add_notes(text)
+        self.assertEqual(sf.get_notes(), text)
+
     def test_default_get_claim(self):
         """
         Tests: sadface.get_claim() with default values after init
