@@ -155,6 +155,18 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
+    def test_get_scheme(self):
+        """
+        TESTS: sadface.get_scheme() after a scheme has been added
+        """
+        sf.init()
+        scheme_node = sf.add_scheme("test-scheme")
+        scheme_node_id = scheme_node.get("id")
+
+        result = sf.get_scheme(scheme_node_id)
+        self.assertEqual(result.get("id"), scheme_node_id)
+        self.assertEqual(result.get("text"), scheme_node.get("text"))
+
     def test_reset(self):
         """
         Tests: sadface.reset()
