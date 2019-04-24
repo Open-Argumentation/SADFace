@@ -76,7 +76,20 @@ class TestCore(unittest.TestCase):
         text2 = "MORE DAKA"
         sf.append_notes(text2)
         self.assertEqual(sf.get_notes(), text+text2)
-        
+
+    def test_default_clear_notes(self):
+        """
+        Tests: sadface.clear_notes()
+        """
+        sf.init()
+        self.assertEqual(sf.get_notes(), None)
+
+        text = "DAKA DAKA"
+        sf.add_notes(text)
+        self.assertEqual(sf.get_notes(), text)
+
+        sf.clear_notes()
+        self.assertEqual(sf.get_notes(), None)
 
     def test_default_get_claim(self):
         """
