@@ -101,6 +101,14 @@ class TestCore(unittest.TestCase):
         expected = None
         self.assertEqual(out, expected)
 
+    def test_default_get_scheme(self):
+        """
+
+        """
+        sf.init()
+        result = sf.get_node("invalid-uuid")
+        self.assertEqual(result, None)
+
     def test_default_get_title(self):
         """
         Tests: sadface.get_title() with defaults values
