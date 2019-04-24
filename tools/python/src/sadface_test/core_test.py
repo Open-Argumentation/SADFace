@@ -48,6 +48,9 @@ class TestCore(unittest.TestCase):
     def test_default_add_scheme(self):
         """
         TESTS: sadface.add_scheme() wit default values
+
+        Add a scheme, retrieve it, ensure that the retrieved
+        scheme matches that which was added
         """
         sf.init()
         scheme = sf.add_scheme("test scheme")
