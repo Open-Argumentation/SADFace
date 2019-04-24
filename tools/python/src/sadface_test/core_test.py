@@ -41,9 +41,14 @@ class TestCore(unittest.TestCase):
         """
         sf.init()
         self.assertEqual(sf.get_notes(), None)
+
         text = "DAKA DAKA"
         sf.add_notes(text)
         self.assertEqual(sf.get_notes(), text)
+
+        text2 = "MORE DAKA"
+        sf.add_notes(text2)
+        self.assertEqual(sf.get_notes(), text2)
 
     def test_default_add_scheme(self):
         """
