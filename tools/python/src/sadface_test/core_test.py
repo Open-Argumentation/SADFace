@@ -230,6 +230,20 @@ class TestCore(unittest.TestCase):
         self.assertEqual(result.get("id"), scheme_node_id)
         self.assertEqual(result.get("text"), scheme_node.get("text"))
 
+    def test_new_uuid(self):
+        """
+        TESTS: sadface.new_uuid()
+        """
+        out = sf.new_uuid()
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+        
+
     def test_now(self):
         """
         TESTS: sadface.now()
