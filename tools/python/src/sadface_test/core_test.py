@@ -53,6 +53,11 @@ class TestCore(unittest.TestCase):
         text = "DAKA DAKA"
         sf.append_notes(text)
         self.assertEqual(sf.get_notes(), text)
+        
+        text2 = "MORE DAKA"
+        sf.append_notes(text2)
+        self.assertEqual(sf.get_notes(), text+text2)
+        
 
     def test_default_get_claim(self):
         """
