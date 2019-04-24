@@ -15,7 +15,7 @@ class TestCore(unittest.TestCase):
 
     def test_default_add_atom(self):
         """
-
+        Tests: sadface.add_atom()
         """
         sf.init()
 
@@ -34,7 +34,6 @@ class TestCore(unittest.TestCase):
         # contains the expected text
         atom = sf.get_atom(atom_id)
         self.assertEqual(atom.get("text"), atom_text)
-        
 
     def test_default_get_claim(self):
         """
