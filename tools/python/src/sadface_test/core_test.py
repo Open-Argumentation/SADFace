@@ -252,6 +252,55 @@ class TestCore(unittest.TestCase):
         self.assertTrue(type(atom.get("metadata")) is dict)
         self.assertFalse(atom.get("metadata"))
 
+    def test_new_edge(self):
+        """
+        TESTS: sadface.new_edge()
+
+        An edge dict should look like this:
+
+            {"id":new_uuid(), "source_id":source_id, "target_id":target_id}
+
+        So we check that it has the right keys and default values
+        """
+        text = "DAKA DAKA"
+        src_atom = sf.new_atom(text)
+        src_id = src_atom.get("id")
+        dest_atom = sf.new_atom(text)
+        dest_id = dest_atom.get("id")
+
+        edge = sf.new_edge(src_id, dest_id)
+
+        self.assertTrue(edge.get("id"))
+        out = edge.get("id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
+        self.assertTrue(edge.get("source_id"))
+        out = edge.get("source_id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
+        self.assertTrue(edge.get("target_id"))
+        out = edge.get("target_id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
+    
     def test_new_uuid(self):
         """
         TESTS: sadface.new_uuid()
