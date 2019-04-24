@@ -288,7 +288,10 @@ def append_notes(text):
     """
     Append new text to an existing notes entry
     """
-    sd["metadata"]["core"]["notes"] += text
+    if sd.get("metadata").get("core").get("notes") != None:
+        sd["metadata"]["core"]["notes"] += text
+    else:
+        add_notes(text)
 
 
 def clear_notes():
