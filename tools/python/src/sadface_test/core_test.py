@@ -375,6 +375,32 @@ class TestCore(unittest.TestCase):
         self.assertTrue(type(sd.get("edges")) is list)
         self.assertEqual(len(sd.get("edges")), 0)
 
+    def test_new_scheme(self):
+        """
+        TESTS: sadface.new_scheme()
+        """
+        name = "DAKA"
+        sch = sf.new_scheme(name)
+
+        self.assertTrue(sch.get("id"))
+        out = sch.get("id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
+        self.assertTrue(sch.get("type"))
+        self.assertEqual(sch.get("type"), "scheme")
+
+        self.assertTrue(sch.get("name"))
+        self.assertEqual(sch.get("name"), name)
+
+        self.assertTrue(sch.get("metadata"))
+        self.assertTrue(type(sch.get("metadata")) is dict)
+        
     
     def test_new_uuid(self):
         """
