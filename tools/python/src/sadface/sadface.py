@@ -748,7 +748,7 @@ def new_atom(text):
 
     Returns: A Python dict representing the new SADFace atom
     """
-    new_atom = {"id":new_uuid(), "type":"atom", "text":text, "sources":[], "metadata":{}}
+    new_atom = {"id":new_uuid(), "type":"atom", "text":text, "sources":[], "metadata":{"core": {}}}
     return new_atom
 
 def new_edge(source_id, target_id):
