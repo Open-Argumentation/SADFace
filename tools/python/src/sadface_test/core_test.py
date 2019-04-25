@@ -306,7 +306,6 @@ class TestCore(unittest.TestCase):
         """
         content = "DAKA DAKA"
         res = sf.new_resource(content)
-        print(res)
         
         self.assertTrue(res.get("id"))
         out = res.get("id")
