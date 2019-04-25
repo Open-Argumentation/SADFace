@@ -399,8 +399,36 @@ class TestCore(unittest.TestCase):
 
         self.assertTrue(sch.get("metadata"))
         self.assertTrue(type(sch.get("metadata")) is dict)
-        
     
+    def test_new_source(self):
+        """
+        TESTS: sadface.new_source()
+        {"resource_id":resource_id, "text":text, "offset":offset, "length":length}
+        """
+        test_id = sf.new_uuid()
+        test_txt = "DAKA DAKA MORE DAKA"
+        test_offset = 100
+        src = sf.new_source(test_id, test_txt, test_offset)
+
+        self.assertTrue(src.get("resource_id"))
+        out = src.get("resource_id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
+        self.assertTrue(src.get("text"))
+        self.assertEqual(src.get("text"), test_txt)
+    
+        self.assertTrue(src.get("offset"))
+        self.assertEqual(src.get("offset"), test_offset)
+
+        self.assertTrue(src.get("length"))
+        self.assertEqual(src.get("length"), len(test_txt))
+
     def test_new_uuid(self):
         """
         TESTS: sadface.new_uuid()
