@@ -805,11 +805,13 @@ def new_scheme(name):
     new_scheme = {"id":new_uuid(), "type":"scheme", "name":name, "metadata":{ "core": {}}}
     return new_scheme
 
-def new_source(resource_id, text, offset, length):
+def new_source(resource_id, text, offset):
     """
     Create a new SADFace source (Python dict) using the supplied resource ID (a source always
     refers to an existing resource object) and identifying a section of text in the resource 
-    as well as an offset & segment length for locating the text in the original resource.
+    as well as an offset for locating the text in the original resource.
+
+    Text segment length is calculated from the length of the supplied text.
 
     As the resource object is enhanced to account for newer "types" of resource, so the
     source object must be enhanced to keep track and enable sources to index sub-parts of
@@ -817,6 +819,7 @@ def new_source(resource_id, text, offset, length):
 
     Returns: A Python dict representing the new SADFace source
     """
+    length = len(text)
     new_source = {"resource_id":resource_id, "text":text, "offset":offset, "length":length}
     return new_source
 
