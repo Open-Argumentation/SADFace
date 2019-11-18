@@ -250,7 +250,7 @@ class TestCore(unittest.TestCase):
         self.assertTrue(type(atom.get("sources")) is list)
         self.assertEqual(len(atom.get("sources")), 0)
         self.assertTrue(type(atom.get("metadata")) is dict)
-        self.assertFalse(atom.get("metadata"))
+        self.assertTrue(atom.get("metadata"))
 
     def test_new_edge(self):
         """
