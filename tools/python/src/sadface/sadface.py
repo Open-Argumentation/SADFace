@@ -641,7 +641,7 @@ def get_document_id():
     """
     Retrieve the SADFace document's ID
     """
-    return sd["metadata"].get("core").get("id")
+    return sd["id"]
 
 def get_title():
     """
@@ -768,10 +768,10 @@ def new_sadface():
     Returns: A Python dict representing the new SADFace document
     """
     if config.location is None:
-        new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":"A User", "analyst_email":"user@email.address", "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
+        new_doc = {"id":new_uuid(), "metadata":{ "core":{"version":"0.2", "analyst_name":"A User", "analyst_email":"user@email.address", "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
 
     else:
-        new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":config.current.get("analyst", "name"), "analyst_email":config.current.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
+        new_doc = {"id":new_uuid(), "metadata":{ "core":{"version":"0.2", "analyst_name":config.current.get("analyst", "name"), "analyst_email":config.current.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
@@ -964,7 +964,7 @@ def update_id(id):
     Update the SADFace document ID to match the supplied ID. This can be useful when 
     moving analysed argument data between formats whilst maintaining original metadata.
     """
-    sd["metadata"]["core"]["id"] = id
+    sd["id"] = id
 
 def update_edited(timestamp):
     """
