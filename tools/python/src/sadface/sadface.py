@@ -896,6 +896,22 @@ def save(filename=None, filetype="json"):
         with open(d+f, 'w') as outfile:
             json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
+def set_atom_text(atom_id, new_text):
+    """
+    An atoms text key:value pair is the canonical representation of a portion of text 
+    that exists in an argument. This should be updatable so that the overall document 
+    makes sense. Links to original source texts are maintained via the source list 
+    which indexes original text portions of linked resources.
+
+    Returns: The updated atom dict
+    """
+    atom = get_atom(atom_id)
+    if(atom is not None):
+        atom["text"] = new_text
+        return atom
+    else:
+        raise Exception("Could not set the text value for atom: "+atom_id)
+
 def set_title(text):
     """
     Set a metadata entry for the document that contains a title. This is a
@@ -934,21 +950,6 @@ def set_analyst(analyst):
     """
     sd["metadata"]["core"]["analyst_name"] = analyst
 
-def update_atom_text(atom_id, new_text):
-    """
-    An atoms text key:value pair is the canonical representation of a portion of text 
-    that exists in an argument. This should be updatable so that the overall document 
-    makes sense. Links to original source texts are maintained via the source list 
-    which indexes original text portions of linked resources.
-
-    Returns: The updated atom dict
-    """
-    atom = get_atom(atom_id)
-    if(atom is not None):
-        atom["text"] = new_text
-        return atom
-    else:
-        raise Exception("Could not update the text value for atom: "+atom_id)
 
 def update_created(timestamp):
     """
