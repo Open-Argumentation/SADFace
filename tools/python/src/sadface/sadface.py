@@ -896,6 +896,12 @@ def save(filename=None, filetype="json"):
         with open(d+f, 'w') as outfile:
             json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
+def set_analyst(analyst):
+    """
+    sets the name of the argument analyst in the SADFace doc to the supplied name
+    """
+    sd["metadata"]["core"]["analyst_name"] = analyst
+    
 def set_atom_text(atom_id, new_text):
     """
     An atoms text key:value pair is the canonical representation of a portion of text 
@@ -943,13 +949,6 @@ def update():
     Updates the last edited timestamp for the SADFace doc to now
     """
     sd["metadata"]["core"]["edited"] = now()
-
-def set_analyst(analyst):
-    """
-    sets the name of the argument analyst in the SADFace doc to the supplied name
-    """
-    sd["metadata"]["core"]["analyst_name"] = analyst
-
 
 def update_created(timestamp):
     """
