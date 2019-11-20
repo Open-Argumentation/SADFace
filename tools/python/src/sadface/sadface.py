@@ -952,18 +952,18 @@ def set_description(text):
     """
     sd["metadata"]["core"]["description"] = text
 
+def set_id(id):
+    """
+    Set the SADFace document ID to match the supplied ID. This can be useful when 
+    moving analysed argument data between formats whilst maintaining original metadata.
+    """
+    sd["id"] = id
+
 def update():
     """
     Updates the last edited timestamp for the SADFace doc to now
     """
     sd["metadata"]["core"]["edited"] = now()
-
-def update_id(id):
-    """
-    Update the SADFace document ID to match the supplied ID. This can be useful when 
-    moving analysed argument data between formats whilst maintaining original metadata.
-    """
-    sd["id"] = id
 
 def update_edited(timestamp):
     """
