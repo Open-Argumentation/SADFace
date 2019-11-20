@@ -92,6 +92,15 @@ class TestCore(unittest.TestCase):
         sf.clear_notes()
         self.assertEqual(sf.get_notes(), None)
 
+    def test_default_get_analyst(self):
+        """
+        TESTS: sadface.get_analyst()
+        """
+        sf.init()
+        analyst = "A User"
+        retrieved_analyst = sf.get_analyst()        
+        self.assertEqual(retrieved_analyst, analyst)
+
     def test_default_get_atom(self):
         """
         TESTS: sadface.get_atom()
