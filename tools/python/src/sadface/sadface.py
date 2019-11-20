@@ -938,6 +938,14 @@ def set_claim(atom_id):
     else:
         raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
 
+def set_created(timestamp):
+    """
+    Sets the creation timestamp for the SADFace document to the supplied timestamp.
+    This can be useful when moving analysed argument data between formats whilst
+    maintaining original metadata.
+    """
+    sd["metadata"]["core"]["created"] = timestamp
+
 def set_description(text):
     """
     Set a metadata entry for the document that contains a description.
@@ -949,14 +957,6 @@ def update():
     Updates the last edited timestamp for the SADFace doc to now
     """
     sd["metadata"]["core"]["edited"] = now()
-
-def update_created(timestamp):
-    """
-    Updates the creation timestamp for the SADFace document to the supplied timestamp.
-    This can be useful when moving analysed argument data between formats whilst
-    maintaining original metadata.
-    """
-    sd["metadata"]["core"]["created"] = timestamp
 
 def update_id(id):
     """
