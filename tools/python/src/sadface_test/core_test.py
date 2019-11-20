@@ -122,6 +122,23 @@ class TestCore(unittest.TestCase):
         retrieved_id = sf.get_atom_id(text)
         self.assertEqual(retrieved_id, atom_id)
 
+    def test_default_get_atom_text(self):
+        """
+        TESTS: sadface.get_atom_text()
+        """
+        sf.init()
+
+        # Check behaviour when no atom to match against
+        self.assertEqual(sf.get_atom_text("unknown-id"), None)
+
+        # Add an atom, retrieve it by text content, and compare
+        text = "DAKA DAKA"
+        atom = sf.add_atom(text)
+        atom_id = atom.get("id")
+        retrieved_text = sf.get_atom_text(atom_id)
+        self.assertEqual(retrieved_text, text)
+
+
     def test_default_get_claim(self):
         """
         Tests: sadface.get_claim() with default values after init
