@@ -476,6 +476,17 @@ class TestCore(unittest.TestCase):
         out = sf.sd
         self.assertEqual(out, expected)
 
+    def test_set_atom_text(self):
+        """
+        TESTS: sadface.set_atom_text()
+        """
+        sf.init()
+
+        atom = sf.add_atom("DAKA DAKA")
+        atom_id = atom.get("id")
+        sf.set_atom_text(atom_id, "MORE DAKA")
+        self.assertEqual(sf.get_atom_text(atom_id),"MORE DAKA")
+
     def test_set_claim(self):
         """
         TESTS: sadface.set_claim()
