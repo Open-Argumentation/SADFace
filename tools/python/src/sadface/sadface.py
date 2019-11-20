@@ -967,15 +967,9 @@ def set_id(id):
     """
     sd["id"] = id
 
-def update():
+def set_scheme(scheme_id, scheme_name):
     """
-    Updates the last edited timestamp for the SADFace doc to now
-    """
-    sd["metadata"]["core"]["edited"] = now()
-
-def update_scheme(scheme_id, scheme_name):
-    """
-    Given an ID for an existing scheme node, update the name associated with it and return the scheme node.
+    Given an ID for an existing scheme node, set the name associated with it and return the scheme node.
     
     Returns: Updated scheme dict
     """
@@ -984,5 +978,11 @@ def update_scheme(scheme_id, scheme_name):
         scheme["name"] = scheme_name
         return scheme
     else:
-        raise Exception("Could not update the name of scheme: "+scheme_id)
+        raise Exception("Could not set the name of scheme: "+scheme_id)
+
+def update():
+    """
+    Updates the last edited timestamp for the SADFace doc to now
+    """
+    sd["metadata"]["core"]["edited"] = now()
 
