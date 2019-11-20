@@ -562,6 +562,16 @@ def get_atom_id(text):
         if text == node.get("text"):
             return node["id"]
 
+def get_atom_text(atom_id):
+    """
+    Retrieve the atom dict identified by the supplied atom ID
+
+    Returns: An atom dict
+    """
+    for node in sd["nodes"]:
+        if atom_id == node["id"]:
+            return node["text"]
+
 def get_claim():
     """
     Retrieve the claim metadata entry from the document
