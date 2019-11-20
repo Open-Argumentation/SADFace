@@ -542,6 +542,12 @@ def export_json():
     """
     return json.dumps(sd)
 
+def get_analyst():
+    """
+    Retrieve the name of the argument analyst in the SADFace doc
+    """
+    return sd["metadata"]["core"]["analyst_name"]
+
 def get_atom(atom_id):
     """
     Retrieve the atom dict identified by the supplied atom ID
