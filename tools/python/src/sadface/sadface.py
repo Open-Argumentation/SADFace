@@ -579,6 +579,18 @@ def get_connections(node_id):
             conn.append(edge)
     return conn
 
+def get_document_id():
+    """
+    Retrieve the SADFace document's ID
+    """
+    return sd["id"]
+
+def get_description():
+    """
+    Retrieve the description metadata entry from the document
+    """
+    return sd["metadata"].get("core").get("description")
+
 def get_edge(edge_id):
     """
     Retrieve the edge dict identified by the supplied edge ID
@@ -637,23 +649,11 @@ def get_source(atom_id, resource_id):
         if resource_id == source["resource_id"]:
             return atom, source
             
-def get_document_id():
-    """
-    Retrieve the SADFace document's ID
-    """
-    return sd["id"]
-
 def get_title():
     """
     Retrieve the title metadata entry from the document
     """
     return sd["metadata"].get("core").get("title")
-
-def get_description():
-    """
-    Retrieve the description metadata entry from the document
-    """
-    return sd["metadata"].get("core").get("description")
 
 def get_version():
     """
