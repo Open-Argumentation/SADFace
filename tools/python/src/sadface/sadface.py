@@ -896,6 +896,14 @@ def save(filename=None, filetype="json"):
         with open(d+f, 'w') as outfile:
             json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
 
+def set_title(text):
+    """
+    Set a metadata entry for the document that contains a title. This is a
+    useful but non-essential addendum to the base sadface document when
+    building systems that make use of sadface.
+    """
+    sd["metadata"]["core"]["title"] = text
+
 def set_claim(atom_id):
     """
     Enables a given atom to be nominated as the claim for the argument captured
@@ -914,24 +922,15 @@ def set_description(text):
     """
     sd["metadata"]["core"]["description"] = text
 
-
-def set_title(text):
-    """
-    Set a metadata entry for the document that contains a title. This is a
-    useful but non-essential addendum to the base sadface document when
-    building systems that make use of sadface.
-    """
-    sd["metadata"]["core"]["title"] = text
-
 def update():
     """
     Updates the last edited timestamp for the SADFace doc to now
     """
     sd["metadata"]["core"]["edited"] = now()
 
-def update_analyst(analyst):
+def set_analyst(analyst):
     """
-    Updates the name of the argument analyst in the SADFace doc to the supplied name
+    sets the name of the argument analyst in the SADFace doc to the supplied name
     """
     sd["metadata"]["core"]["analyst_name"] = analyst
 
