@@ -244,6 +244,18 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
+    def test_get_resource(self):
+        """
+        TESTS: sadface.get_resource(resource_id)
+        """
+        sf.init()
+        new_resource = sf.add_resource("DAKA DAKA")
+        new_resource_id = new_resource.get("id")
+        
+        retrieved_resource = sf.get_resource(new_resource_id)
+        self.assertEqual(retrieved_resource, new_resource)
+        
+
     def test_get_scheme(self):
         """
         TESTS: sadface.get_scheme() after a scheme has been added
