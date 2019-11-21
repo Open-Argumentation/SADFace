@@ -17,8 +17,6 @@ class TestCore(unittest.TestCase):
     def test_add_resource(self):
         """
         TESTS: sadface.add_resource(content)
-
-        "content":content, "type":"text", "metadata":{ "core": {}}
         """
         sf.init()
         new_resource = sf.add_resource("DAKA DAKA")
