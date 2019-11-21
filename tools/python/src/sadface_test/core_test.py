@@ -24,6 +24,15 @@ class TestCore(unittest.TestCase):
         new_resource_type = new_resource.get("type")
         
         self.assertTrue(new_resource.get("id"))
+        out = new_resource.get("id")
+        result = False
+        try:
+            if UUID(out, version=4):
+                result = True
+        except:
+            pass
+        self.assertTrue(result)
+
         self.assertTrue(new_resource.get("metadata"))
         self.assertTrue(type(new_resource.get("metadata")) is dict)
 
