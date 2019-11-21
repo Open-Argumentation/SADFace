@@ -14,6 +14,28 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
+    def test_add_resource(self):
+        """
+        TESTS: sadface.add_resource(content)
+
+        "content":content, "type":"text", "metadata":{ "core": {}}
+        """
+        sf.init()
+        new_resource = sf.add_resource("DAKA DAKA")
+        new_resource_content = new_resource.get("content")
+        new_resource_type = new_resource.get("type")
+        
+        self.assertTrue(new_resource.get("id"))
+        self.assertTrue(new_resource.get("metadata"))
+        self.assertTrue(type(new_resource.get("metadata")) is dict)
+
+        expected = {"core"}
+        self.assertEquals(set(expected), set(new_resource.get("metadata")))
+
+
+        self.assertEqual(new_resource_content, "DAKA DAKA")
+        self.assertEqual(new_resource_type, "text")
+
     def test_default_add_atom(self):
         """
         Tests: sadface.add_atom()
