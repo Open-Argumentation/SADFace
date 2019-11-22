@@ -643,6 +643,18 @@ class TestCore(unittest.TestCase):
         expected = d
         self.assertEqual(out, expected)
 
+    def test_set_edited(self):
+        """
+        TESTS: sadface.set_edited(timestamp)
+        """
+        sf.init()
+
+        # TEST 1: Set edited timestamp then retrieve & compare
+        timestamp = sf.now()
+        sf.set_edited(timestamp)
+        retrieved_timestamp = sf.get_edited()
+        self.assertEqual(timestamp, retrieved_timestamp)
+
     def test_set_title(self):
         """
         Tests: sadface.get_title() & set_title
