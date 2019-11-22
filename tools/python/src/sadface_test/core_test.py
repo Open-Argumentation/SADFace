@@ -43,6 +43,22 @@ class TestCore(unittest.TestCase):
         self.assertEqual(new_resource_content, "DAKA DAKA")
         self.assertEqual(new_resource_type, "text")
 
+    def test_contains_atom(self):
+        """
+        TESTS: sadface.contains_atom(atom_text)
+        """
+        sf.init()
+
+        # Test Retrieving atom that doesn't exist
+        self.assertEqual(None, sf.contains_atom("DAKA DAKA"))
+
+        # Add new atom then test retrieving by text
+        text = "DAKA DAKA"
+        atom = sf.add_atom(text)
+        atom_id =  sf.contains_atom(text)
+        retrieved_atom = sf.get_atom(atom_id)
+        self.assertEqual(atom, retrieved_atom)
+
     def test_default_add_atom(self):
         """
         Tests: sadface.add_atom()
