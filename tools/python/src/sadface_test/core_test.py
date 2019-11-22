@@ -607,6 +607,17 @@ class TestCore(unittest.TestCase):
         sf.set_claim(atom_id)
         self.assertEqual(sf.get_claim(), atom_id)
 
+    def test_set_created(self):
+        """
+        TESTS: sadface.set_analyst(analyst_name)
+        """
+        sf.init()
+
+        # TEST 1: Set created timestamp then retrieve & compare
+        timestamp = sf.now()
+        sf.set_created(timestamp)
+        retrieved_timestamp = sf.get_created()
+        self.assertEqual(timestamp, retrieved_timestamp)
 
     def test_set_description(self):
         """
