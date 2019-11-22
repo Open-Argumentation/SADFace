@@ -613,6 +613,12 @@ def get_description():
     """
     return sd["metadata"].get("core").get("description")
 
+def get_edited():
+    """
+    Retrieve the last edited timestamp from the sadface document
+    """
+    return sd["metadata"].get("core").get("edited")
+
 def get_edge(edge_id):
     """
     Retrieve the edge dict identified by the supplied edge ID
