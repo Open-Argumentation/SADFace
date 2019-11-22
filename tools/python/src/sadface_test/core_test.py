@@ -289,6 +289,16 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
+    def test_get_created(self):
+        """
+        Tests: sadface.get_created()
+        """
+        sf.init()
+
+        # Check that timestamp for creation time is a string
+        timestamp = sf.get_created()
+        self.assertEqual(True, isinstance(timestamp,str))
+
     def test_get_resource(self):
         """
         TESTS: sadface.get_resource(resource_id)
