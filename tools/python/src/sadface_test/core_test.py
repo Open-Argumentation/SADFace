@@ -559,6 +559,21 @@ class TestCore(unittest.TestCase):
         out = sf.sd
         self.assertEqual(out, expected)
 
+    def test_set_analyst(self):
+        """
+        TESTS: sadface.set_analyst(analyst_name)
+        """
+        sf.init()
+
+        # TEST 1: Default analyst
+        self.assertEqual(sf.get_analyst(), "A User")
+
+        # TEST 2: Set user then retrieve & compare
+        new_user = "Known User"
+        sf.set_analyst(new_user)
+        retrieved_user = sf.get_analyst()
+        self.assertEqual(new_user, retrieved_user)
+
     def test_set_atom_text(self):
         """
         TESTS: sadface.set_atom_text()
