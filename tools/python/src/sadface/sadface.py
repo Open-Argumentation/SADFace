@@ -595,6 +595,12 @@ def get_connections(node_id):
             conn.append(edge)
     return conn
 
+def get_created():
+    """
+    Retrieve the claim metadata entry from the document
+    """
+    return sd["metadata"].get("core").get("created")
+
 def get_document_id():
     """
     Retrieve the SADFace document's ID
