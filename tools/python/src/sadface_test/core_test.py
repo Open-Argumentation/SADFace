@@ -299,6 +299,16 @@ class TestCore(unittest.TestCase):
         timestamp = sf.get_created()
         self.assertEqual(True, isinstance(timestamp,str))
 
+    def test_get_edited(self):
+        """
+        Tests: sadface.get_edited()
+        """
+        sf.init()
+
+        # Check that timestamp for edited time is a string
+        timestamp = sf.get_edited()
+        self.assertEqual(True, isinstance(timestamp,str))
+
     def test_get_resource(self):
         """
         TESTS: sadface.get_resource(resource_id)
