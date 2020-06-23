@@ -341,7 +341,22 @@ class TestCore(unittest.TestCase):
     def test_delete_resource(self):
         """
         """
-        pass
+        sf.init()
+
+        # Remove non-existing resource
+        with self.assertRaises(ValueError):
+            sf.delete_resource("FAKE_ID")
+
+        # Remove existing resource
+        r = sf.add_resource("NEW RESOURCE")
+        retrieved = sf.get_resource(r.get("id"))
+        self.assertEqual(r, retrieved)
+
+        sf.delete_resource(r.get("id"))
+
+        retrieved = sf.get_resource(r.get("id"))
+        self.assertEqual(None, retrieved)
+
 
     def test_delete_scheme(self):
         """
