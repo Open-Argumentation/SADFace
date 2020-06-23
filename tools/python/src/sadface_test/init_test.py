@@ -11,7 +11,16 @@ class TestInitWithConfig(unittest.TestCase):
 
     def tearDown(self):
         sf.reset()
-    
+
+    def test_config_load(self):
+        """
+        TESTS: sadface.config.load()
+        """
+        with self.assertRaises(Exception) as context:
+            sf.config.load()
+            
+        self.assertTrue("Tried to load config file but location is set to None" in str(context.exception))
+
     def test_init_with_config(self):
         """
         Tests: sadface.init() 
