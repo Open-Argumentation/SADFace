@@ -263,8 +263,38 @@ class TestCore(unittest.TestCase):
 
     def test_contains_atom(self):
         """
+        TESTS: sadface.contains_atom(atom_text)
         """
-        pass
+        sf.init()
+
+        # Test Retrieving atom that doesn't exist
+        self.assertEqual(None, sf.contains_atom("DAKA DAKA"))
+
+        # Add new atom then test retrieving by text
+        text = "DAKA DAKA"
+        atom = sf.add_atom(text)
+        atom_id =  sf.contains_atom(text)
+        retrieved_atom = sf.get_atom(atom_id)
+        self.assertEqual(atom, retrieved_atom)
+
+    def test_delete_atom(self):
+        """
+        TESTS: sadface.delete_atom(atom_id)
+        """
+        sf.init()
+
+        # Remove non-existing atom
+        with self.assertRaises(ValueError):
+            sf.delete_atom("TESTID")
+
+        # Remove known existing atom
+        atom = sf.add_atom("TESTATOM")
+        retrieved = sf.get_atom(atom.get("id"))
+        self.assertEqual(atom, retrieved)
+        sf.delete_atom(atom.get("id"))
+        retrieved = sf.get_atom(atom.get("id"))
+        self.assertEqual(None, retrieved)
+
     def test_delete_edge(self):
         """
         """
