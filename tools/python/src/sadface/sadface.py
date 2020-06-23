@@ -588,6 +588,29 @@ def get_atom_id(text):
         if text == node.get("text"):
             return node["id"]
 
+def get_atom_metadata(atom_id, namespace=None, key=None):
+    """
+    Retrieve an atom's metadata. Results depend upon the specificity of the request
+    which must include atom_id.
+
+    If atom_id only is provided then all metadata assocaited with the atom is returned
+    If atom_id + namespace is provided then only the specified namespace is returned
+    If atom_id + namespace + a key is provided then the value associated with that key is returned
+    Else nothing is returned
+
+    Returns: A metadata dict
+    """
+    atom = get_atom(atom_id)
+    if atom is not None:
+        if namespace is None:
+            return atom.get("metadata")
+        else:
+            if key is None:
+                return atom.get("metadata").get(namespace)
+            else:
+                return atom.get("metadata").get(namespace).get(key)
+
+
 def get_atom_text(atom_id):
     """
     Retrieve the atom dict identified by the supplied atom ID
@@ -649,6 +672,13 @@ def get_edge(edge_id):
         if edge_id == edge["id"]:
             return edge
 
+def get_global_metadata():
+    """
+
+    """
+    pass
+
+
 def get_node(node_id):
     """
     Given a node's ID but no indication of node type, return the node if 
@@ -675,6 +705,13 @@ def get_resource(resource_id):
     for resource in sd["resources"]:
         if resource_id == resource["id"]:
             return resource
+
+def get_resource_metadata():
+    """
+
+    """
+    pass
+
 
 def get_scheme(scheme_id):
     """
