@@ -212,15 +212,26 @@ def add_atom(text):
     
     return atom
 
-def add_atom_metadata(atom_id, key, value):
+def add_atom_metadata(atom_id, namespace, key=None, value=None):
     """
-    Add metadata, a key:value pair to the atom dict identified
-    by the supplied atom ID.
+    Add metadata, a key:value pair, to the atom dict identified
+    by the supplied atom ID and metadata namespace.
+
+    Note that "core" should be reserved for sadface default metadata only
+
+    Additional namespaces can be any string but should normally follow
+    the reversed domain name approach to provide some level of uniqueness
+    and avoid unnecessary clashes
     """
     for node in sd["nodes"]:
         if "atom" == node["type"]:
             if atom_id == node["id"]:
-                node["metadata"][key] = value
+                if node["metadata"].get(namespace) is None:
+                    node["metadata"][namespace] = {}
+                    node["metadata"][namespace][key] = value
+                else:
+                    node["metadata"][namespace][key] = value
+                    
 
 def add_notes(text):
     """
