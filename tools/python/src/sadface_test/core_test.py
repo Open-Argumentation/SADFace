@@ -373,23 +373,6 @@ class TestCore(unittest.TestCase):
         retrieved = sf.get_scheme(s.get("id"))
         self.assertEqual(s, retrieved)
 
-        
-    def test_export_cytoscape(self):
-        """
-        """
-        pass
-
-    def test_export_dot(self):
-        """
-        """
-        pass
-
-    def test_export_json(self):
-        """
-        """
-        pass
-
-
     def test_get_analyst(self):
         """
         TESTS: sadface.get_analyst()
@@ -619,12 +602,6 @@ class TestCore(unittest.TestCase):
         expected = "0.2"
         self.assertEqual(out, expected)
 
-    def test_import_json(self):
-        """
-        """
-        pass
-
-
     def test_list_arguments(self):
         """
         Tests: sadface.get_arguments() with default values after init
@@ -660,11 +637,6 @@ class TestCore(unittest.TestCase):
         out = sf.list_schemes()
         expected = []
         self.assertEqual(out, expected)
-
-    def test_load_from_file(self):
-        """
-        """
-        pass
 
     def test_get_created(self):
         """
@@ -930,16 +902,6 @@ class TestCore(unittest.TestCase):
         
         self.assertTrue(type(current) is datetime.datetime)
 
-    def test_prettyprint(self):
-        """
-        """
-        pass
-
-    def test_print_doc(self):
-        """
-        """
-        pass
-
     def test_reset(self):
         """
         Tests: sadface.reset()
@@ -1060,16 +1022,18 @@ class TestCore(unittest.TestCase):
 
     def test_set_id(self):
         """
+        TESTS: sadface.set_id(id)
         """
-        pass
+        sf.init()
+        current_id = sf.get_document_id()
+        self.assertNotEqual(None, current_id)
+
+        test_id = "1234567890abcdefgh"
+        sf.set_id(test_id)
+        current_id = sf.get_document_id()
+        self.assertEqual(test_id, current_id)
 
     def test_set_scheme(self):
-        """
-        """
-        pass
-
-
-    def test_update(self):
         """
         """
         pass
