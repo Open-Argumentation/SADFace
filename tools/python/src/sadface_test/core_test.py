@@ -43,6 +43,38 @@ class TestCore(unittest.TestCase):
         self.assertEqual(new_resource_content, "DAKA DAKA")
         self.assertEqual(new_resource_type, "text")
 
+    def test_add_resource_metadata(self):
+        """
+        TESTS: sadface.add_resource_metadata()
+        """
+        sf.init()
+
+         # Add a resource
+        resource_text = "test resource"
+        resource = sf.add_resource(resource_text)
+        resource_id = resource.get("id")
+
+        # Check resource metadata is empty
+        resource = sf.get_resource(resource_id)
+        self.assertEqual(resource_id, resource.get("id"))
+        meta = resource.get("metadata").get("core")
+        self.assertEqual(0, len(meta))
+
+        # add metadata to core namespace
+        sf.add_resource_metadata(resource_id, "core", "KEY1", "VALUE1")
+        resource = sf.get_resource(resource_id)
+        meta = resource.get("metadata").get("core")
+        self.assertNotEqual(0, len(meta))
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
+        # add metadata to a new namespace
+        sf.add_resource_metadata(resource_id, "META1", "KEY1", "VALUE1")
+        resource = sf.get_resource(resource_id)
+        meta = resource.get("metadata").get("META1")
+        self.assertNotEqual(0, len(meta))
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
+
     def test_contains_atom(self):
         """
         TESTS: sadface.contains_atom(atom_text)
