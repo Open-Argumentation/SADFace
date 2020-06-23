@@ -359,8 +359,9 @@ def delete_source(atom_id, resource_id):
 
     """
     source = get_source(atom_id, resource_id)
-    atom = get_atom(atom_id)
-    atom["sources"].remove(source)
+    if source is not None:
+        atom = get_atom(atom_id)
+        atom["sources"].remove(source)
 
 def delete_resource(resource_id):
     """
@@ -692,9 +693,11 @@ def get_source(atom_id, resource_id):
     Returns: An source dict
     """
     atom = get_atom(atom_id)
-    for source in atom["sources"]:
-        if resource_id == source["resource_id"]:
-            return source #atom, source
+    if atom is not None:
+        if len(atom["sources"]) > 0:
+            for source in atom["sources"]:
+                if resource_id == source["resource_id"]:
+                    return source
             
 def get_title():
     """
