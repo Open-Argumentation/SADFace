@@ -22,7 +22,7 @@ arg2 = sf.add_support(con_text=None, prem_text=prem2, con_id=t1, prem_id=None)
 
 prem3 = "YOLO"
 arg3 = sf.add_conflict(arg_id=t1, conflict_text=prem3)
-print sf.prettyprint()
+print(sf.prettyprint())
 
 
 dot = sf.export_dot()#trad=False)    # Uncomment to use the brewer colourscheme
