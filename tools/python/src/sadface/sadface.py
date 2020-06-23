@@ -261,14 +261,18 @@ def add_resource(content):
     sd["resources"].append(res)
     return res
 
-def add_resource_metadata(resource_id, key, value):
+def add_resource_metadata(resource_id, namespace, key=None, value=None):
     """
     Add metadata, a key:value pair to the resource dict identified
     by the supplied atom ID.    
     """
     for res in sd["resources"]:
         if res["id"] == resource_id:
-            res["metadata"][key] = value
+            if res["metadata"].get(namespace) is None:
+                res["metadata"][namespace] = {}
+                res["metadata"][namespace][key] = value
+            else:
+                res["metadata"][namespace][key] = value
 
 def add_scheme(name):
     """
