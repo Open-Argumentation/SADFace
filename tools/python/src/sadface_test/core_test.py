@@ -363,6 +363,15 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
+    def test_list_resources(self):
+        """
+        Tests: sadface.list_resources() 
+        """
+        sf.init()
+        out = sf.list_resources()
+        expected = []
+        self.assertEqual(out, expected)
+
     def test_default_list_schemes(self):
         """
         Tests: sadface.get_arguments() with default values after init
