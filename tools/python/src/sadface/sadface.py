@@ -721,12 +721,27 @@ def get_resource(resource_id):
         if resource_id == resource["id"]:
             return resource
 
-def get_resource_metadata():
+def get_resource_metadata(resource_id, namespace=None, key=None):
     """
+    Retrieve a resource's metadata. Results depend upon the specificity of the request
+    which must include a resource_id.
 
+    If resource_id only is provided then all metadata assocaited with the resource is returned
+    If reource_id + namespace is provided then only the specified namespace is returned
+    If resource_id + namespace + a key is provided then the value associated with that key is returned
+    Else nothing is returned
+
+    Returns: A metadata dict
     """
-    pass
-
+    resource = get_resource(resource_id)
+    if resource is not None:
+        if namespace is None:
+            return resource.get("metadata")
+        else:
+            if key is None:
+                return resource.get("metadata").get(namespace)
+            else:
+                return resource.get("metadata").get(namespace).get(key)
 
 def get_scheme(scheme_id):
     """
