@@ -354,6 +354,38 @@ class TestCore(unittest.TestCase):
         result = sf.get_node("invalid-uuid")
         self.assertEqual(result, None)
 
+    def test_get_source(self):
+        """
+        TESTS: sadface.get_source()
+        """
+        sf.init()
+
+        # Add an atom
+        text = "DAKA DAKA"
+        atom = sf.add_atom(text)
+        atom_id =  sf.contains_atom(text)
+        
+         # Add a resource
+        resource_text = "test resource"
+        resource = sf.add_resource(resource_text)
+        resource_id = resource.get("id")
+
+        s = sf.get_source(atom_id, resource_id)
+        self.assertEqual(s, None)
+
+
+        # Add source to the atom, referencing the resource
+        offset = 5
+        length = len(resource_text)
+        sf.add_source(atom_id, resource_id, resource_text, offset, length)
+
+        # Now retrieve the source and test it
+        s = sf.get_source(atom_id, resource_id)
+        self.assertEqual(s.get("resource_id"), resource_id)
+        self.assertEqual(s.get("text"), resource_text)
+        self.assertEqual(s.get("offset"), offset)
+        self.assertEqual(s.get("length"), length)
+
     def test_default_get_title(self):
         """
         Tests: sadface.get_title() with defaults values
