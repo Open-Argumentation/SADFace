@@ -37,7 +37,7 @@ class TestCore(unittest.TestCase):
         self.assertTrue(type(new_resource.get("metadata")) is dict)
 
         expected = {"core"}
-        self.assertEquals(set(expected), set(new_resource.get("metadata")))
+        self.assertEqual(set(expected), set(new_resource.get("metadata")))
 
 
         self.assertEqual(new_resource_content, "DAKA DAKA")
