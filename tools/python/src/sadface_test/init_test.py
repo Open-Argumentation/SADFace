@@ -1,3 +1,4 @@
+import configparser
 import json
 import os
 import unittest
@@ -16,10 +17,29 @@ class TestInitWithConfig(unittest.TestCase):
         """
         TESTS: sadface.config.load()
         """
+
+        # No specified configuration file. location is None
         with self.assertRaises(Exception) as context:
             sf.config.load()
             
         self.assertTrue("Tried to load config file but location is set to None" in str(context.exception))
+
+        # With bad configuration file
+        sf.config.set_location("src/sadface/aml.py")
+        with self.assertRaises(SystemExit):
+            sf.config.load()
+        
+        # With good configuration file
+        sf.config.set_location("etc/test.cfg")
+        sf.config.load()
+        sf.init()
+        out = sf.sd
+        out['metadata']['core']['created'] = ""
+        out['metadata']['core']['edited'] = ""
+        out['metadata']['core']['id'] = ""
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.2" } }, "nodes": [], "resources": []}')
+        self.assertEqual(out, expected)
+        
 
     def test_init_with_config(self):
         """
