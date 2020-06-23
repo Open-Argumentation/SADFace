@@ -51,6 +51,18 @@ class TestInitWithConfig(unittest.TestCase):
         sf.config.reset()
         self.assertEqual(current, sf.config.current)
         self.assertEqual(location, sf.config.location)
+
+    def test_config_setlocation(self):
+        """
+        TESTS: sadface.config.set_location()
+        """
+        location = None
+        self.assertEqual(location, sf.config.location)
+
+        new_location = "src/sadface/sadface.py"
+        sf.config.set_location(new_location)
+        self.assertNotEqual(location, sf.config.location)
+        self.assertEqual(new_location, sf.config.location)
         
 
     def test_init_with_config(self):
