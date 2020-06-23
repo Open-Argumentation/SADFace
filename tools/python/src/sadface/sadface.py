@@ -358,8 +358,9 @@ def delete_source(atom_id, resource_id):
     supplied atom ID & resource ID respectively
 
     """
-    atom, resource = get_source(atom_id, resource_id)
-    atom["sources"].remove(resource)
+    source = get_source(atom_id, resource_id)
+    atom = get_atom(atom_id)
+    atom["sources"].remove(source)
 
 def delete_resource(resource_id):
     """
@@ -693,7 +694,7 @@ def get_source(atom_id, resource_id):
     atom = get_atom(atom_id)
     for source in atom["sources"]:
         if resource_id == source["resource_id"]:
-            return atom, source
+            return source #atom, source
             
 def get_title():
     """
