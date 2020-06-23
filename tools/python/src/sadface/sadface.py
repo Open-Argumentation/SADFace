@@ -605,7 +605,7 @@ def get_claim():
 
 def get_connections(node_id):
     """
-    Given a node id, retrieve a list of all edges that connnect it
+    Given a node id, retrieve a list containing all edges that connnect it
     to other nodes
     """
     conn =  []
