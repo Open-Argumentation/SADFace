@@ -340,6 +340,7 @@ class TestCore(unittest.TestCase):
 
     def test_delete_resource(self):
         """
+        TESTS: sadface.delete_resource(esource_id)
         """
         sf.init()
 
@@ -362,7 +363,7 @@ class TestCore(unittest.TestCase):
         """
         """
         pass
-
+        
     def test_export_cytoscape(self):
         """
         """
