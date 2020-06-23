@@ -3,8 +3,8 @@ import json
 import sadface as sf
 
 
-sf.set_config_location("etc/simon.cfg")
-sf.sd = sf.init()
+sf.config.init("etc/test.cfg")
+sf.init()
 
 sf.set_title("very important")
 sf.add_notes("some nonsense about stuff...")
