@@ -141,6 +141,20 @@ class TestCore(unittest.TestCase):
         atom = sf.get_atom(atom_id)
         self.assertEqual(atom.get("text"), atom_text)
 
+    def test_add_edge(self):
+        """
+        TESTS: sadface.add_edge()
+        """
+        sf.init()
+        source = sf.add_atom("source")
+        target = sf.add_atom("target")
+        edge = sf.add_edge(source.get("id"), target.get("id"))
+
+        retrieved_edge = sf.get_edge(edge.get("id"))
+        self.assertEqual(retrieved_edge.get("source_id"), source.get("id"))
+        self.assertEqual(retrieved_edge.get("target_id"), target.get("id"))
+        self.assertEqual(retrieved_edge.get("id"), edge.get("id"))
+
     def test_add_atom_metadata(self):
         """
         TESTS: sadface.add_atom_metadata()
