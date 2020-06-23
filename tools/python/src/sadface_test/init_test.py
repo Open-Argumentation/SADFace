@@ -47,7 +47,7 @@ class TestInit(unittest.TestCase):
         out['metadata']['core']['id'] = ""
 
         expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "user@email.address", "analyst_name": "A User", "created":"", "edited":"", "id":"", "version": "0.2" } }, "nodes": [], "resources": []}')
-#        self.assertEqual(out, expected)
+        self.assertEqual(out, expected)
         
 
 
