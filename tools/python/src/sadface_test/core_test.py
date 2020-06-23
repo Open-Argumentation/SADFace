@@ -318,8 +318,25 @@ class TestCore(unittest.TestCase):
         
     def test_delete_source(self):
         """
+        TESTS: sadface.delete_source(atom_id, resource_id)
         """
-        pass
+        sf.init()
+
+        # setup
+        a = sf.add_atom("ATOM")
+        r = sf.add_resource("hello")
+        s = sf.add_source(a.get("id"), r.get("id"), "TEXT", 10, 4)
+
+        # verify existing source
+        retrieved = sf.get_source(a.get("id"), r.get("id"))
+        self.assertEqual(s.get("id"), retrieved.get("id"))
+        self.assertEqual(s, retrieved)
+
+        # Delete source
+        sf.delete_source(a.get("id"), r.get("id"))
+        retrieved = sf.get_source(a.get("id"), r.get("id"))
+        self.assertEqual(None, retrieved)
+
 
     def test_delete_resource(self):
         """
