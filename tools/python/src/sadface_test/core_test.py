@@ -337,6 +337,21 @@ class TestCore(unittest.TestCase):
             pass
         self.assertTrue(result)
 
+    def test_get_edge(self):
+        """
+        TESTS: sadface.get_edge()
+        """
+        sf.init()
+        source = sf.add_atom("source")
+        target = sf.add_atom("target")
+        edge = sf.add_edge(source.get("id"), target.get("id"))
+
+        retrieved_edge = sf.get_edge(edge.get("id"))
+        self.assertEqual(retrieved_edge.get("source_id"), source.get("id"))
+        self.assertEqual(retrieved_edge.get("target_id"), target.get("id"))
+        self.assertEqual(retrieved_edge.get("id"), edge.get("id"))
+
+
     def test_default_get_notes(self):
         """
         Tests: sadface.get_notes() with default values after init
