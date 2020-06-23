@@ -365,6 +365,20 @@ class TestCore(unittest.TestCase):
         self.assertEqual(retrieved_edge.get("target_id"), target.get("id"))
         self.assertEqual(retrieved_edge.get("id"), edge.get("id"))
 
+    def test_get_node(self):
+        """
+        TESTS: sadface.get_node()
+        """
+        sf.init()
+
+        # Test with a non-existant ID
+        result = sf.get_node("TEST")
+        self.assertEqual(None, result)
+
+        # Test with existin ID that we create
+        atom = sf.add_atom("TESTATOM")
+        result = sf.get_node(atom.get("id"))
+        self.assertEqual(atom.get("id"), result.get("id"))
 
     def test_default_get_notes(self):
         """
