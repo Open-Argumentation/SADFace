@@ -5,6 +5,17 @@ from configparser import ConfigParser
 current = None
 location = None 
 
+def init(location=None):
+    """
+
+    """
+    if(location is not None):
+        set_location(location)
+        load()
+    else:
+        reset()
+
+
 def load():
     """
     Load a configuration file from the stored config_location
