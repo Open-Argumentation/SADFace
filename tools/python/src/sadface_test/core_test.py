@@ -414,8 +414,30 @@ class TestCore(unittest.TestCase):
 
     def test_get_atom_metadata(self):
         """
+        TESTS: sadface.get_atom_metadata(atom_id, namespace=None, key=None)
         """
-        pass
+        sf.init()
+
+        a = sf.add_atom("ATOM")
+        sf.add_atom_metadata(a.get("id"), "TEST_NS", "TEST_KEY", "TEST_VAL")
+        sf.add_atom_metadata(a.get("id"), "TEST_NS", "TEST_KEY2", "TEST_VA2")
+        sf.add_atom_metadata(a.get("id"), "core", "TEST_KEY3", "TEST_VA3")
+
+        expected = {'core': {'TEST_KEY3': 'TEST_VA3'}, 'TEST_NS': {'TEST_KEY': 'TEST_VAL', 'TEST_KEY2': 'TEST_VA2'}}
+        m = sf.get_atom_metadata(a.get("id"))
+        self.assertEqual(expected, m)
+
+        expected = {'TEST_KEY3': 'TEST_VA3'}
+        m = sf.get_atom_metadata(a.get("id"), "core")
+        self.assertEqual(expected, m)
+
+        expected = {'TEST_KEY': 'TEST_VAL', 'TEST_KEY2': 'TEST_VA2'}
+        m = sf.get_atom_metadata(a.get("id"), "TEST_NS")
+        self.assertEqual(expected, m)
+
+        expected = "TEST_VA2"
+        m = sf.get_atom_metadata(a.get("id"), "TEST_NS", "TEST_KEY2")
+        self.assertEqual(expected, m)
 
 
     def test_get_atom_text(self):
