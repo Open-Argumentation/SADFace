@@ -113,6 +113,23 @@ class TestCore(unittest.TestCase):
         self.assertEqual("VALUE1", meta.get("KEY1"))
 
 
+    def test_add_global_metadata(self):
+        """
+        TESTS: sadface.add_global_metadata()
+        """
+        sf.init()
+
+        # add core metadata
+        sf.add_global_metadata("core", "KEY1", "VALUE1")
+        meta = sf.sd.get("metadata").get("core")
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
+        # add metadata to new namespace
+        sf.add_global_metadata("META1", "KEY1", "VALUE1")
+        meta = sf.sd.get("metadata").get("META1")
+        self.assertNotEqual(0, len(meta))
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
 
     def test_default_add_notes(self):
         """
@@ -128,6 +145,7 @@ class TestCore(unittest.TestCase):
         text2 = "MORE DAKA"
         sf.add_notes(text2)
         self.assertEqual(sf.get_notes(), text2)
+
 
     def test_default_add_scheme(self):
         """

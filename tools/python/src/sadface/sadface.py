@@ -232,6 +232,15 @@ def add_atom_metadata(atom_id, namespace, key=None, value=None):
                 else:
                     node["metadata"][namespace][key] = value
                     
+def add_global_metadata(namespace, key, value):
+    """
+    Add metadata, a key:value pair to the base sadface doc
+    """
+    if sd["metadata"].get(namespace) is None:
+        sd["metadata"][namespace] = {}
+        sd["metadata"][namespace][key] = value
+    else:
+        sd["metadata"][namespace][key] = value
 
 def add_notes(text):
     """
@@ -260,16 +269,6 @@ def add_resource_metadata(resource_id, key, value):
     for res in sd["resources"]:
         if res["id"] == resource_id:
             res["metadata"][key] = value
-
-def add_sadface_metadata(namespace, key, value):
-    """
-    Add metadata, a key:value pair to the base sadface doc
-    """
-    if sd["metadata"].get(namespace) is None:
-        sd["metadata"][namespace] = {}
-        sd["metadata"][namespace][key] = value
-    else:
-        sd["metadata"][namespace][key] = value
 
 def add_scheme(name):
     """
