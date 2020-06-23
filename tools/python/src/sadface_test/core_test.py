@@ -531,10 +531,30 @@ class TestCore(unittest.TestCase):
         self.assertEqual(retrieved_edge.get("target_id"), target.get("id"))
         self.assertEqual(retrieved_edge.get("id"), edge.get("id"))
 
-    def test_global_metadata(self):
+    def test_get_global_metadata(self):
         """
+        TESTS: sadface.get_global_metadata(namespace=None, key=None)
         """
-        pass
+        sf.init()
+
+        m = sf.get_global_metadata()
+
+        v = sf.get_version()
+        docid = sf.get_document_id()
+
+        self.assertEqual(v, m.get("core").get("version"))
+        self.assertEqual(docid, m.get("core").get("id") )
+
+        sf.add_global_metadata("TEST_NS", "TEST_KEY", "TEST_VAL")
+        sf.add_global_metadata("TEST_NS", "TEST_KEY2", "TEST_VA2")
+
+        expected = {'TEST_KEY': 'TEST_VAL', 'TEST_KEY2': 'TEST_VA2'}
+        m = sf.get_global_metadata("TEST_NS")
+        self.assertEqual(expected, m)
+
+        expected = "TEST_VA2"
+        m = sf.get_global_metadata("TEST_NS", "TEST_KEY2")
+        self.assertEqual(expected, m)
 
     def test_get_node(self):
         """
