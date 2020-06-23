@@ -74,6 +74,34 @@ class TestCore(unittest.TestCase):
         self.assertNotEqual(0, len(meta))
         self.assertEqual("VALUE1", meta.get("KEY1"))
 
+    def test_add_source(self):
+        """
+        TESTS: sadface.add_source()
+        """
+        sf.init()
+
+        # Add an atom
+        text = "DAKA DAKA"
+        atom = sf.add_atom(text)
+        atom_id =  sf.contains_atom(text)
+        
+         # Add a resource
+        resource_text = "test resource"
+        resource = sf.add_resource(resource_text)
+        resource_id = resource.get("id")
+
+        # Add source to the atom, referencing the resource
+        offset = 5
+        length = len(resource_text)
+        sf.add_source(atom_id, resource_id, resource_text, offset, length)
+
+        # Now retrieve the source and test it
+        a, s = sf.get_source(atom_id, resource_id)
+        self.assertEqual(s.get("resource_id"), resource_id)
+        self.assertEqual(s.get("text"), resource_text)
+        self.assertEqual(s.get("offset"), offset)
+        self.assertEqual(s.get("length"), length)
+
 
     def test_contains_atom(self):
         """
