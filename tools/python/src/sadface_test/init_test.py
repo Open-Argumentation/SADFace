@@ -28,6 +28,19 @@ class TestInitWithConfig(unittest.TestCase):
         expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.2" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
+    def test_combined_config_init_method(self):
+        """
+
+        """
+        sf.config.init("etc/test.cfg")
+        sf.init()
+        out = sf.sd
+        out['metadata']['core']['created'] = ""
+        out['metadata']['core']['edited'] = ""
+        out['metadata']['core']['id'] = ""
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.2" } }, "nodes": [], "resources": []}')
+        self.assertEqual(out, expected)
+
 
 class TestInit(unittest.TestCase):
     def setUp(self):
