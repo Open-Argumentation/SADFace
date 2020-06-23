@@ -297,9 +297,25 @@ class TestCore(unittest.TestCase):
 
     def test_delete_edge(self):
         """
+        TESTS: sadface.delete_edge(edge_id)
         """
-        pass
+        sf.init()
 
+        # Remove non-existing edge
+        with self.assertRaises(ValueError):
+            sf.delete_edge("TESTID")
+        
+        # Remove known existing atom
+        source_atom = sf.add_atom("SOURCE")
+        target_atom = sf.add_atom("TARGET")
+        edge = sf.add_edge(source_atom.get("id"), target_atom.get("id"))
+        retrieved = sf.get_edge(edge.get("id"))
+        self.assertEqual(edge, retrieved)
+
+        sf.delete_edge(edge.get("id"))
+        retrieved = sf.get_edge(edge.get("id"))
+        self.assertEqual(None, retrieved)
+        
     def test_delete_source(self):
         """
         """
