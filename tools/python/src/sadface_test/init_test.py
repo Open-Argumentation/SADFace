@@ -18,7 +18,7 @@ class TestInitWithConfig(unittest.TestCase):
         
         Uses a user specified configuration that is different to the default
         """
-        sf.config.set_location("deploy/etc/simon.cfg")
+        sf.config.set_location("etc/test.cfg")
         sf.config.load()
         sf.init()
         out = sf.sd
