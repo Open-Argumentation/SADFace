@@ -96,7 +96,7 @@ class TestCore(unittest.TestCase):
         sf.add_source(atom_id, resource_id, resource_text, offset, length)
 
         # Now retrieve the source and test it
-        a, s = sf.get_source(atom_id, resource_id)
+        s = sf.get_source(atom_id, resource_id)
         self.assertEqual(s.get("resource_id"), resource_id)
         self.assertEqual(s.get("text"), resource_text)
         self.assertEqual(s.get("offset"), offset)
