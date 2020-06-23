@@ -362,7 +362,17 @@ class TestCore(unittest.TestCase):
     def test_delete_scheme(self):
         """
         """
-        pass
+        sf.init()
+
+        # Remove non-existing scheme
+        with self.assertRaises(ValueError):
+            sf.delete_scheme("FAKE_ID")        
+
+        # Remove existing scheme
+        s = sf.add_scheme("TEST_SCHEME_NAME")
+        retrieved = sf.get_scheme(s.get("id"))
+        self.assertEqual(s, retrieved)
+
         
     def test_export_cytoscape(self):
         """
