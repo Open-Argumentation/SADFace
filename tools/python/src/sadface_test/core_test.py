@@ -327,6 +327,33 @@ class TestCore(unittest.TestCase):
         expected = None
         self.assertEqual(out, expected)
 
+    def test_get_connections(self):
+        """
+        TESTS: sadface.get_connections()
+        """
+        sf.init()
+
+        # Test with a non-existant ID
+        results = sf.get_connections("TESTID")
+        self.assertEqual([], results)
+
+        # Test with existing ID that we create with no connections
+        source_atom = sf.add_atom("SOURCE")
+        results = sf.get_connections(source_atom.get("id"))
+        self.assertEqual([], results)
+
+        # Test with existing ID + known added connections
+        target_atom = sf.add_atom("TARGET")
+        edge = sf.add_edge(source_atom.get("id"), target_atom.get("id"))
+
+        results = sf.get_connections(source_atom.get("id"))
+        self.assertNotEqual([], results)
+        self.assertEqual(len(results), 1)
+        self.assertEqual(edge.get("id"), results[0].get("id"))
+        self.assertEqual(source_atom.get("id"), results[0].get("source_id"))
+        self.assertEqual(target_atom.get("id"), results[0].get("target_id"))
+
+
     def test_default_get_description(self):
         """
         Tests: sadface.get_description() with defaults values
