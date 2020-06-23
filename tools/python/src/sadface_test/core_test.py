@@ -445,9 +445,9 @@ class TestCore(unittest.TestCase):
         self.assertTrue(sd.get("metadata").get("core").get("version"))
         self.assertTrue(type(sd.get("metadata").get("core").get("version")) is str)
 
-        self.assertTrue(sd.get("id"))
-        self.assertTrue(type(sd.get("id")) is str)
-        out = sd.get("id")
+        self.assertTrue(sd.get("metadata").get("core").get("id"))
+        self.assertTrue(type(sd.get("metadata").get("core").get("id")) is str)
+        out = sd.get("metadata").get("core").get("id")
         result = False
         try:
             if UUID(out, version=4):
