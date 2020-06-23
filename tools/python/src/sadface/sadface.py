@@ -261,11 +261,15 @@ def add_resource_metadata(resource_id, key, value):
         if res["id"] == resource_id:
             res["metadata"][key] = value
 
-def add_sadface_metadata(key, value):
+def add_sadface_metadata(namespace, key, value):
     """
     Add metadata, a key:value pair to the base sadface doc
     """
-    sd["metadata"]["core"][key] = value
+    if sd["metadata"].get(namespace) is None:
+        sd["metadata"][namespace] = {}
+        sd["metadata"][namespace][key] = value
+    else:
+        sd["metadata"][namespace][key] = value
 
 def add_scheme(name):
     """
