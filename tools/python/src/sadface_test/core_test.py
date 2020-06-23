@@ -102,24 +102,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(s.get("offset"), offset)
         self.assertEqual(s.get("length"), length)
 
-
-    def test_contains_atom(self):
-        """
-        TESTS: sadface.contains_atom(atom_text)
-        """
-        sf.init()
-
-        # Test Retrieving atom that doesn't exist
-        self.assertEqual(None, sf.contains_atom("DAKA DAKA"))
-
-        # Add new atom then test retrieving by text
-        text = "DAKA DAKA"
-        atom = sf.add_atom(text)
-        atom_id =  sf.contains_atom(text)
-        retrieved_atom = sf.get_atom(atom_id)
-        self.assertEqual(atom, retrieved_atom)
-
-    def test_default_add_atom(self):
+    def test_add_atom(self):
         """
         Tests: sadface.add_atom()
         """
@@ -205,7 +188,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual("VALUE1", meta.get("KEY1"))
 
 
-    def test_default_add_notes(self):
+    def test_add_notes(self):
         """
         Tests: sadface.add_notes()
         """
@@ -221,7 +204,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(sf.get_notes(), text2)
 
 
-    def test_default_add_scheme(self):
+    def test_add_scheme(self):
         """
         TESTS: sadface.add_scheme() wit default values
 
@@ -235,7 +218,7 @@ class TestCore(unittest.TestCase):
         result_id = result.get("id")
         self.assertEqual(result_id, scheme_id)
 
-    def test_default_append_notes(self):
+    def test_append_notes(self):
         """
         TESTS: sadface.append_notes()
         """
@@ -248,7 +231,7 @@ class TestCore(unittest.TestCase):
         sf.append_notes(text2)
         self.assertEqual(sf.get_notes(), text+text2)
 
-    def test_default_clear_notes(self):
+    def test_clear_notes(self):
         """
         Tests: sadface.clear_notes()
         """
@@ -262,7 +245,43 @@ class TestCore(unittest.TestCase):
         sf.clear_notes()
         self.assertEqual(sf.get_notes(), None)
 
-    def test_default_get_analyst(self):
+    def test_contains_atom(self):
+        """
+        TESTS: sadface.contains_atom(atom_text)
+        """
+        sf.init()
+
+        # Test Retrieving atom that doesn't exist
+        self.assertEqual(None, sf.contains_atom("DAKA DAKA"))
+
+        # Add new atom then test retrieving by text
+        text = "DAKA DAKA"
+        atom = sf.add_atom(text)
+        atom_id =  sf.contains_atom(text)
+        retrieved_atom = sf.get_atom(atom_id)
+        self.assertEqual(atom, retrieved_atom)
+
+    def test_delete_atom(self):
+        """
+        """
+
+    def test_delete_atom(self):
+        """
+        """
+
+    def test_delete_atom(self):
+        """
+        """
+
+    def test_delete_atom(self):
+        """
+        """
+
+    def test_delete_atom(self):
+        """
+        """
+
+    def test_get_analyst(self):
         """
         TESTS: sadface.get_analyst()
         """
@@ -271,7 +290,7 @@ class TestCore(unittest.TestCase):
         retrieved_analyst = sf.get_analyst()        
         self.assertEqual(retrieved_analyst, analyst)
 
-    def test_default_get_atom(self):
+    def test_get_atom(self):
         """
         TESTS: sadface.get_atom()
         """
@@ -285,7 +304,7 @@ class TestCore(unittest.TestCase):
         result_id = result.get("id")
         self.assertEqual(result_id, atom_id)
 
-    def test_default_get_atom_id(self):
+    def test_get_atom_id(self):
         """
         TESTS: sadface.get_atom_id()
         """
@@ -301,7 +320,7 @@ class TestCore(unittest.TestCase):
         retrieved_id = sf.get_atom_id(text)
         self.assertEqual(retrieved_id, atom_id)
 
-    def test_default_get_atom_text(self):
+    def test_get_atom_text(self):
         """
         TESTS: sadface.get_atom_text()
         """
@@ -318,7 +337,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(retrieved_text, text)
 
 
-    def test_default_get_claim(self):
+    def test_get_claim(self):
         """
         Tests: sadface.get_claim() with default values after init
         """
@@ -354,7 +373,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(target_atom.get("id"), results[0].get("target_id"))
 
 
-    def test_default_get_description(self):
+    def test_get_description(self):
         """
         Tests: sadface.get_description() with defaults values
         after init
@@ -364,7 +383,7 @@ class TestCore(unittest.TestCase):
         expected = None
         self.assertEqual(out, expected)
 
-    def test_default_get_document_id(self):
+    def test_get_document_id(self):
         """
         Tests: sadface.get_argument_id() with default values after init
         """
@@ -407,7 +426,7 @@ class TestCore(unittest.TestCase):
         result = sf.get_node(atom.get("id"))
         self.assertEqual(atom.get("id"), result.get("id"))
 
-    def test_default_get_notes(self):
+    def test_get_notes(self):
         """
         Tests: sadface.get_notes() with default values after init
         """
@@ -416,7 +435,7 @@ class TestCore(unittest.TestCase):
         expected = None
         self.assertEqual(out, expected)
 
-    def test_default_get_scheme(self):
+    def test_get_scheme(self):
         """
         TESTS: sadface.get_scheme() with default values
         """
@@ -456,7 +475,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(s.get("offset"), offset)
         self.assertEqual(s.get("length"), length)
 
-    def test_default_get_title(self):
+    def test_get_title(self):
         """
         Tests: sadface.get_title() with defaults values
         after init
@@ -466,7 +485,7 @@ class TestCore(unittest.TestCase):
         expected = None
         self.assertEqual(out, expected)
 
-    def test_default_get_version(self):
+    def test_get_version(self):
         """
         Tests: sadface.get_version()
         """
@@ -475,7 +494,7 @@ class TestCore(unittest.TestCase):
         expected = "0.2"
         self.assertEqual(out, expected)
 
-    def test_default_list_arguments(self):
+    def test_list_arguments(self):
         """
         Tests: sadface.get_arguments() with default values after init
         """
@@ -484,7 +503,7 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
-    def test_default_list_atoms(self):
+    def test_list_atoms(self):
         """
         Tests: sadface.list_atoms() with default values after init
         """
@@ -502,7 +521,7 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
-    def test_default_list_schemes(self):
+    def test_list_schemes(self):
         """
         Tests: sadface.get_arguments() with default values after init
         """
