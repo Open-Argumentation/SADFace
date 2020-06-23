@@ -672,11 +672,26 @@ def get_edge(edge_id):
         if edge_id == edge["id"]:
             return edge
 
-def get_global_metadata():
+def get_global_metadata(namespace=None, key=None):
     """
+    Retrieve the document's metadata. Results depend upon the specificity of the request
+    which must include atom_id.
 
+    If neither namespace nor key are provided then all metadata associated with the document is returned
+    If a namespace is provided then only the specified namespace is returned
+    If a namespace + a key is provided then the value associated with that key is returned
+    Else nothing is returned
+
+    Returns: A metadata dict
     """
-    pass
+    if namespace is None:
+        return sd.get("metadata")
+    else:
+        if key is None:
+            return sd.get("metadata").get(namespace)
+        else:
+            return sd.get("metadata").get(namespace).get(key)
+
 
 
 def get_node(node_id):
