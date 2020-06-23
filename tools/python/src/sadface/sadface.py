@@ -1016,7 +1016,7 @@ def set_edited(timestamp):
     """
     sd["metadata"]["core"]["edited"] = timestamp
 
-def set_id(id):
+def set_document_id(id):
     """
     Set the SADFace document ID to match the supplied ID. This can be useful when 
     moving analysed argument data between formats whilst maintaining original metadata.

@@ -1020,16 +1020,16 @@ class TestCore(unittest.TestCase):
         expected = t
         self.assertEqual(out, expected)
 
-    def test_set_id(self):
+    def test_set_document_id(self):
         """
-        TESTS: sadface.set_id(id)
+        TESTS: sadface.set_document_id(id)
         """
         sf.init()
         current_id = sf.get_document_id()
         self.assertNotEqual(None, current_id)
 
         test_id = "1234567890abcdefgh"
-        sf.set_id(test_id)
+        sf.set_document_id(test_id)
         current_id = sf.get_document_id()
         self.assertEqual(test_id, current_id)
 
