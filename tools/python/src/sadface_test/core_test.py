@@ -81,6 +81,39 @@ class TestCore(unittest.TestCase):
         atom = sf.get_atom(atom_id)
         self.assertEqual(atom.get("text"), atom_text)
 
+    def test_add_atom_metadata(self):
+        """
+        TESTS: sadface.add_atom_metadata()
+        """
+        sf.init()
+
+         # Add an atom
+        atom_text = "test atom"
+        atom = sf.add_atom(atom_text)
+        atom_id = atom.get("id")
+
+        # Check atom metadata is empty
+        atom = sf.get_atom(atom_id)
+        self.assertEqual(atom_id, atom.get("id"))
+        meta = atom.get("metadata").get("core")
+        self.assertEqual(0, len(meta))
+
+        # add core metadata
+        sf.add_atom_metadata(atom_id, "core", "KEY1", "VALUE1")
+        atom = sf.get_atom(atom_id)
+        meta = atom.get("metadata").get("core")
+        self.assertNotEqual(0, len(meta))
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
+        # add metadata to new namespace
+        sf.add_atom_metadata(atom_id, "META1", "KEY1", "VALUE1")
+        atom = sf.get_atom(atom_id)
+        meta = atom.get("metadata").get("META1")
+        self.assertNotEqual(0, len(meta))
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
+
+
     def test_default_add_notes(self):
         """
         Tests: sadface.add_notes()
