@@ -766,6 +766,12 @@ def list_arguments():
             schemes.append(node.get("id"))
     return schemes
 
+def list_resources():
+    """
+    Returns a comma separated list of resource IDs
+    """
+    return [ res["id"] for res in sd["resources"] ]
+
 def list_schemes():
     """
     Use to retrieve a list of scheme nodes from the current document.
