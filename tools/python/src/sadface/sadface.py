@@ -1023,7 +1023,7 @@ def set_document_id(id):
     """
     sd["metadata"]["core"]["id"] = id
 
-def set_scheme(scheme_id, scheme_name):
+def set_scheme_name(scheme_id, scheme_name):
     """
     Given an ID for an existing scheme node, set the name associated with it and return the scheme node.
     

@@ -1033,14 +1033,14 @@ class TestCore(unittest.TestCase):
         current_id = sf.get_document_id()
         self.assertEqual(test_id, current_id)
 
-    def test_set_scheme(self):
+    def test_set_scheme_name(self):
         """
         """
         sf.init()
 
         # Test setting non-existent scheme
         with self.assertRaises(Exception) as context:
-            sf.set_scheme("TEST_ID", "TEST_NAME")
+            sf.set_scheme_name("TEST_ID", "TEST_NAME")
         out = str(context.exception)
         expected = 'Could not set the name of scheme: TEST_ID'
         self.assertEqual(out, expected)
@@ -1051,7 +1051,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(s.get("name"), retrieved.get("name"))
 
         new_scheme_name = "NEW_SCHEME_NAME"
-        sf.set_scheme(s.get("id"), new_scheme_name)
+        sf.set_scheme_name(s.get("id"), new_scheme_name)
         retrieved = sf.get_scheme(s.get("id"))
         self.assertEqual(new_scheme_name, retrieved.get("name"))
         
