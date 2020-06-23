@@ -295,7 +295,7 @@ def add_source(atom_id, resource_id, text, offset, length):
 
     Returns: The new source dict
     """
-    source = new_source(resource_id, text, offset, length)
+    source = new_source(resource_id, text, offset)
     for node in sd["nodes"]:
         if "atom" == node["type"]:
             if atom_id == node["id"]:
