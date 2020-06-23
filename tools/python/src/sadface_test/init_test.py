@@ -39,6 +39,18 @@ class TestInitWithConfig(unittest.TestCase):
         out['metadata']['core']['id'] = ""
         expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.2" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
+
+
+    def test_config_reset(self):
+        """
+        TESTS: sadface.config.reset()
+        """
+        current = None
+        location = None
+
+        sf.config.reset()
+        self.assertEqual(current, sf.config.current)
+        self.assertEqual(location, sf.config.location)
         
 
     def test_init_with_config(self):
