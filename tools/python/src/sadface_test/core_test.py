@@ -14,6 +14,22 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
+    def test_add_argument(self):
+        """
+        """
+        pass
+
+    def test_add_conflict(self):
+        """
+        """
+        pass
+
+    def test_add_support(self):
+        """
+        """
+        pass
+
+
     def test_add_resource(self):
         """
         TESTS: sadface.add_resource(content)
@@ -247,39 +263,43 @@ class TestCore(unittest.TestCase):
 
     def test_contains_atom(self):
         """
-        TESTS: sadface.contains_atom(atom_text)
         """
-        sf.init()
+        pass
+    def test_delete_edge(self):
+        """
+        """
+        pass
 
-        # Test Retrieving atom that doesn't exist
-        self.assertEqual(None, sf.contains_atom("DAKA DAKA"))
+    def test_delete_source(self):
+        """
+        """
+        pass
 
-        # Add new atom then test retrieving by text
-        text = "DAKA DAKA"
-        atom = sf.add_atom(text)
-        atom_id =  sf.contains_atom(text)
-        retrieved_atom = sf.get_atom(atom_id)
-        self.assertEqual(atom, retrieved_atom)
+    def test_delete_resource(self):
+        """
+        """
+        pass
 
-    def test_delete_atom(self):
+    def test_delete_scheme(self):
         """
         """
+        pass
 
-    def test_delete_atom(self):
+    def test_export_cytoscape(self):
         """
         """
+        pass
 
-    def test_delete_atom(self):
+    def test_export_dot(self):
         """
         """
+        pass
 
-    def test_delete_atom(self):
+    def test_export_json(self):
         """
         """
+        pass
 
-    def test_delete_atom(self):
-        """
-        """
 
     def test_get_analyst(self):
         """
@@ -319,6 +339,12 @@ class TestCore(unittest.TestCase):
         atom_id = atom.get("id")
         retrieved_id = sf.get_atom_id(text)
         self.assertEqual(retrieved_id, atom_id)
+
+    def test_get_atom_metadata(self):
+        """
+        """
+        pass
+
 
     def test_get_atom_text(self):
         """
@@ -411,6 +437,11 @@ class TestCore(unittest.TestCase):
         self.assertEqual(retrieved_edge.get("target_id"), target.get("id"))
         self.assertEqual(retrieved_edge.get("id"), edge.get("id"))
 
+    def test_global_metadata(self):
+        """
+        """
+        pass
+
     def test_get_node(self):
         """
         TESTS: sadface.get_node()
@@ -434,6 +465,11 @@ class TestCore(unittest.TestCase):
         out = sf.get_notes()
         expected = None
         self.assertEqual(out, expected)
+
+    def test_get_resource_metadata(self):
+        """
+        """
+        pass
 
     def test_get_scheme(self):
         """
@@ -494,6 +530,12 @@ class TestCore(unittest.TestCase):
         expected = "0.2"
         self.assertEqual(out, expected)
 
+    def test_import_json(self):
+        """
+        """
+        pass
+
+
     def test_list_arguments(self):
         """
         Tests: sadface.get_arguments() with default values after init
@@ -529,6 +571,11 @@ class TestCore(unittest.TestCase):
         out = sf.list_schemes()
         expected = []
         self.assertEqual(out, expected)
+
+    def test_load_from_file(self):
+        """
+        """
+        pass
 
     def test_get_created(self):
         """
@@ -794,6 +841,16 @@ class TestCore(unittest.TestCase):
         
         self.assertTrue(type(current) is datetime.datetime)
 
+    def test_prettyprint(self):
+        """
+        """
+        pass
+
+    def test_print_doc(self):
+        """
+        """
+        pass
+
     def test_reset(self):
         """
         Tests: sadface.reset()
@@ -819,6 +876,11 @@ class TestCore(unittest.TestCase):
         expected = {}
         out = sf.sd
         self.assertEqual(out, expected)
+
+    def test_save(self):
+        """
+        """
+        pass
 
     def test_set_analyst(self):
         """
@@ -906,6 +968,29 @@ class TestCore(unittest.TestCase):
         out = sf.get_title()
         expected = t
         self.assertEqual(out, expected)
+
+    def test_set_id(self):
+        """
+        """
+        pass
+
+    def test_set_scheme(self):
+        """
+        """
+        pass
+
+
+    def test_update(self):
+        """
+        """
+        pass
+
+    def test_verify(self):
+        """
+        """
+        pass
+
+
 
 if __name__ == "__main__":
     
