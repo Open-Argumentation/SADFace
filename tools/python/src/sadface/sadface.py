@@ -774,6 +774,28 @@ def get_scheme(scheme_id):
         if scheme_id == node["id"]:
             return node
 
+def get_scheme_metadata(scheme_id, namespace=None, key=None):
+    """
+    Retrieve a scheme's metadata. Results depend upon the specificity of the request
+    which must include a valid scheme_id.
+
+    If scheme_id only is provided then all metadata assocaited with the scheme is returned
+    If scheme_id + namespace is provided then only the specified namespace is returned
+    If scheme_id + namespace + a key is provided then the value associated with that key is returned
+    Else nothing is returned
+
+    Returns: A metadata dict or None
+    """
+    scheme = get_scheme(scheme_id)
+    if scheme is not None:
+        if namespace is None:
+            return scheme.get("metadata")
+        else:
+            if key is None:
+                return scheme.get("metadata").get(namespace)
+            else:
+                return scheme.get("metadata").get(namespace).get(key)
+
 def get_source(atom_id, resource_id):
     """
     Retrieve the source dict identified by the supplied source ID
