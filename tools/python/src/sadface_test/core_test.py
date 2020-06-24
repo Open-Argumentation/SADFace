@@ -234,6 +234,37 @@ class TestCore(unittest.TestCase):
         result_id = result.get("id")
         self.assertEqual(result_id, scheme_id)
 
+    def test_add_scheme_metadata(self):
+        """
+        TESTS: sadface.add_scheme_metadata()
+        """
+        sf.init()
+
+         # Add an scheme
+        scheme_text = "test scheme"
+        scheme = sf.add_scheme(scheme_text)
+        scheme_id = scheme.get("id")
+
+        # Check scheme metadata is empty
+        scheme = sf.get_scheme(scheme_id)
+        self.assertEqual(scheme_id, scheme.get("id"))
+        meta = scheme.get("metadata").get("core")
+        self.assertEqual(0, len(meta))
+
+        # add core metadata
+        sf.add_scheme_metadata(scheme_id, "core", "KEY1", "VALUE1")
+        scheme = sf.get_scheme(scheme_id)
+        meta = scheme.get("metadata").get("core")
+        self.assertNotEqual(0, len(meta))
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
+        # add metadata to new namespace
+        sf.add_scheme_metadata(scheme_id, "META1", "KEY1", "VALUE1")
+        scheme = sf.get_scheme(scheme_id)
+        meta = scheme.get("metadata").get("META1")
+        self.assertNotEqual(0, len(meta))
+        self.assertEqual("VALUE1", meta.get("KEY1"))
+
     def test_append_notes(self):
         """
         TESTS: sadface.append_notes()
