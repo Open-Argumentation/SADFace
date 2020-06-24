@@ -33,8 +33,18 @@ class TestCore(unittest.TestCase):
 
     def test_add_conflict(self):
         """
+        TESTS: add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=None)
         """
-        pass
+        sf.init()
+        a_text = "roses are red"
+        c_text = "roses are white"
+        conflict = sf.add_conflict(arg_text=a_text, conflict_text=c_text)
+
+        self.assertEqual(a_text, conflict.get("argument").get("text"))
+        self.assertEqual(c_text, conflict.get("conflict").get("text"))
+
+        self.assertEqual("conflict", conflict.get("scheme").get("name"))
+
 
     def test_add_support(self):
         """
