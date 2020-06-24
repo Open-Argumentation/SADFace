@@ -48,8 +48,21 @@ class TestCore(unittest.TestCase):
 
     def test_add_support(self):
         """
+        TESTS: add_support(con_text=None, prem_text=None, con_id=None, prem_id=None)
         """
-        pass
+        sf.init()
+        con1 = "You should treasure every moment"
+        prem1 = ["if you are going to die then you should treasure every moment", "You are going to die"]
+        arg1 = sf.add_support(con_text=con1, prem_text=prem1, con_id=None, prem_id=None)
+
+        self.assertEqual(con1, arg1.get("conclusion").get("text"))
+        
+        prem1_atom = sf.get_atom(arg1.get("premises")[0])
+        self.assertEqual(prem1[0], prem1_atom.get("text"))
+
+        prem2_atom = sf.get_atom(arg1.get("premises")[1])
+        self.assertEqual(prem1[1], prem2_atom.get("text"))
+
 
     def test_add_resource(self):
         """
