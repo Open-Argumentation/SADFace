@@ -34,24 +34,24 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
     e.g.
 
     {
-	"conclusion": {
-		"id": "329aee40-b34d-4eaa-9e25-9ef3098b4cfa",
-		"type": "atom",
-		"text": "You should treasure every moment",
-		"sources": [],
-		"metadata": {
-			"core": {}
-		}
-	},
-	"scheme": {
-		"id": "f4ae4161-f18b-49f7-9213-d81c2084cedd",
-		"type": "scheme",
-		"name": "inference",
-		"metadata": {
-			"core": {}
-		}
-	},
-	"premises": ["6b4cbe35-4e11-4126-ab25-97c9ac651647", "4cebed0d-3869-4a20-958c-9e164a019573"]
+        "conclusion": {
+            "id": "329aee40-b34d-4eaa-9e25-9ef3098b4cfa",
+            "type": "atom",
+            "text": "You should treasure every moment",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        },
+        "scheme": {
+            "id": "f4ae4161-f18b-49f7-9213-d81c2084cedd",
+            "type": "scheme",
+            "name": "inference",
+            "metadata": {
+                "core": {}
+            }
+        },
+        "premises": ["6b4cbe35-4e11-4126-ab25-97c9ac651647", "4cebed0d-3869-4a20-958c-9e164a019573"]
     }
 
     Returns: a dict
