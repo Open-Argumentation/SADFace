@@ -111,6 +111,40 @@ def add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=Non
     }
     (where the scheme just happens to depict a conflict)
 
+    
+    For example:
+
+    {
+        "argument": {
+            "id": "6399c86d-3c07-4223-ae91-bb989b6dc21e",
+            "type": "atom",
+            "text": "You are going to die",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        },
+        "scheme": {
+            "id": "7b4b7d23-7386-470e-ad48-56a655812218",
+            "type": "scheme",
+            "name": "conflict",
+            "metadata": {
+                "core": {}
+            }
+        },
+        "conflict": {
+            "id": "777a21cf-6c60-44cc-9b3f-bfe1f2e342d6",
+            "type": "atom",
+            "text": "YOLO",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        }
+    }
+
+
+
     Returns: a dict
     """
     if((arg_text is not None or arg_id is not None) and (conflict_text is not None or conflict_id is not None)):
