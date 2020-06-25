@@ -149,7 +149,7 @@ def check_resources_block(doc):
 
 
 
-def verify(incoming=None):
+def verify(incoming=None, as_string=False):
     """
     Verifies that the supplied SADFace document is well formed.
 
@@ -164,7 +164,9 @@ def verify(incoming=None):
         3. No additional keys are present
         4. All values, where appropriate, are within defined parameters
 
-    Returns: a list of strings. Each string describes a problem with the supplied input
+    Returns: a pair (status, problems) such that:
+        status is True if their are no problems and False otherwise
+        problems is either a list of strings where each string describes a problem with the supplied input or a single string in which the members of the list have been joined (useful for convenient output to the user)
     """
     doc = {}
     problems = []
@@ -187,7 +189,13 @@ def verify(incoming=None):
     problems += check_resources_block(doc)
     
 
-    return problems
-
+    if len(problems) > 0 and as_string == False:
+        return True, problems
+    elif len(problems) == 0 and as_string == False:
+        return None, problems
+    elif len(problems) > 0 and as_string == True:
+        return True, ", ".join(problems)
+    else:
+        return False, problems
     
 
