@@ -1,9 +1,24 @@
 #!/usr/bin/python
 
 from configparser import ConfigParser
+import os
 
 current = None
 location = None 
+
+def generate():
+    """
+    Convenience function to create a default SADFace configuration file if one is needed
+    """
+    config = ConfigParser()
+    
+    if not os.path.exists('new.cfg'):
+        config['analyst'] = {'name': 'A User', 'email': 'user@email.address'}
+        config['file'] = {'name': 'data', 'dir': 'deploy/out/'}
+        config['db'] = {'name':'argdb', 'type':'couchdb', 'ip':'127.0.0.1', 'port':'5984', 'protocol':'http'}
+    
+    config.write(open('new.cfg', 'w'))
+
 
 def init(location=None):
     """
