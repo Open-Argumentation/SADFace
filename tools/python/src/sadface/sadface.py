@@ -11,6 +11,7 @@ import uuid
 
 import config
 import db
+import validation
 
 sd = {}
 
@@ -1209,12 +1210,3 @@ def update():
     """
     sd["metadata"]["core"]["edited"] = now()
 
-
-def verify(sf_doc):
-    """
-    Verifies that the supplied SADFace document is well formed by testing that:
-        1. All necessary keys are present
-        2. All supplied keys are permitted, i.e. within the boundaries permitted
-            by the namespacing/metadata infrastructure
-    """
-    pass
