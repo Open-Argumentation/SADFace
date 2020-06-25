@@ -294,10 +294,10 @@ def verify(incoming=None, as_string=False):
     if len(problems) > 0 and as_string == False:
         return True, problems
     elif len(problems) == 0 and as_string == False:
-        return None, problems
+        return False, problems
     elif len(problems) > 0 and as_string == True:
         return True, ", ".join(problems)
     else:
-        return False, problems
+        return False, ", ".join(problems)
     
 
