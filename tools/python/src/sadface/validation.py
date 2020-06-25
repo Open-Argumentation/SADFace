@@ -7,13 +7,16 @@ import sadface
 
 def check_edges_block(doc):
     """
-
+    The edges block is a list of edges within the SADFace document and is a required
+    part of a well formed SADFace document
     """
     problems = []
 
     if doc.get("edges") == None:
         problems.append("No 'edges' block")
     else:
+        if type(doc.get("edges")) is not list:
+            problems.append("Edges block is not a list")
         for edge in doc.get("edges"):
             if type(edge) is not dict:
                 problems.append("Edges block has a member that is not a dict/object")
@@ -51,8 +54,14 @@ def check_edges_block(doc):
                     
     return problems
 
-def check_metadata_block(doc):
+def check_global_metadata_block(doc):
     """
+    The global metadata block is a collection of objects, each of which contains information
+    about the current document. A core collection is a required part of the global metadata
+    block and is reserved for SADFace metadata only. Additional metadata can be stored in
+    user defined metadata blocks that are named uniquely and store key:value pairs.
+
+    Global metadata is a required part of a well formed SADFace document
 
     """
     problems = []
@@ -123,27 +132,120 @@ def check_metadata_block(doc):
 
     return problems
 
+def check_node_type_atom(atom):
+    """
+    Atoms are a specific type of node in a SADFace graph. They have an associated set of data that
+    is required for an Atom to be considered well formed.
+    """
+    problems = []
+
+    if "text" not in atom:
+        problems.append("No 'text' key in Atom Node")
+    else:
+        text = atom.get("text")
+        if type(text) is not str:
+            problems.append("'text' in Atom Node is not a string")
+
+    if "sources" not in atom:
+        problems.append("No 'text' key in Atom Node")
+    else:
+        text = atom.get("text")
+        if type(text) is not str:
+            problems.append("'text' in Atom Node is not a string")
+    
+    return problems
+
+def check_node_type_scheme(scheme):
+    """
+    Schemes are a specific type of node in a SADFace graph. They have an associated set of data that
+    is required for a Scheme to be considered well formed.
+
+    """
+    problems = []
+
+    if "name" not in atom:
+        problems.append("No 'name' key in Scheme Node")
+    else:
+        name = atom.get("name")
+        if type(name) is not str:
+            problems.append("'name' in Atom Node is not a string")
+    
+    return problems
 
 def check_nodes_block(doc):
     """
+    Nodes hold data within a SADFace graph and are connected by Edges. Nodes have a common associated 
+    set of data that is required for them to be considered well formed. Several additional sub-types 
+    of Node exist and may require additional data associated with them.
 
     """
     problems = []
     
     if doc.get("nodes") == None:
         problems.append("No 'nodes' block")
+    else:
+        if type(doc.get("nodes")) is not list:
+            problems.append("Nodes block is not a list")
+        else:
+            for node in doc.get("nodes"):
+                if "id" not in node:
+                    problems.append("Node doesn't contain an 'id' key")
+                else:
+                    node_id = node.get("id")
+                    if type(node_id) is not str:
+                        problems.append("Node 'id' key is not a string")
+                    try:
+                        uuid.UUID(node_id, version=4)
+                    except:
+                        problems.append("'node_id' is not an instance of UUID4"+str(node_id))
+
+                if "type" not in node:
+                    problems.append("Node doesn't contain a 'type' key")
+                else:
+                    type_key = node.get("type")
+                    if type(type_key) is not str:
+                        problems.append("Node 'type' key is not a string")
+                    if type_key not in ["atom", "scheme"]:
+                        problems.append("Node 'type' not of supported SADFace node type")
+
+                    if type(type_key) == "atom":
+                        problems += check_node_type_atom(node)
+                    elif type(type_key) == "scheme":
+                        problems += check_node_type_scheme(node)
+                        
+
+                for block in node.get("metadata"):
+                    obj = doc.get("metadata").get(block)
+                    if type(obj) is not dict:
+                        problems.append("Metadata contains a block that is not a dict/object:"+str(obj))
+                    else:
+                        if doc.get("metadata").get("core") is None:
+                            problems.append("No 'core' block in metadata")
+
+        for block in doc.get("nodes"):
+            if type(block) is not dict:
+                problems.append("Nodes contains a block that is not a dict/object:"+str(block))
+            
 
     return problems
  
 
 def check_resources_block(doc):
     """
-
+    The resources block is a list of, possibly external, resources that the SADFace graph refers to.
+    The block is required but may be an empty list.
     """
     problems = []
     
     if doc.get("resources") == None:
         problems.append("No 'resources' block")
+    else:
+        if type(doc.get("resources")) is not list:
+            problems.append("Resources block is not a list")
+
+        for block in doc.get("resources"):
+            if type(block) is not dict:
+                problems.append("Resources contains a block that is not a dict/object:"+str(block))
 
     return problems
 
@@ -183,7 +285,7 @@ def verify(incoming=None, as_string=False):
         doc = sadface.sd
 
 
-    problems += check_metadata_block(doc)
+    problems += check_global_metadata_block(doc)
     problems += check_edges_block(doc)
     problems += check_nodes_block(doc)
     problems += check_resources_block(doc)
