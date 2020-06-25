@@ -69,13 +69,15 @@ Relative to the tools/python folder. If sadface and sadface_tests are either not
 Or else use setup.py of each package and pip to install them, e.g. go into each source folder (src/sadface and src/sadface_tests) and:
 
 ~~~~
-    $ pip3 install -e .
+    $ pip install -e .
 ~~~~
+
+This second approach is really useful if you want to hack on the SADFace source code as the -e switch enables you to make changes to either source or tests and these are picked up in your python path. NB. I do recommend working in a virtualenv.
 
 Now run the tests, either by module:
 
 ~~~~
-    $ python -m unittest -v src/tests/sadface_test.py
+    $ python -m unittest -v src/tests/*_test.py
 ~~~~
 
 Or through test discovery:
