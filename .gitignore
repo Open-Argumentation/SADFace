@@ -4,6 +4,7 @@
 *.swm
 *.swn
 *.swl
+*.swk
 deploy/
 
 # Byte-compiled / optimized / DLL files
