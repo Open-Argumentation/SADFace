@@ -14,122 +14,141 @@ This is what our SADFace JSON looks like:
 
 ~~~~
 {
-    "analyst_email": "siwells@gmail.com", 
-    "analyst_name": "Simon Wells", 
-    "created": "2019-03-12T18:46:14", 
     "edges": [
         {
-            "id": "17828bd5-e8cb-4766-8b01-8f166cba391e", 
-            "source_id": "e13a77bc-475c-4af4-aac6-c34eee733d0d", 
-            "target_id": "e50b9246-246d-4f6d-8ba4-fd3c4f4416d7"
-        }, 
+            "id": "ddb34a0f-6025-42d6-a893-2b04b28c78cc",
+            "source_id": "81783b6f-10d1-41a3-9c0a-d815d59937e0",
+            "target_id": "e04261af-d3fe-4c3f-be12-49b3b1aea783"
+        },
         {
-            "id": "b75db6dd-971c-4225-8499-04edde5a4521", 
-            "source_id": "a3686491-08ca-426d-b792-c6d201605690", 
-            "target_id": "e13a77bc-475c-4af4-aac6-c34eee733d0d"
-        }, 
+            "id": "7347e24c-5fd0-4049-b1c4-ef3436325e20",
+            "source_id": "29bf3c6d-2a95-4983-8807-ae592798ff5e",
+            "target_id": "81783b6f-10d1-41a3-9c0a-d815d59937e0"
+        },
         {
-            "id": "251fb6ff-1b9b-4513-8cb3-c316019cb9a6", 
-            "source_id": "6d42bc33-423d-455b-ae67-c252c800fbf9", 
-            "target_id": "e13a77bc-475c-4af4-aac6-c34eee733d0d"
-        }, 
+            "id": "b4fa1944-a3ab-4962-b550-99bbe693c700",
+            "source_id": "8c5dcb9e-cee3-4ddb-88a1-4b69f2aaa6c3",
+            "target_id": "81783b6f-10d1-41a3-9c0a-d815d59937e0"
+        },
         {
-            "id": "10feab16-4bf1-441c-98bc-8fbe2fe453aa", 
-            "source_id": "0fd46018-7cab-4a2c-ab1c-4f17d4c7d072", 
-            "target_id": "6d42bc33-423d-455b-ae67-c252c800fbf9"
-        }, 
+            "id": "6ca261ba-1ab5-4875-a5ce-1604727a37dd",
+            "source_id": "9af8e365-6355-4cad-9df0-20e8316d320c",
+            "target_id": "8c5dcb9e-cee3-4ddb-88a1-4b69f2aaa6c3"
+        },
         {
-            "id": "b4a1e683-63f7-4206-8eb7-5003afeae1fa", 
-            "source_id": "e5ae3db2-8fbb-4c0f-a708-eccdc665cbbc", 
-            "target_id": "0fd46018-7cab-4a2c-ab1c-4f17d4c7d072"
-        }, 
+            "id": "db667294-12d3-449e-8549-d50bcddd8f68",
+            "source_id": "7de43d91-f616-4a1b-a057-bab66ec461e5",
+            "target_id": "9af8e365-6355-4cad-9df0-20e8316d320c"
+        },
         {
-            "id": "86f4469d-ead7-4091-a946-00c3c5309a70", 
-            "source_id": "5221139d-2ee2-458a-8547-569ff36262eb", 
-            "target_id": "0fd46018-7cab-4a2c-ab1c-4f17d4c7d072"
-        }, 
+            "id": "43e0f7be-af22-4a19-919e-055d7045790e",
+            "source_id": "1c2f78a5-1c01-45da-8ee1-055cb0922b30",
+            "target_id": "9af8e365-6355-4cad-9df0-20e8316d320c"
+        },
         {
-            "id": "a2e21223-603c-4372-b558-4b0e73629abd", 
-            "source_id": "70bf08b6-5f56-4ee9-8405-fc92d21cb1a9", 
-            "target_id": "6d42bc33-423d-455b-ae67-c252c800fbf9"
-        }, 
+            "id": "eaadf348-ad7b-44db-8ba2-ffa41d9c6204",
+            "source_id": "27583f07-7d1b-4f08-8176-c8f2ed1f1ca0",
+            "target_id": "8c5dcb9e-cee3-4ddb-88a1-4b69f2aaa6c3"
+        },
         {
-            "id": "4c62e434-35a0-447b-81d2-17749dc57a93", 
-            "source_id": "6d57fbec-4198-4f3f-8470-40a1a649bcc8", 
-            "target_id": "70bf08b6-5f56-4ee9-8405-fc92d21cb1a9"
+            "id": "5df0db48-9db1-4e1e-9aeb-7699f2ffacca",
+            "source_id": "347c7451-b617-4418-b4e3-eb9308726ec2",
+            "target_id": "27583f07-7d1b-4f08-8176-c8f2ed1f1ca0"
         }
-    ], 
-    "edited": "2019-03-12T18:46:14", 
-    "id": "45a8601c-c42f-492a-9b56-a97bb4af6879", 
+    ],
     "metadata": {
         "core": {
-            "description": "a cohesive description of this argument document", 
-            "notes": "some nonsense about stuff...yet more notes n stuff", 
-            "title": "very important"
+            "analyst_email": "you-killed-my-father@prepare-to-die.com",
+            "analyst_name": "Inigo Montoya",
+            "created": "2020-06-25T09:40:20",
+            "description": "a cohesive description of this argument document",
+            "edited": "2020-06-25T09:40:20",
+            "id": "a59e4cba-b501-40f6-a04b-f03d536a3bd1",
+            "notes": "some nonsense about stuff...yet more notes n stuff",
+            "title": "very important",
+            "version": "0.2"
         }
-    }, 
+    },
     "nodes": [
         {
-            "id": "e50b9246-246d-4f6d-8ba4-fd3c4f4416d7", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "You should treasure every moment", 
+            "id": "e04261af-d3fe-4c3f-be12-49b3b1aea783",
+            "metadata": {
+                "core": {}
+            },
+            "sources": [],
+            "text": "You should treasure every moment",
             "type": "atom"
-        }, 
+        },
         {
-            "id": "e13a77bc-475c-4af4-aac6-c34eee733d0d", 
-            "metadata": {}, 
-            "name": "inference", 
+            "id": "81783b6f-10d1-41a3-9c0a-d815d59937e0",
+            "metadata": {
+                "core": {}
+            },
+            "name": "inference",
             "type": "scheme"
-        }, 
+        },
         {
-            "id": "a3686491-08ca-426d-b792-c6d201605690", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "if you are going to die then you should treasure every moment", 
+            "id": "29bf3c6d-2a95-4983-8807-ae592798ff5e",
+            "metadata": {
+                "core": {}
+            },
+            "sources": [],
+            "text": "if you are going to die then you should treasure every moment",
             "type": "atom"
-        }, 
+        },
         {
-            "id": "6d42bc33-423d-455b-ae67-c252c800fbf9", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "You are going to die", 
+            "id": "8c5dcb9e-cee3-4ddb-88a1-4b69f2aaa6c3",
+            "metadata": {
+                "core": {}
+            },
+            "sources": [],
+            "text": "You are going to die",
             "type": "atom"
-        }, 
+        },
         {
-            "id": "0fd46018-7cab-4a2c-ab1c-4f17d4c7d072", 
-            "metadata": {}, 
-            "name": "support", 
+            "id": "9af8e365-6355-4cad-9df0-20e8316d320c",
+            "metadata": {
+                "core": {}
+            },
+            "name": "support",
             "type": "scheme"
-        }, 
+        },
         {
-            "id": "e5ae3db2-8fbb-4c0f-a708-eccdc665cbbc", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "Every person is going to die", 
+            "id": "7de43d91-f616-4a1b-a057-bab66ec461e5",
+            "metadata": {
+                "core": {}
+            },
+            "sources": [],
+            "text": "Every person is going to die",
             "type": "atom"
-        }, 
+        },
         {
-            "id": "5221139d-2ee2-458a-8547-569ff36262eb", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "You are a person", 
+            "id": "1c2f78a5-1c01-45da-8ee1-055cb0922b30",
+            "metadata": {
+                "core": {}
+            },
+            "sources": [],
+            "text": "You are a person",
             "type": "atom"
-        }, 
+        },
         {
-            "id": "70bf08b6-5f56-4ee9-8405-fc92d21cb1a9", 
-            "metadata": {}, 
-            "name": "conflict", 
+            "id": "27583f07-7d1b-4f08-8176-c8f2ed1f1ca0",
+            "metadata": {
+                "core": {}
+            },
+            "name": "conflict",
             "type": "scheme"
-        }, 
+        },
         {
-            "id": "6d57fbec-4198-4f3f-8470-40a1a649bcc8", 
-            "metadata": {}, 
-            "sources": [], 
-            "text": "YOLO", 
+            "id": "347c7451-b617-4418-b4e3-eb9308726ec2",
+            "metadata": {
+                "core": {}
+            },
+            "sources": [],
+            "text": "YOLO",
             "type": "atom"
         }
-    ], 
+    ],
     "resources": []
 }
 ~~~~
