@@ -22,7 +22,7 @@ def generate():
 
 def init(location=None):
     """
-
+    Function to initialise the SADFace configuration
     """
     if(location is not None):
         set_location(location)
