@@ -723,6 +723,12 @@ def get_created():
     """
     return sd["metadata"].get("core").get("created")
 
+def get_document():
+    """
+    Retrieve the current SADFace document
+    """
+    return sd
+
 def get_document_id():
     """
     Retrieve the SADFace document's ID
