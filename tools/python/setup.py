@@ -14,7 +14,6 @@ setup(
     long_description=readme,
     license=license,
     author='Simon Wells',
-    license='GNU GPL3',
     url='https://github.com/ARG-ENU/SADFace.git',
     author_email='mail@simonwells.org',
     version='0.5',
