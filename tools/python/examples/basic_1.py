@@ -4,7 +4,7 @@ import sadface as sf
 
 
 sf.config.init("etc/test.cfg")
-sf.init()
+sf.initialise()
 
 sf.set_title("very important")
 sf.add_notes("some nonsense about stuff...")
