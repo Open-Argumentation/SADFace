@@ -9,9 +9,8 @@ import sys
 import textwrap
 import uuid
 
-import config
-import db
-import validation
+from . import config
+from . import validation
 
 sd = {}
 
@@ -902,7 +901,7 @@ def import_json(json_string):
     """
     return json.loads(json_string)
 
-def init():
+def initialise():
     """
     Reads the config file from the supplied location then uses the data
     contained therein to personalise a new SADFace document
@@ -998,10 +997,10 @@ def new_sadface():
     Returns: A Python dict representing the new SADFace document
     """
     if config.location is None:
-        new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":"A User", "analyst_email":"user@email.address", "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
+        new_doc = {"metadata":{ "core":{"version":"0.5", "id":new_uuid(), "analyst_name":"A User", "analyst_email":"user@email.address", "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
 
     else:
-        new_doc = {"metadata":{ "core":{"version":"0.2", "id":new_uuid(), "analyst_name":config.current.get("analyst", "name"), "analyst_email":config.current.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
+        new_doc = {"metadata":{ "core":{"version":"0.5", "id":new_uuid(), "analyst_name":config.current.get("analyst", "name"), "analyst_email":config.current.get("analyst", "email"), "created":now(), "edited":now()}}, "resources":[], "nodes":[], "edges":[]}
     return new_doc
 
 def new_resource(content):
