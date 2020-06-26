@@ -5,6 +5,14 @@
 SADFace can currently be used in three ways, as a Python library, to builds SADFace documents from an existing argument tool, as a command line application, and using the inbuilt REPL. SADFace is currently developed and tested under Python 3 so, your mileage may vary under earlier versions (Note that the bulk of development was actually completed under Python 2.7 and very few alterations were needed for the Python 3 migration so you may well be in luck).
 
 
+### Installation
+
+Install SADFace as follows:
+
+~~~~
+ $ pip install setup.py
+~~~~
+
 
 ### Library
 
