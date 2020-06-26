@@ -24,19 +24,19 @@ class TestInitWithConfig(unittest.TestCase):
         self.assertTrue("Tried to load config file but location is set to None" in str(context.exception))
 
         # With bad configuration file
-        sf.config.set_location("src/sadface/aml.py")
+        sf.config.set_location("examples/minimal.py")
         with self.assertRaises(SystemExit):
             sf.config.load()
         
         # With good configuration file
         sf.config.set_location("etc/test.cfg")
         sf.config.load()
-        sf.init()
-        out = sf.sd
+        sf.initialise()
+        out = sf.get_document()
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.2" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.5" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
 
@@ -72,12 +72,12 @@ class TestInitWithConfig(unittest.TestCase):
         """
         sf.config.set_location("etc/test.cfg")
         sf.config.load()
-        sf.init()
-        out = sf.sd
+        sf.initialise()
+        out = sf.get_document()
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.2" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.5" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
     def test_combined_config_init_method(self):
@@ -85,12 +85,12 @@ class TestInitWithConfig(unittest.TestCase):
 
         """
         sf.config.init("etc/test.cfg")
-        sf.init()
-        out = sf.sd
+        sf.initialise()
+        out = sf.get_document()
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.2" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.5" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
 
@@ -105,13 +105,13 @@ class TestInit(unittest.TestCase):
         """
         Tests: sadface.init()
         """
-        sf.init()
-        out = sf.sd
+        sf.initialise()
+        out = sf.get_document()
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
 
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "user@email.address", "analyst_name": "A User", "created":"", "edited":"", "id":"", "version": "0.2" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "user@email.address", "analyst_name": "A User", "created":"", "edited":"", "id":"", "version": "0.5" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
 

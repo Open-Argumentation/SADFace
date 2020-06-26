@@ -18,7 +18,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None)
         """
-        sf.init()
+        sf.initialise()
         con1 = "You should treasure every moment"
         prem1 = ["if you are going to die then you should treasure every moment", "You are going to die"]
         arg1 = sf.add_argument(con_text=con1, prem_text=prem1, con_id=None, prem_id=None)
@@ -35,7 +35,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=None)
         """
-        sf.init()
+        sf.initialise()
         a_text = "roses are red"
         c_text = "roses are white"
         conflict = sf.add_conflict(arg_text=a_text, conflict_text=c_text)
@@ -50,7 +50,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: add_support(con_text=None, prem_text=None, con_id=None, prem_id=None)
         """
-        sf.init()
+        sf.initialise()
         con1 = "You should treasure every moment"
         prem1 = ["if you are going to die then you should treasure every moment", "You are going to die"]
         arg1 = sf.add_support(con_text=con1, prem_text=prem1, con_id=None, prem_id=None)
@@ -68,7 +68,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_resource(content)
         """
-        sf.init()
+        sf.initialise()
         new_resource = sf.add_resource("DAKA DAKA")
         new_resource_content = new_resource.get("content")
         new_resource_type = new_resource.get("type")
@@ -97,7 +97,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_resource_metadata()
         """
-        sf.init()
+        sf.initialise()
 
          # Add a resource
         resource_text = "test resource"
@@ -128,7 +128,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_source()
         """
-        sf.init()
+        sf.initialise()
 
         # Add an atom
         text = "DAKA DAKA"
@@ -156,7 +156,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.add_atom()
         """
-        sf.init()
+        sf.initialise()
 
         # Check we have no atoms in the default document
         num_atoms = len(sf.list_atoms())
@@ -178,7 +178,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_edge()
         """
-        sf.init()
+        sf.initialise()
         source = sf.add_atom("source")
         target = sf.add_atom("target")
         edge = sf.add_edge(source.get("id"), target.get("id"))
@@ -192,7 +192,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_atom_metadata()
         """
-        sf.init()
+        sf.initialise()
 
          # Add an atom
         atom_text = "test atom"
@@ -224,16 +224,18 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_global_metadata()
         """
-        sf.init()
+        sf.initialise()
 
         # add core metadata
         sf.add_global_metadata("core", "KEY1", "VALUE1")
-        meta = sf.sd.get("metadata").get("core")
+        sd = sf.get_document()
+        meta = sd.get("metadata").get("core")
         self.assertEqual("VALUE1", meta.get("KEY1"))
 
         # add metadata to new namespace
         sf.add_global_metadata("META1", "KEY1", "VALUE1")
-        meta = sf.sd.get("metadata").get("META1")
+        sd = sf.get_document()
+        meta = sd.get("metadata").get("META1")
         self.assertNotEqual(0, len(meta))
         self.assertEqual("VALUE1", meta.get("KEY1"))
 
@@ -242,7 +244,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.add_notes()
         """
-        sf.init()
+        sf.initialise()
         self.assertEqual(sf.get_notes(), None)
 
         text = "DAKA DAKA"
@@ -261,7 +263,7 @@ class TestCore(unittest.TestCase):
         Add a scheme, retrieve it, ensure that the retrieved
         scheme matches that which was added
         """
-        sf.init()
+        sf.initialise()
         scheme = sf.add_scheme("test scheme")
         scheme_id = scheme.get("id")
         result = sf.get_scheme(scheme_id)
@@ -272,7 +274,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.add_scheme_metadata()
         """
-        sf.init()
+        sf.initialise()
 
          # Add an scheme
         scheme_text = "test scheme"
@@ -303,7 +305,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.append_notes()
         """
-        sf.init()
+        sf.initialise()
         text = "DAKA DAKA"
         sf.append_notes(text)
         self.assertEqual(sf.get_notes(), text)
@@ -316,7 +318,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.clear_notes()
         """
-        sf.init()
+        sf.initialise()
         self.assertEqual(sf.get_notes(), None)
 
         text = "DAKA DAKA"
@@ -330,7 +332,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.contains_atom(atom_text)
         """
-        sf.init()
+        sf.initialise()
 
         # Test Retrieving atom that doesn't exist
         self.assertEqual(None, sf.contains_atom("DAKA DAKA"))
@@ -346,7 +348,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.delete_atom(atom_id)
         """
-        sf.init()
+        sf.initialise()
 
         # Remove non-existing atom
         with self.assertRaises(ValueError):
@@ -364,7 +366,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.delete_edge(edge_id)
         """
-        sf.init()
+        sf.initialise()
 
         # Remove non-existing edge
         with self.assertRaises(ValueError):
@@ -385,7 +387,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.delete_source(atom_id, resource_id)
         """
-        sf.init()
+        sf.initialise()
 
         # setup
         a = sf.add_atom("ATOM")
@@ -407,7 +409,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.delete_resource(esource_id)
         """
-        sf.init()
+        sf.initialise()
 
         # Remove non-existing resource
         with self.assertRaises(ValueError):
@@ -427,7 +429,7 @@ class TestCore(unittest.TestCase):
     def test_delete_scheme(self):
         """
         """
-        sf.init()
+        sf.initialise()
 
         # Remove non-existing scheme
         with self.assertRaises(ValueError):
@@ -442,7 +444,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_analyst()
         """
-        sf.init()
+        sf.initialise()
         analyst = "A User"
         retrieved_analyst = sf.get_analyst()        
         self.assertEqual(retrieved_analyst, analyst)
@@ -451,7 +453,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_atom()
         """
-        sf.init()
+        sf.initialise()
         self.assertEqual(sf.get_atom("unknown-id"), None)
 
         text = "DAKA DAKA"
@@ -465,7 +467,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_atom_id()
         """
-        sf.init()
+        sf.initialise()
 
         # Check behaviour when no atom to match against
         self.assertEqual(sf.get_atom_id("unknown-text"), None)
@@ -481,7 +483,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_atom_metadata(atom_id, namespace=None, key=None)
         """
-        sf.init()
+        sf.initialise()
 
         a = sf.add_atom("ATOM")
         sf.add_atom_metadata(a.get("id"), "TEST_NS", "TEST_KEY", "TEST_VAL")
@@ -509,7 +511,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_atom_text()
         """
-        sf.init()
+        sf.initialise()
 
         # Check behaviour when no atom to match against
         self.assertEqual(sf.get_atom_text("unknown-id"), None)
@@ -526,7 +528,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_claim() with default values after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.get_claim()
         expected = None
         self.assertEqual(out, expected)
@@ -535,7 +537,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_connections()
         """
-        sf.init()
+        sf.initialise()
 
         # Test with a non-existant ID
         results = sf.get_connections("TESTID")
@@ -563,7 +565,7 @@ class TestCore(unittest.TestCase):
         Tests: sadface.get_description() with defaults values
         after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.get_description()
         expected = None
         self.assertEqual(out, expected)
@@ -572,7 +574,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_argument_id() with default values after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.get_document_id()
         result = False
         try:
@@ -586,7 +588,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_edge()
         """
-        sf.init()
+        sf.initialise()
         source = sf.add_atom("source")
         target = sf.add_atom("target")
         edge = sf.add_edge(source.get("id"), target.get("id"))
@@ -600,7 +602,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_global_metadata(namespace=None, key=None)
         """
-        sf.init()
+        sf.initialise()
 
         m = sf.get_global_metadata()
 
@@ -625,7 +627,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_node()
         """
-        sf.init()
+        sf.initialise()
 
         # Test with a non-existant ID
         result = sf.get_node("TEST")
@@ -640,7 +642,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_notes() with default values after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.get_notes()
         expected = None
         self.assertEqual(out, expected)
@@ -649,7 +651,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_atom_metadata(atom_id, namespace=None, key=None)
         """
-        sf.init()
+        sf.initialise()
 
         r = sf.add_resource("RESOURCE")
         sf.add_resource_metadata(r.get("id"), "TEST_NS", "TEST_KEY", "TEST_VAL")
@@ -676,7 +678,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_scheme() with default values
         """
-        sf.init()
+        sf.initialise()
         result = sf.get_node("invalid-uuid")
         self.assertEqual(result, None)
 
@@ -684,7 +686,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_scheme_metadata(scheme_id, namespace=None, key=None)
         """
-        sf.init()
+        sf.initialise()
 
         a = sf.add_scheme("scheme")
         sf.add_scheme_metadata(a.get("id"), "TEST_NS", "TEST_KEY", "TEST_VAL")
@@ -711,7 +713,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_source()
         """
-        sf.init()
+        sf.initialise()
 
         # Add an atom
         text = "DAKA DAKA"
@@ -744,7 +746,7 @@ class TestCore(unittest.TestCase):
         Tests: sadface.get_title() with defaults values
         after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.get_title()
         expected = None
         self.assertEqual(out, expected)
@@ -753,16 +755,16 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_version()
         """
-        sf.init()
+        sf.initialise()
         out = sf.get_version()
-        expected = "0.2"
+        expected = "0.5"
         self.assertEqual(out, expected)
 
     def test_list_arguments(self):
         """
         Tests: sadface.get_arguments() with default values after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.list_arguments()
         expected = []
         self.assertEqual(out, expected)
@@ -771,7 +773,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.list_atoms() with default values after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.list_atoms()
         expected = []
         self.assertEqual(out, expected)
@@ -780,7 +782,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.list_resources() 
         """
-        sf.init()
+        sf.initialise()
         out = sf.list_resources()
         expected = []
         self.assertEqual(out, expected)
@@ -789,7 +791,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_arguments() with default values after init
         """
-        sf.init()
+        sf.initialise()
         out = sf.list_schemes()
         expected = []
         self.assertEqual(out, expected)
@@ -798,7 +800,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_created()
         """
-        sf.init()
+        sf.initialise()
 
         # Check that timestamp for creation time is a string
         timestamp = sf.get_created()
@@ -808,7 +810,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_edited()
         """
-        sf.init()
+        sf.initialise()
 
         # Check that timestamp for edited time is a string
         timestamp = sf.get_edited()
@@ -818,7 +820,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_resource(resource_id)
         """
-        sf.init()
+        sf.initialise()
         new_resource = sf.add_resource("DAKA DAKA")
         new_resource_id = new_resource.get("id")
         
@@ -830,7 +832,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.get_scheme() after a scheme has been added
         """
-        sf.init()
+        sf.initialise()
         scheme_node = sf.add_scheme("test-scheme")
         scheme_node_id = scheme_node.get("id")
 
@@ -1067,7 +1069,7 @@ class TestCore(unittest.TestCase):
         """
 
         # Iniitialise a SADFace document
-        sf.init()
+        sf.initialise()
         expected = None
         out = sf.get_title()
         self.assertEqual(out, expected)
@@ -1093,7 +1095,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.set_analyst(analyst_name)
         """
-        sf.init()
+        sf.initialise()
 
         # TEST 1: Default analyst
         self.assertEqual(sf.get_analyst(), "A User")
@@ -1108,7 +1110,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.set_atom_text()
         """
-        sf.init()
+        sf.initialise()
 
         atom = sf.add_atom("DAKA DAKA")
         atom_id = atom.get("id")
@@ -1119,7 +1121,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.set_claim()
         """
-        sf.init()
+        sf.initialise()
         self.assertEqual(sf.get_claim(), None)
 
         atom = sf.add_atom("DAKA DAKA")
@@ -1131,7 +1133,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.set_analyst(analyst_name)
         """
-        sf.init()
+        sf.initialise()
 
         # TEST 1: Set created timestamp then retrieve & compare
         timestamp = sf.now()
@@ -1146,7 +1148,7 @@ class TestCore(unittest.TestCase):
         1. Set description of doc to known value
         2. Retrieve description & compare
         """
-        sf.init()
+        sf.initialise()
         d = "test description"
         sf.set_description(d)
         out = sf.get_description()
@@ -1157,7 +1159,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.set_edited(timestamp)
         """
-        sf.init()
+        sf.initialise()
 
         # TEST 1: Set edited timestamp then retrieve & compare
         timestamp = sf.now()
@@ -1169,7 +1171,7 @@ class TestCore(unittest.TestCase):
         """
         Tests: sadface.get_title() & set_title
         """
-        sf.init()
+        sf.initialise()
         t = "test title"
         sf.set_title(t)
         out = sf.get_title()
@@ -1180,7 +1182,7 @@ class TestCore(unittest.TestCase):
         """
         TESTS: sadface.set_document_id(id)
         """
-        sf.init()
+        sf.initialise()
         current_id = sf.get_document_id()
         self.assertNotEqual(None, current_id)
 
@@ -1192,7 +1194,7 @@ class TestCore(unittest.TestCase):
     def test_set_scheme_name(self):
         """
         """
-        sf.init()
+        sf.initialise()
 
         # Test setting non-existent scheme
         with self.assertRaises(Exception) as context:
