@@ -79,10 +79,10 @@ This second approach is really useful if you want to hack on the SADFace source 
 Now run the tests, either by module:
 
 ~~~~
-    $ python -m unittest -v src/tests/*_test.py
+    $ python -m unittest -v tests/*_test.py
 ~~~~
 
 Or through test discovery:
 ~~~~
-    $ python -m unittest discover -s src/tests/ -p '*_test.py' -v
+    $ python -m unittest discover -s tests/ -p '*_test.py' -v
 ~~~~
