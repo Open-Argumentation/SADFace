@@ -1107,10 +1107,16 @@ def save(filename=None, filetype="json"):
     Write the prettyprinted SADFace document to a JSON file on disk
     """
     f = filename
-    if filename is None:
-        f = config.current.get("file","name")
+    d = None
 
-    d = config.current.get("file","dir")
+    if filename is None:
+        
+        if config.current is not None:
+            f = config.current.get("file","name")
+            d = config.current.get("file","dir")
+        else:
+            f = "out"
+            d = ""
 
     if ("dot" == filetype):
         f += '.dot'
@@ -1123,7 +1129,7 @@ def save(filename=None, filetype="json"):
     else:
         f += '.json'
         with open(d+f, 'w') as outfile:
-            json.dump(sd, outfile, codecs.getwriter('utf-8')(outfile), indent=4, sort_keys=True, ensure_ascii=False)
+            json.dump(sd, outfile, indent=4, sort_keys=True, ensure_ascii=False)
 
 def set_analyst(analyst):
     """
