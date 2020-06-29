@@ -1108,27 +1108,33 @@ def save(filename=None, filetype="json"):
     """
     f = filename
     d = None
+    pathname = None
 
-    if filename is None:
-        
+    if filename is None:       
         if config.current is not None:
             f = config.current.get("file","name")
             d = config.current.get("file","dir")
+            outname = f+d
         else:
             f = "out"
             d = ""
+            pathname = f
+    else:
+        pathname = f
+
 
     if ("dot" == filetype):
         f += '.dot'
-        with codecs.open(d+f, 'w', 'utf-8') as outfile:
+        with codecs.open(pathname, 'w', 'utf-8') as outfile:
             outfile.write(export_dot())
     elif("cytoscape" == filetype):
         f += '.json'
-        with codecs.open(d+f, 'w', 'utf-8') as outfile:
+        with codecs.open(pathname, 'w', 'utf-8') as outfile:
             outfile.write(prettyprint(json.loads(export_cytoscape())))
     else:
-        f += '.json'
-        with open(d+f, 'w') as outfile:
+        pathname += '.json'
+        
+        with open(pathname, 'w') as outfile:
             json.dump(sd, outfile, indent=4, sort_keys=True, ensure_ascii=False)
 
 def set_analyst(analyst):
