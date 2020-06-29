@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-#import aml
+from . import aml
 from . import sadface
 from . import config
 
@@ -119,7 +119,7 @@ def main():
     fileinput = parser.add_mutually_exclusive_group()
     fileinput.add_argument("-l", "--load", help="Load a Sadface document from a file")
     fileinput.add_argument("-r", "--raw", help="Load a raw JSON document string into SADFace")
-#    fileinput.add_argument("--aml", help="Load a legacy AML document from a file")
+    fileinput.add_argument("--aml", help="Load a legacy AML document from a file")
 
     parser.add_argument("-s", "--save", help="Save the loaded document to a SADFace formatted JSON file")
     
@@ -141,8 +141,8 @@ def main():
         sadface.sd = sadface.import_json(args.raw)
     elif args.load:
         sadface.sd = sadface.load_from_file(args.load)
-#    elif args.aml:
-#        aml.init(args.aml)
+    elif args.aml:
+        aml.init(args.aml)
     else:
         sadface.sd = sadface.initialise()
 
