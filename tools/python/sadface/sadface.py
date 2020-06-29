@@ -1124,15 +1124,24 @@ def save(filename=None, filetype="json"):
 
 
     if ("dot" == filetype):
-        f += '.dot'
+        suffix = '.dot'
+        if not pathname.endswith(suffix):
+            pathname += suffix
+
         with codecs.open(pathname, 'w', 'utf-8') as outfile:
             outfile.write(export_dot())
+
     elif("cytoscape" == filetype):
-        f += '.json'
+        suffix = '.json'
+        if not pathname.endswith(suffix):
+            pathname += suffix
+        
         with codecs.open(pathname, 'w', 'utf-8') as outfile:
             outfile.write(prettyprint(json.loads(export_cytoscape())))
     else:
-        pathname += '.json'
+        suffix = '.json'
+        if not pathname.endswith(suffix):
+            pathname += suffix
         
         with open(pathname, 'w') as outfile:
             json.dump(sd, outfile, indent=4, sort_keys=True, ensure_ascii=False)
