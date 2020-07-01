@@ -728,11 +728,14 @@ def get_document():
     """
     return sd
 
-def get_document_id():
+def get_document_id(doc = None):
     """
     Retrieve the SADFace document's ID
     """
-    return sd["metadata"].get("core").get("id")
+    if doc is None:
+        return sd["metadata"].get("core").get("id")
+    else:
+        return doc["metadata"].get("core").get("id")
 
 def get_description():
     """
