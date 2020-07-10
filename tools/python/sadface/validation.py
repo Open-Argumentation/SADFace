@@ -275,7 +275,7 @@ def verify(incoming=None, as_string=False):
 
     if incoming is not None:
         if type(incoming) is str:
-            doc = import_json(incoming)
+            doc = sadface.import_json(incoming)
         elif type(incoming) is dict:
             doc = incoming
         else:
