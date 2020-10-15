@@ -5,16 +5,21 @@
 SADFace can currently be used in three ways, as a Python library, to builds SADFace documents from an existing argument tool, as a command line application, and using the inbuilt REPL. SADFace is currently developed and tested under Python 3 so, your mileage may vary under earlier versions (Note that the bulk of development was actually completed under Python 2.7 and very few alterations were needed for the Python 3 migration so you may well be in luck).
 
 
-### Installation
+### Installation (for Users)
 
-Install SADFace as follows. If you have cloned the source repository then you can run the following:
+Install SADFace as follows. If you have cloned the source repository then you can run the following from the tools/python folder:
 
 ~~~~
  $ python install setup.py
 ~~~~
 
-NB. In this case it might be worth considering running with the -e argument (see the discussion in the 'Run The Tests' section below), especially if you are intent on hacking on SADFace.
+### Installation (for Developers)
 
+Clone the repo, then, navigate to the tools/python/sadface folder, and:
+
+~~~~
+    $ pip install -e .
+~~~~
 
 ### Library
 
