@@ -10,7 +10,7 @@ SADFace can currently be used in three ways, as a Python library, to builds SADF
 Install SADFace as follows. If you have cloned the source repository then you can run the following:
 
 ~~~~
- $ pip install setup.py
+ $ python install setup.py
 ~~~~
 
 NB. In this case it might be worth considering running with the -e argument (see the discussion in the 'Run The Tests' section below), especially if you are intent on hacking on SADFace.
