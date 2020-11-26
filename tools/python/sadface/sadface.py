@@ -1171,6 +1171,13 @@ def set_atom_text(atom_id, new_text):
     else:
         raise Exception("Could not set the text value for atom: "+atom_id)
 
+def set_doc(newdoc):
+    """
+    Replaces the existing SADFace document with the supplied $newdoc
+    """
+    global sd
+    sd = newdoc
+
 def set_title(text):
     """
     Set a metadata entry for the document that contains a title. This is a
