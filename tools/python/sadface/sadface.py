@@ -94,7 +94,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         return arg
     return None
 
-def add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=None):
+def add_conflict(arg_text=None, conflict_text=None, arg_id=None, conflict_id=None):
     """
     Conflicts play an important role in arguments. We depict conflict
     through the use of schemes that represent the conflict relationship. This
