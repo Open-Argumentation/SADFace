@@ -8,6 +8,8 @@ with open('README.md') as f:
 with open('LICENSE') as f:
     license = f.read()
 
+exec(open('sadface/version.py').read())
+
 setup(
     name='sadface',
     description='SADFace - The Simple Argument Description Format',
@@ -16,6 +18,6 @@ setup(
     author='Simon Wells',
     url='https://github.com/ARG-ENU/SADFace.git',
     author_email='mail@simonwells.org',
-    version='0.5',
+	version=__version__,
     packages=find_packages(exclude=('deploy', 'etc', 'examples'))
 )
