@@ -7,7 +7,13 @@ SADFace can currently be used in three ways, as a Python library, to builds SADF
 
 ### Installation (for Users)
 
-Install SADFace as follows. If you have cloned the source repository then you can run the following from the tools/python folder:
+You can install SADFace in a number of ways as an end user. The recommended approach is to use pip:
+
+~~~~
+ $ pip install sadface
+~~~~
+
+If you have cloned the source repository directly or download the source zip or tar.gz archive then you can run the following from the tools/python folder:
 
 ~~~~
  $ python install setup.py
