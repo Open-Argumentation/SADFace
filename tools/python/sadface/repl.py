@@ -3,6 +3,7 @@
 from . import aml
 from . import sadface
 from . import config
+from . import version
 
 import argparse
 import cmd
@@ -98,17 +99,22 @@ class REPL(cmd.Cmd):
         """
         return True
 
+    def do_version(self, line):
+        print(version.__version__)
+
     def emptyline(self):
         pass
 
     def help_clear(self):
         print("Creates a new, empty SADFace document")
 
+
     do_p = do_print
     do_q = do_quit
     do_s = do_save
     do_sd = do_save_to_dot
     do_pp = do_prettyprint
+ 
 
 
 def main():
@@ -131,6 +137,7 @@ def main():
     export.add_argument("--exportdot", 
         help="Export the SADFace document to dot format", action="store_true")
 
+    parser.add_argument("--version", help="Display the current version of the SADFace library", action="store_true")
 
     args = parser.parse_args()
 
@@ -155,6 +162,9 @@ def main():
         print(sadface.prettyprint())
     elif args.exportdot:
         print(sadface.export_dot())
+    
+    if args.version:
+        print(version.__version__)
     
     if args.interactive:
         REPL().cmdloop()
