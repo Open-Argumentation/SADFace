@@ -21,7 +21,7 @@ class TestVerification(unittest.TestCase):
         minimal_good = {'edges':[],'metadata':{'core':{'analyst_email':'user@email.address','analyst_name':'A User','created':'2020-06-25T18:05:36','edited':'2020-06-25T18:05:36','id':'235bfdee-2406-4c40-97cc-6f4c2539c69e','version':'0.2'}},'nodes':[],'resources':[]}
 
         result, problems = sf.validation.verify(minimal_good)
-        self.assertEqual(False, result)
+        self.assertEqual(True, result)
         self.assertEqual([], problems)
         
         """
