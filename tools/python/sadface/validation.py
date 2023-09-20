@@ -213,14 +213,15 @@ def check_nodes_block(doc):
                     elif type(type_key) == "scheme":
                         problems += check_node_type_scheme(node)
                         
-
-                for block in node.get("metadata"):
-                    obj = doc.get("metadata").get(block)
-                    if type(obj) is not dict:
-                        problems.append("Metadata contains a block that is not a dict/object:"+str(obj))
-                    else:
-                        if doc.get("metadata").get("core") is None:
-                            problems.append("No 'core' block in metadata")
+                metadata = node.get("metadata")
+                if metadata:
+                    for block in metadata:
+                        obj = doc.get("metadata").get(block)
+                        if type(obj) is not dict:
+                            problems.append("Metadata contains a block that is not a dict/object:"+str(obj))
+                        else:
+                            if doc.get("metadata").get("core") is None:
+                                problems.append("No 'core' block in metadata")
 
         for block in doc.get("nodes"):
             if type(block) is not dict:
