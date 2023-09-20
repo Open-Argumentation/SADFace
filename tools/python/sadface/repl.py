@@ -3,6 +3,7 @@
 from . import aml
 from . import sadface
 from . import config
+from . import validation
 from . import version
 
 import argparse
@@ -128,6 +129,7 @@ def main():
     fileinput.add_argument("--aml", help="Load a legacy AML document from a file")
 
     parser.add_argument("-s", "--save", help="Save the loaded document to a SADFace formatted JSON file")
+    parser.add_argument("-v", "--verify", help="Verify that the supplied SADFace document is well formed")
     
     export = parser.add_mutually_exclusive_group()
     export.add_argument("--printdoc", 
@@ -155,6 +157,12 @@ def main():
 
     if args.save:
         sadface.save(args.save)
+
+    if args.verify:
+        sadface.sd = sadface.load_from_file(args.verify)
+        if sadface.sd:
+            result = validation.verify(sadface.sd, False)
+            print(result)
 
     if args.printdoc:
         print(sadface.print_doc())
