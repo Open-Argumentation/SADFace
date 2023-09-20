@@ -970,8 +970,11 @@ def load_from_file(filename):
     Load the sadface document stored in the file identifed by the supplied
     filename.
     """
-    with open(filename) as sadface_file:
-        return json.load(sadface_file)
+    try:
+        with open(filename) as sadface_file:
+            return json.load(sadface_file)
+    except IOError:
+        print("Could not read file:", filename)
 
 
 def new_atom(text):
