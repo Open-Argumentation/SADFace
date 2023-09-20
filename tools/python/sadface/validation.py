@@ -123,7 +123,7 @@ def check_global_metadata_block(doc):
 
                 for key in core.keys():
                     if key not in ["analyst_email", "analyst_name", "created", "edited", "id", "version"]:
-                        problems.append("Edge contains the invalid key: "+key)
+                        problems.append("Metadata contains the invalid key: "+key)
             
             for block in doc.get("metadata"):
                 obj = doc.get("metadata").get(block)
