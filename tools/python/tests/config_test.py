@@ -36,7 +36,7 @@ class TestInitWithConfig(unittest.TestCase):
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.5" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "'+sf.version.__version__+'" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
 
@@ -77,7 +77,7 @@ class TestInitWithConfig(unittest.TestCase):
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.5" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "'+sf.version.__version__+'" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
     def test_combined_config_init_method(self):
@@ -90,7 +90,7 @@ class TestInitWithConfig(unittest.TestCase):
         out['metadata']['core']['created'] = ""
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "0.5" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "you-killed-my-father@prepare-to-die.com", "analyst_name": "Inigo Montoya", "created": "", "edited": "", "id": "", "version": "'+sf.version.__version__+'" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
 
@@ -111,7 +111,7 @@ class TestInit(unittest.TestCase):
         out['metadata']['core']['edited'] = ""
         out['metadata']['core']['id'] = ""
 
-        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "user@email.address", "analyst_name": "A User", "created":"", "edited":"", "id":"", "version": "0.5" } }, "nodes": [], "resources": []}')
+        expected = json.loads('{ "edges": [], "metadata": { "core": { "analyst_email": "user@email.address", "analyst_name": "A User", "created":"", "edited":"", "id":"", "version": "'+sf.version.__version__+'" } }, "nodes": [], "resources": []}')
         self.assertEqual(out, expected)
 
 
