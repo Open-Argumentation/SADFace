@@ -757,7 +757,7 @@ class TestCore(unittest.TestCase):
         """
         sf.initialise()
         out = sf.get_version()
-        expected = "0.5"
+        expected = sf.version.__version__
         self.assertEqual(out, expected)
 
     def test_list_arguments(self):
