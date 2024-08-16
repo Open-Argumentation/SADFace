@@ -760,6 +760,29 @@ def get_conflict(conflict_id):
         if conflict_id == node["id"]:
             return node
 
+def get_conflict_metadata(conflict_id, namespace=None, key=None):
+    """
+    Retrieve a conflict's metadata. Results depend upon the specificity of the request
+    which must include a valid conflict_id.
+
+    If conflict_id only is provided then all metadata associated with the conflict is returned
+    If conflict_id + namespace is provided then only the specified namespace is returned
+    If conflict_id + namespace + a key is provided then the value associated with that key is returned
+    Else nothing is returned
+
+    Returns: A metadata dict or None
+    """
+    conflict = get_conflict(conflict_id)
+    if conflict is not None:
+        if namespace is None:
+            return conflict.get("metadata")
+        else:
+            if key is None:
+                return conflict.get("metadata").get(namespace)
+            else:
+                return conflict.get("metadata").get(namespace).get(key)
+
+
 def get_connections(node_id):
     """
     Given a node id, retrieve a list containing all edges that connnect it
