@@ -569,12 +569,12 @@ def export_dot(trad=True):
     if trad:
         colour_scheme = "X11"
         support_colour = "darkolivegreen3"
-        conflict_colour = "firebrick2"
+        disagree_colour = "firebrick2"
         default_colour = "cornsilk4"
     else:
         colour_scheme = "ylgnbu3"
         support_colour = "1"
-        conflict_colour = "3"
+        disagree_colour = "3"
         default_colour = "2"
 
     max_length = 25
@@ -595,11 +595,11 @@ def export_dot(trad=True):
                 + " ["\
                 + "colorscheme="+colour_scheme+", fillcolor="+support_colour\
                 + ", shape=diamond];\n"
-            elif "conflict" == node.get("name"):
+            elif "disagree" == node.get("name"):
                 line = '"{}"'.format(node['id']) + " [label=\"" + node["name"]\
                 + "\"]"\
                 + " ["\
-                + "colorscheme="+colour_scheme+", fillcolor="+conflict_colour\
+                + "colorscheme="+colour_scheme+", fillcolor="+disagree_colour\
                 + ", shape=diamond];\n"
 
             else:
