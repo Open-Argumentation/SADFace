@@ -1246,6 +1246,20 @@ def set_claim(atom_id):
     else:
         raise Exception("Can't make atom ("+atom_id+") a claim because it doesn't exist")
 
+def set_conflict_name(conflict_id, conflict_name):
+    """
+    Given an ID for an existing conflict node, set the name associated with it and return the 
+    updated conflict node.
+    
+    Returns: Updated conflict dict
+    """
+    conflict = get_conflict(conflict_id)
+    if(conflict is not None):
+        conflict["name"] = conflict_name
+        return conflict
+    else:
+        raise Exception("Could not set the name of conflict: "+conflict_id)
+
 def set_created(timestamp):
     """
     Sets the creation timestamp for the SADFace document to the supplied timestamp.
