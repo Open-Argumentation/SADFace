@@ -43,7 +43,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(a_text, disagreement.get("argument").get("text"))
         self.assertEqual(c_text, disagreement.get("disagreement").get("text"))
 
-        self.assertEqual("disagreement", disagreement.get("scheme").get("name"))
+        self.assertEqual("disagree", disagreement.get("conflict").get("name"))
 
 
     def test_add_support(self):
