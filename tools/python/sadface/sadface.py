@@ -1210,7 +1210,12 @@ def reset():
 
 def save(filename=None, filetype="json"):
     """
-    Write the prettyprinted SADFace document to a JSON file on disk
+    Write the prettyprinted SADFace document to a file on disk.
+
+    The default filetype is JSON. Other supported export formats are: 
+    - Cytoscape
+    - GraphViz/Dot
+    
     """
     f = filename
     d = None
