@@ -987,6 +987,16 @@ def new_atom(text):
     new_atom = {"id":new_uuid(), "type":"atom", "text":text, "sources":[], "metadata":{"core": {}}}
     return new_atom
 
+def new_conflict(name):
+    """
+    Create a new SADFace conflict (Python dict) using the supplied conflict name. The conflict
+    name should refer to a known conflict type from the set of {disagree | attack | defeat}
+
+    Returns: A Python dict representing the new SADFace conflict
+    """
+    new_conflict = {"id":new_uuid(), "type":"conflict", "name":name, "metadata":{ "core": {}}}
+    return new_conflict
+
 def new_edge(source_id, target_id):
     """
     Creates & returns a new edge dict using the supplied source & 
