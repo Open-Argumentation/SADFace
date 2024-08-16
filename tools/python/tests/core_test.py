@@ -31,19 +31,19 @@ class TestCore(unittest.TestCase):
         prem2_atom = sf.get_atom(arg1.get("premises")[1])
         self.assertEqual(prem1[1], prem2_atom.get("text"))
 
-    def test_add_conflict(self):
+    def test_add_disagreement(self):
         """
-        TESTS: add_conflict(arg_text=None, arg_id=None, conflict_text=None, conflict_id=None)
+        TESTS: add_disagreement(arg_text=None, arg_id=None, disagreement_text=None, disagreement_id=None)
         """
         sf.initialise()
         a_text = "roses are red"
         c_text = "roses are white"
-        conflict = sf.add_conflict(arg_text=a_text, conflict_text=c_text)
+        disagreement = sf.add_disagreement(arg_text=a_text, disagreement_text=c_text)
 
-        self.assertEqual(a_text, conflict.get("argument").get("text"))
-        self.assertEqual(c_text, conflict.get("conflict").get("text"))
+        self.assertEqual(a_text, disagreement.get("argument").get("text"))
+        self.assertEqual(c_text, disagreement.get("disagreement").get("text"))
 
-        self.assertEqual("conflict", conflict.get("scheme").get("name"))
+        self.assertEqual("disagreement", disagreement.get("scheme").get("name"))
 
 
     def test_add_support(self):
