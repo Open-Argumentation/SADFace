@@ -301,6 +301,26 @@ def add_conflict(name):
     sd["nodes"].append(conflict)
     return conflict
 
+def add_conflict_metadata(conflict_id, namespace, key=None, value=None):
+    """
+    Add metadata, a key:value pair, to the conflict dict identified
+    by the supplied conflict ID and metadata namespace.
+
+    Note that "core" is reserved for sadface default metadata only
+
+    Additional namespaces can be any string but should normally follow
+    the reversed domain name approach to provide some level of uniqueness
+    and avoid unnecessary clashes
+    """
+    for node in sd["nodes"]:
+        if "conflict" == node["type"]:
+            if conflict_id == node["id"]:
+                if node["metadata"].get(namespace) is None:
+                    node["metadata"][namespace] = {}
+                    node["metadata"][namespace][key] = value
+                else:
+                    node["metadata"][namespace][key] = value
+
 def add_global_metadata(namespace, key, value):
     """
     Add metadata, a key:value pair to the base sadface doc
