@@ -717,6 +717,16 @@ def get_claim():
     """
     return sd["metadata"].get("core").get("claim")
 
+def get_conflict(conflict_id):
+    """
+    Retrieve the conflit dict identified by the supplied conflict ID
+
+    Returns: A conflict dict
+    """
+    for node in sd["nodes"]:
+        if conflict_id == node["id"]:
+            return node
+
 def get_connections(node_id):
     """
     Given a node id, retrieve a list containing all edges that connnect it
