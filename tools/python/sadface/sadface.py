@@ -155,26 +155,26 @@ def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagre
         else:
             a = get_atom(arg_id)
 
-        s = add_scheme("disagreement")
+        c = add_conflict("disagree")
 
         try:
-            add_edge(s["id"], a["id"])
+            add_edge(c["id"], a["id"])
         except Exception as ex:
             print(ex)
             raise Exception("Could not create new argument")
 
         if disagreement_text is not None:
-            c = add_atom(disagreement_text)
+            d = add_atom(disagreement_text)
         else:
-            c = get_atom(disagreement_id)
+            d = get_atom(disagreement_id)
 
         try:
-            add_edge(c["id"], s["id"])
+            add_edge(d["id"], c["id"])
         except Exception as ex:
             print(ex)
             raise Exception("Could not create new argument")
 
-        arg = {"argument":a, "scheme":s, "disagreement":c}
+        arg = {"argument":a, "conflict":c, "disagreement":d}
         return arg
     return None
 
