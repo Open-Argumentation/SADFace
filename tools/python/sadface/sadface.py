@@ -433,6 +433,19 @@ def delete_atom(atom_id):
     for c in conns:
         delete_edge(c["id"])
 
+def delete_conflict(conflict_id):
+    """
+    Remove the conflict from the sadface document identified by the
+    supplied conflict ID
+
+    """
+    conflict = get_conflict(conflict_id)
+    sd["nodes"].remove(conflict)
+
+    conns = get_connections(conflict_id)
+    for c in conns:
+        delete_edge(c["id"])
+
 def delete_edge(edge_id):
     """
     Remove the edge from the sadface document identified by the
