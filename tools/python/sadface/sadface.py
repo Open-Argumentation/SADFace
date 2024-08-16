@@ -289,7 +289,18 @@ def add_atom_metadata(atom_id, namespace, key=None, value=None):
                     node["metadata"][namespace][key] = value
                 else:
                     node["metadata"][namespace][key] = value
-                    
+
+def add_conflict(name):
+    """
+    Add a new conflict node dict to the sadface document. The conflict type
+    is identified by the supplied name
+
+    Returns: The new conflict dict
+    """
+    conflict = new_conflict(name)
+    sd["nodes"].append(conflict)
+    return conflict
+
 def add_global_metadata(namespace, key, value):
     """
     Add metadata, a key:value pair to the base sadface doc
