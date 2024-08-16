@@ -95,7 +95,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         return arg
     return None
 
-def add_conflict(arg_text=None, conflict_text=None, arg_id=None, conflict_id=None):
+def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagreement_id=None):
     """
     Conflicts play an important role in arguments. We depict conflict
     through the use of schemes that represent the conflict relationship. This
@@ -148,14 +148,14 @@ def add_conflict(arg_text=None, conflict_text=None, arg_id=None, conflict_id=Non
 
     Returns: a dict
     """
-    if((arg_text is not None or arg_id is not None) and (conflict_text is not None or conflict_id is not None)):
+    if((arg_text is not None or arg_id is not None) and (disagreement_text is not None or disagreement_id is not None)):
         
         if arg_text is not None:
             a = add_atom(arg_text)
         else:
             a = get_atom(arg_id)
 
-        s = add_scheme("conflict")
+        s = add_scheme("disagreement")
 
         try:
             add_edge(s["id"], a["id"])
@@ -163,10 +163,10 @@ def add_conflict(arg_text=None, conflict_text=None, arg_id=None, conflict_id=Non
             print(ex)
             raise Exception("Could not create new argument")
 
-        if conflict_text is not None:
-            c = add_atom(conflict_text)
+        if disagreement_text is not None:
+            c = add_atom(disagreement_text)
         else:
-            c = get_atom(conflict_id)
+            c = get_atom(disagreement_id)
 
         try:
             add_edge(c["id"], s["id"])
@@ -174,7 +174,7 @@ def add_conflict(arg_text=None, conflict_text=None, arg_id=None, conflict_id=Non
             print(ex)
             raise Exception("Could not create new argument")
 
-        arg = {"argument":a, "scheme":s, "conflict":c}
+        arg = {"argument":a, "scheme":s, "disagreement":c}
         return arg
     return None
 
