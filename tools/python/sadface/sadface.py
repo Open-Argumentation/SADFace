@@ -1024,6 +1024,18 @@ def list_arguments():
             schemes.append(node.get("id"))
     return schemes
 
+def list_conflict():
+    """
+    Use to retrieve a list of conflict nodes from the current document.
+
+    Returns: A list of conflict IDs
+    """
+    conflicts = []
+    for node in sd["nodes"]:
+        if "conflict" == node["type"]:
+            conflicts.append(node.get("id"))
+    return conflicts
+
 def list_resources():
     """
     Returns a comma separated list of resource IDs
