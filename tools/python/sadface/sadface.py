@@ -370,7 +370,7 @@ def add_scheme(name):
 
     Returns: The new scheme dict
     """
-    scheme = new_scheme(name)
+    scheme = new_inference(name)
     sd["nodes"].append(scheme)
     return scheme
 
