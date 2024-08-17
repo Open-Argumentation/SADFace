@@ -501,7 +501,7 @@ def delete_scheme(scheme_id):
     supplied scheme ID
 
     """
-    scheme = get_scheme(scheme_id)
+    scheme = get_inference(scheme_id)
     sd["nodes"].remove(scheme)
 
     conns = get_connections(scheme_id)
@@ -930,7 +930,7 @@ def get_scheme_metadata(scheme_id, namespace=None, key=None):
 
     Returns: A metadata dict or None
     """
-    scheme = get_scheme(scheme_id)
+    scheme = get_inference(scheme_id)
     if scheme is not None:
         if namespace is None:
             return scheme.get("metadata")
@@ -1355,7 +1355,7 @@ def set_scheme_name(scheme_id, scheme_name):
     
     Returns: Updated scheme dict
     """
-    scheme = get_scheme(scheme_id)
+    scheme = get_inference(scheme_id)
     if(scheme is not None):
         scheme["name"] = scheme_name
         return scheme
