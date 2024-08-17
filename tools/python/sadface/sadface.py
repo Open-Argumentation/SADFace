@@ -1042,17 +1042,17 @@ def list_resources():
     """
     return [ res["id"] for res in sd["resources"] ]
 
-def list_schemes():
+def list_inferences():
     """
-    Use to retrieve a list of scheme nodes from the current document.
+    Use to retrieve a list of inference nodes from the current document.
 
-    Returns: A list of scheme IDs
+    Returns: A list of inference IDs
     """
-    schemes = []
+    inferences = []
     for node in sd["nodes"]:
-        if "scheme" == node["type"]:
-            schemes.append(node.get("id"))
-    return schemes
+        if "inference" == node["type"]:
+            inferences.append(node.get("id"))
+    return inferences
 
 
 def load_from_file(filename):
