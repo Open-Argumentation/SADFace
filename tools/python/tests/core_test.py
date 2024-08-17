@@ -1196,7 +1196,7 @@ class TestCore(unittest.TestCase):
         """
         sf.initialise()
 
-        # Test setting non-existent scheme
+        # Test setting non-existent inference
         with self.assertRaises(Exception) as context:
             sf.set_inference_name("TEST_ID", "TEST_NAME")
         out = str(context.exception)
