@@ -495,16 +495,16 @@ def delete_resource(resource_id):
     resource = get_resource(resource_id)
     sd["resources"].remove(resource)
 
-def delete_scheme(scheme_id):
+def delete_inference(inference_id):
     """
-    Remove the scheme from the sadface document identified by the
-    supplied scheme ID
+    Remove the inference from the sadface document identified by the
+    supplied inference ID
 
     """
-    scheme = get_inference(scheme_id)
-    sd["nodes"].remove(scheme)
+    inference = get_inference(inference_id)
+    sd["nodes"].remove(inference)
 
-    conns = get_connections(scheme_id)
+    conns = get_connections(inference_id)
     for c in conns:
         delete_edge(c["id"])
 
