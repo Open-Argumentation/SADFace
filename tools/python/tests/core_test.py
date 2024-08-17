@@ -1191,27 +1191,27 @@ class TestCore(unittest.TestCase):
         current_id = sf.get_document_id()
         self.assertEqual(test_id, current_id)
 
-    def test_set_scheme_name(self):
+    def test_set_inference_name(self):
         """
         """
         sf.initialise()
 
         # Test setting non-existent scheme
         with self.assertRaises(Exception) as context:
-            sf.set_scheme_name("TEST_ID", "TEST_NAME")
+            sf.set_inference_name("TEST_ID", "TEST_NAME")
         out = str(context.exception)
-        expected = 'Could not set the name of scheme: TEST_ID'
+        expected = 'Could not set the name of inference: TEST_ID'
         self.assertEqual(out, expected)
 
-        test_name = "TEST_SCHEME"
-        s = sf.add_scheme(test_name)
-        retrieved = sf.get_scheme(s.get("id"))
+        test_name = "TEST_INFERENCE"
+        s = sf.add_inference(test_name)
+        retrieved = sf.get_inference(s.get("id"))
         self.assertEqual(s.get("name"), retrieved.get("name"))
 
-        new_scheme_name = "NEW_SCHEME_NAME"
-        sf.set_scheme_name(s.get("id"), new_scheme_name)
-        retrieved = sf.get_scheme(s.get("id"))
-        self.assertEqual(new_scheme_name, retrieved.get("name"))
+        new_inference_name = "NEW_INFERENCE_NAME"
+        sf.set_inference_name(s.get("id"), new_inference_name)
+        retrieved = sf.get_inference(s.get("id"))
+        self.assertEqual(new_inference_name, retrieved.get("name"))
         
 
     def test_verify(self):
