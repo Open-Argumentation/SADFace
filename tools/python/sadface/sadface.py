@@ -1130,15 +1130,15 @@ def new_resource(content):
     new_resource = {"id":new_uuid(), "content":content, "type":"text", "metadata":{ "core": {}}}
     return new_resource
 
-def new_scheme(name):
+def new_inference(name):
     """
-    Create a new SADFace scheme (Python dict) using the supplied scheme name. The scheme
-    name should refer to an existing scheme from a known schemeset
+    Create a new SADFace inference (Python dict) using the supplied scheme name. The scheme
+    name should ideally refer to an existing scheme from a known schemeset
 
-    Returns: A Python dict representing the new SADFace scheme
+    Returns: A Python dict representing the instantiation of new SADFace inference
     """
-    new_scheme = {"id":new_uuid(), "type":"scheme", "name":name, "metadata":{ "core": {}}}
-    return new_scheme
+    new_inference = {"id":new_uuid(), "type":"inference", "name":name, "metadata":{ "core": {}}}
+    return new_inference
 
 def new_source(resource_id, text, offset):
     """
