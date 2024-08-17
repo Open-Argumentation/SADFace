@@ -256,19 +256,19 @@ class TestCore(unittest.TestCase):
         self.assertEqual(sf.get_notes(), text2)
 
 
-    def test_add_scheme(self):
+    def test_add_inference(self):
         """
-        TESTS: sadface.add_scheme() wit default values
+        TESTS: sadface.add_inference() with default values
 
-        Add a scheme, retrieve it, ensure that the retrieved
-        scheme matches that which was added
+        Add an inference, then retrieve it, and ensure that the 
+        retrieved scheme matches that which was added
         """
         sf.initialise()
-        scheme = sf.add_scheme("test scheme")
-        scheme_id = scheme.get("id")
-        result = sf.get_scheme(scheme_id)
+        inference = sf.add_inference("test inference")
+        inference_id = inference.get("id")
+        result = sf.get_inference(inference_id)
         result_id = result.get("id")
-        self.assertEqual(result_id, scheme_id)
+        self.assertEqual(result_id, inference_id)
 
     def test_add_scheme_metadata(self):
         """
