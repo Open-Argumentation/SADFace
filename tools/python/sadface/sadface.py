@@ -374,20 +374,20 @@ def add_inference(name):
     sd["nodes"].append(inference)
     return inference
 
-def add_scheme_metadata(scheme_id, namespace, key=None, value=None):
+def add_inference_metadata(inference_id, namespace, key=None, value=None):
     """
-    Add metadata, a key:value pair, to the scheme dict identified
-    by the supplied scheme ID and metadata namespace.
+    Add metadata, a key:value pair, to the inference dict identified
+    by the supplied inference ID and metadata namespace.
 
-    Note that "core" should be reserved for sadface default metadata only
+    Note that "core" is reserved for sadface default metadata only.
 
     Additional namespaces can be any string but should normally follow
     the reversed domain name approach to provide some level of uniqueness
-    and avoid unnecessary clashes
+    and avoid unnecessary clashes.
     """
     for node in sd["nodes"]:
-        if "scheme" == node["type"]:
-            if scheme_id == node["id"]:
+        if "inference" == node["type"]:
+            if inference_id == node["id"]:
                 if node["metadata"].get(namespace) is None:
                     node["metadata"][namespace] = {}
                     node["metadata"][namespace][key] = value
