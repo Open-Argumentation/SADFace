@@ -787,12 +787,12 @@ class TestCore(unittest.TestCase):
         expected = []
         self.assertEqual(out, expected)
 
-    def test_list_schemes(self):
+    def test_list_inferences(self):
         """
         Tests: sadface.get_arguments() with default values after init
         """
         sf.initialise()
-        out = sf.list_schemes()
+        out = sf.list_inferences()
         expected = []
         self.assertEqual(out, expected)
 
