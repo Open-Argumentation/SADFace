@@ -682,31 +682,31 @@ class TestCore(unittest.TestCase):
         result = sf.get_node("invalid-uuid")
         self.assertEqual(result, None)
 
-    def test_get_scheme_metadata(self):
+    def test_get_inference_metadata(self):
         """
-        TESTS: sadface.get_scheme_metadata(scheme_id, namespace=None, key=None)
+        TESTS: sadface.get_inference_metadata(inference_id, namespace=None, key=None)
         """
         sf.initialise()
 
-        a = sf.add_scheme("scheme")
-        sf.add_scheme_metadata(a.get("id"), "TEST_NS", "TEST_KEY", "TEST_VAL")
-        sf.add_scheme_metadata(a.get("id"), "TEST_NS", "TEST_KEY2", "TEST_VA2")
-        sf.add_scheme_metadata(a.get("id"), "core", "TEST_KEY3", "TEST_VA3")
+        a = sf.add_inference("inference")
+        sf.add_inference_metadata(a.get("id"), "TEST_NS", "TEST_KEY", "TEST_VAL")
+        sf.add_inference_metadata(a.get("id"), "TEST_NS", "TEST_KEY2", "TEST_VA2")
+        sf.add_inference_metadata(a.get("id"), "core", "TEST_KEY3", "TEST_VA3")
 
         expected = {'core': {'TEST_KEY3': 'TEST_VA3'}, 'TEST_NS': {'TEST_KEY': 'TEST_VAL', 'TEST_KEY2': 'TEST_VA2'}}
-        m = sf.get_scheme_metadata(a.get("id"))
+        m = sf.get_inference_metadata(a.get("id"))
         self.assertEqual(expected, m)
 
         expected = {'TEST_KEY3': 'TEST_VA3'}
-        m = sf.get_scheme_metadata(a.get("id"), "core")
+        m = sf.get_inference_metadata(a.get("id"), "core")
         self.assertEqual(expected, m)
 
         expected = {'TEST_KEY': 'TEST_VAL', 'TEST_KEY2': 'TEST_VA2'}
-        m = sf.get_scheme_metadata(a.get("id"), "TEST_NS")
+        m = sf.get_inference_metadata(a.get("id"), "TEST_NS")
         self.assertEqual(expected, m)
 
         expected = "TEST_VA2"
-        m = sf.get_scheme_metadata(a.get("id"), "TEST_NS", "TEST_KEY2")
+        m = sf.get_inference_metadata(a.get("id"), "TEST_NS", "TEST_KEY2")
         self.assertEqual(expected, m)
 
     def test_get_source(self):
