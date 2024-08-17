@@ -908,14 +908,14 @@ def get_resource_metadata(resource_id, namespace=None, key=None):
             else:
                 return resource.get("metadata").get(namespace).get(key)
 
-def get_scheme(scheme_id):
+def get_inference(inference_id):
     """
-    Retrieve the scheme dict identified by the supplied scheme ID
+    Retrieve the inference dict identified by the supplied inference ID
 
-    Returns: An scheme dict
+    Returns: An inference dict if found otherwise None
     """
     for node in sd["nodes"]:
-        if scheme_id == node["id"]:
+        if inference_id == node["id"]:
             return node
 
 def get_scheme_metadata(scheme_id, namespace=None, key=None):
