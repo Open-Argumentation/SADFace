@@ -261,7 +261,7 @@ class TestCore(unittest.TestCase):
         TESTS: sadface.add_inference() with default values
 
         Add an inference, then retrieve it, and ensure that the 
-        retrieved scheme matches that which was added
+        retrieved inference matches that which was added
         """
         sf.initialise()
         inference = sf.add_inference("test inference")
@@ -674,9 +674,9 @@ class TestCore(unittest.TestCase):
         m = sf.get_resource_metadata(r.get("id"), "TEST_NS", "TEST_KEY2")
         self.assertEqual(expected, m)
 
-    def test_get_scheme(self):
+    def test_get_inference(self):
         """
-        TESTS: sadface.get_scheme() with default values
+        TESTS: sadface.get_inference() with default values
         """
         sf.initialise()
         result = sf.get_node("invalid-uuid")
