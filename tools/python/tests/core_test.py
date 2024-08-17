@@ -40,8 +40,8 @@ class TestCore(unittest.TestCase):
         c_text = "roses are white"
         disagreement = sf.add_disagreement(arg_text=a_text, disagreement_text=c_text)
 
-        self.assertEqual(a_text, disagreement.get("argument").get("text"))
-        self.assertEqual(c_text, disagreement.get("disagreement").get("text"))
+        self.assertEqual(a_text, disagreement.get("argument_1").get("text"))
+        self.assertEqual(c_text, disagreement.get("argument_2").get("text"))
 
         self.assertEqual("disagree", disagreement.get("conflict").get("name"))
 
