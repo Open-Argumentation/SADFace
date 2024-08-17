@@ -363,16 +363,16 @@ def add_resource_metadata(resource_id, namespace, key=None, value=None):
             else:
                 res["metadata"][namespace][key] = value
 
-def add_scheme(name):
+def add_inference(name):
     """
-    Add a new scheme node dict to the sadface document. The scheme type
-    is identified by the supplied name
+    Add a new inference node dict to the sadface document. The scheme type
+    associated with the inference is identified by the supplied name
 
-    Returns: The new scheme dict
+    Returns: The new inference dict
     """
-    scheme = new_inference(name)
-    sd["nodes"].append(scheme)
-    return scheme
+    inference = new_inference(name)
+    sd["nodes"].append(inference)
+    return inference
 
 def add_scheme_metadata(scheme_id, namespace, key=None, value=None):
     """
