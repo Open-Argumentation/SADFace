@@ -918,27 +918,27 @@ def get_inference(inference_id):
         if inference_id == node["id"]:
             return node
 
-def get_scheme_metadata(scheme_id, namespace=None, key=None):
+def get_inference_metadata(inference_id, namespace=None, key=None):
     """
-    Retrieve a scheme's metadata. Results depend upon the specificity of the request
-    which must include a valid scheme_id.
+    Retrieve an inference's metadata. Results depend upon the specificity of the request
+    which must include a valid inference_id.
 
-    If scheme_id only is provided then all metadata assocaited with the scheme is returned
-    If scheme_id + namespace is provided then only the specified namespace is returned
-    If scheme_id + namespace + a key is provided then the value associated with that key is returned
+    If inference_id only is provided then all metadata associated with the scheme is returned
+    If inference_id + namespace is provided then only the specified namespace is returned
+    If inference_id + namespace + a key is provided then the value associated with that key is returned
     Else nothing is returned
 
     Returns: A metadata dict or None
     """
-    scheme = get_inference(scheme_id)
-    if scheme is not None:
+    inference = get_inference(inference_id)
+    if inference is not None:
         if namespace is None:
-            return scheme.get("metadata")
+            return inference.get("metadata")
         else:
             if key is None:
-                return scheme.get("metadata").get(namespace)
+                return inference.get("metadata").get(namespace)
             else:
-                return scheme.get("metadata").get(namespace).get(key)
+                return inference.get("metadata").get(namespace).get(key)
 
 def get_source(atom_id, resource_id):
     """
