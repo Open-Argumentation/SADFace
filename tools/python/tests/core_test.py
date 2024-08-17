@@ -984,15 +984,15 @@ class TestCore(unittest.TestCase):
         self.assertTrue(type(sd.get("edges")) is list)
         self.assertEqual(len(sd.get("edges")), 0)
 
-    def test_new_scheme(self):
+    def test_new_inference(self):
         """
-        TESTS: sadface.new_scheme()
+        TESTS: sadface.new_inference()
         """
         name = "DAKA"
-        sch = sf.new_scheme(name)
+        inf = sf.new_inference(name)
 
-        self.assertTrue(sch.get("id"))
-        out = sch.get("id")
+        self.assertTrue(inf.get("id"))
+        out = inf.get("id")
         result = False
         try:
             if UUID(out, version=4):
@@ -1001,14 +1001,14 @@ class TestCore(unittest.TestCase):
             pass
         self.assertTrue(result)
 
-        self.assertTrue(sch.get("type"))
-        self.assertEqual(sch.get("type"), "scheme")
+        self.assertTrue(inf.get("type"))
+        self.assertEqual(inf.get("type"), "inference")
 
-        self.assertTrue(sch.get("name"))
-        self.assertEqual(sch.get("name"), name)
+        self.assertTrue(inf.get("name"))
+        self.assertEqual(inf.get("name"), name)
 
-        self.assertTrue(sch.get("metadata"))
-        self.assertTrue(type(sch.get("metadata")) is dict)
+        self.assertTrue(inf.get("metadata"))
+        self.assertTrue(type(inf.get("metadata")) is dict)
     
     def test_new_source(self):
         """
