@@ -1349,18 +1349,19 @@ def set_document_id(id):
     """
     sd["metadata"]["core"]["id"] = id
 
-def set_scheme_name(scheme_id, scheme_name):
+def set_inference_name(inference_id, scheme_name):
     """
-    Given an ID for an existing scheme node, set the name associated with it and return the scheme node.
+    Given an ID for an existing inference node, set the scheme name associated with it 
+    and return the inference node.
     
-    Returns: Updated scheme dict
+    Returns: Updated inference dict
     """
-    scheme = get_inference(scheme_id)
-    if(scheme is not None):
-        scheme["name"] = scheme_name
-        return scheme
+    inference = get_inference(inference_id)
+    if(inference is not None):
+        inference["name"] = scheme_name
+        return inference
     else:
-        raise Exception("Could not set the name of scheme: "+scheme_id)
+        raise Exception("Could not set the name of inference: "+inference_id)
 
 def update():
     """
