@@ -64,7 +64,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         else:
             c = get_atom(con_id)
 
-        s = add_scheme("inference")
+        s = add_inference("inference")
         try:
             add_edge(s["id"], c["id"])
         except Exception as ex:
@@ -204,7 +204,7 @@ def add_support(con_text=None, prem_text=None, con_id=None, prem_id=None):
         else:
             c = get_atom(con_id)
 
-        s = add_scheme("support")
+        s = add_inference("support")
         try:
             add_edge(s["id"], c["id"])
         except Exception as ex:
