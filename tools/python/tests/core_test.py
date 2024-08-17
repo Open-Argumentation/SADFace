@@ -828,17 +828,17 @@ class TestCore(unittest.TestCase):
         self.assertEqual(retrieved_resource, new_resource)
         
 
-    def test_get_scheme(self):
+    def test_get_inference(self):
         """
-        TESTS: sadface.get_scheme() after a scheme has been added
+        TESTS: sadface.get_inference() after an inference has been added
         """
         sf.initialise()
-        scheme_node = sf.add_scheme("test-scheme")
-        scheme_node_id = scheme_node.get("id")
+        inference_node = sf.add_inference("test-inference")
+        inference_node_id = inference_node.get("id")
 
-        result = sf.get_scheme(scheme_node_id)
-        self.assertEqual(result.get("id"), scheme_node_id)
-        self.assertEqual(result.get("text"), scheme_node.get("text"))
+        result = sf.get_inference(inference_node_id)
+        self.assertEqual(result.get("id"), inference_node_id)
+        self.assertEqual(result.get("text"), inference_node.get("text"))
 
     def test_new_atom(self):
         """
