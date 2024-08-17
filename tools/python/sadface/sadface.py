@@ -98,17 +98,17 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
 def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagreement_id=None):
     """
     Conflicts play an important role in arguments. We depict conflict
-    through the use of schemes that represent the conflict relationship. This
-    function will instantiate a conflict scheme between two nodes (either
-    pre-existing & identifed by node IDs or created from supplied texts, or a
-    mixture of the two).
+    through the use of a node that represent the conflict relationship. This
+    function will instantiate a conflict node between two nodes (either
+    pre-existing & identifed by node IDs or created by this function from supplied texts, 
+    or a mixture of the two).
 
     Returns a conflict dict, e.g.
 
     {
-        "argument": atom,
-        "scheme": atom,
-        "conflict": atom
+        "argument_1": atom,
+        "conflict": atom,
+        "argument_2": atom
     }
     (where the scheme just happens to depict a conflict)
 
@@ -116,7 +116,7 @@ def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagre
     For example:
 
     {
-        "argument": {
+        "argument_1": {
             "id": "6399c86d-3c07-4223-ae91-bb989b6dc21e",
             "type": "atom",
             "text": "You are going to die",
@@ -125,7 +125,7 @@ def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagre
                 "core": {}
             }
         },
-        "scheme": {
+        "conflict": {
             "id": "7b4b7d23-7386-470e-ad48-56a655812218",
             "type": "scheme",
             "name": "conflict",
@@ -133,7 +133,7 @@ def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagre
                 "core": {}
             }
         },
-        "conflict": {
+        "argument_2": {
             "id": "777a21cf-6c60-44cc-9b3f-bfe1f2e342d6",
             "type": "atom",
             "text": "YOLO",
@@ -174,7 +174,7 @@ def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagre
             print(ex)
             raise Exception("Could not create new argument")
 
-        arg = {"argument":a, "conflict":c, "disagreement":d}
+        arg = {"argument_1":a, "conflict":c, "argument_2":d}
         return arg
     return None
 
