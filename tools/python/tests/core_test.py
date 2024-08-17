@@ -426,18 +426,18 @@ class TestCore(unittest.TestCase):
         self.assertEqual(None, retrieved)
 
 
-    def test_delete_scheme(self):
+    def test_delete_inference(self):
         """
         """
         sf.initialise()
 
-        # Remove non-existing scheme
+        # Remove non-existing inference
         with self.assertRaises(ValueError):
-            sf.delete_scheme("FAKE_ID")        
+            sf.delete_inference("FAKE_ID")        
 
-        # Remove existing scheme
-        s = sf.add_scheme("TEST_SCHEME_NAME")
-        retrieved = sf.get_scheme(s.get("id"))
+        # Remove existing inference
+        s = sf.add_inference("TEST_inference_NAME")
+        retrieved = sf.get_inference(s.get("id"))
         self.assertEqual(s, retrieved)
 
     def test_get_analyst(self):
