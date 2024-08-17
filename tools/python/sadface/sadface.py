@@ -19,7 +19,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
     """
     Syntactic sugar to create an argument structure from a set of texts.
     Given a conclusion text & a list of premise texts. Creates an intermediate,
-    default "inference" scheme.
+    default, "inference" node named "support".
 
     This makes it easier to build a SADFace document without manually creating
     and organising individual nodes.
@@ -28,7 +28,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
 
     {
         "conclusion": atom,
-        "scheme": atom,
+        "inference": atom,
         "premises": [atom ID(s)]
     }
 
@@ -44,10 +44,10 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
                 "core": {}
             }
         },
-        "scheme": {
+        "inference": {
             "id": "f4ae4161-f18b-49f7-9213-d81c2084cedd",
-            "type": "scheme",
-            "name": "inference",
+            "type": "inference",
+            "name": "support",
             "metadata": {
                 "core": {}
             }
@@ -64,9 +64,9 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         else:
             c = get_atom(con_id)
 
-        s = add_inference("inference")
+        i = add_inference("support")
         try:
-            add_edge(s["id"], c["id"])
+            add_edge(i["id"], c["id"])
         except Exception as ex:
             print(ex)
             raise Exception("Could not create new argument")
@@ -77,7 +77,7 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
                 atom = add_atom(text)
                 p_list.append(atom["id"])
                 try:
-                    add_edge(atom["id"], s["id"])
+                    add_edge(atom["id"], i["id"])
                 except Exception as ex:
                     print(ex)
                     raise Exception("Could not create new argument")
@@ -86,12 +86,12 @@ def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
                 atom = get_atom(atom_id)
                 p_list.append(atom["id"])
                 try:
-                    add_edge(atom["id"], s["id"])
+                    add_edge(atom["id"], i["id"])
                 except Exception as ex:
                     print(ex)
                     raise Exception("Could not create new argument")
 
-        arg = {"conclusion":c, "scheme":s, "premises":p_list}
+        arg = {"conclusion":c, "inference":i, "premises":p_list}
         return arg
     return None
 
