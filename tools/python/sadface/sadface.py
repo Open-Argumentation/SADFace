@@ -418,7 +418,7 @@ def build_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disag
             d = get_atom(disagreement_id)
 
         try:
-            add_edge(d["id"], c["id"])
+            add_edge(c["id"], d["id"])
         except Exception as ex:
             print(ex)
             raise Exception("Could not create new argument")
