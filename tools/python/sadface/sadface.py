@@ -340,11 +340,19 @@ def build_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
 
 def build_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagreement_id=None):
     """
-    Conflicts play an important role in arguments. We depict conflict
-    through the use of a node that represent the conflict relationship. This
-    function will instantiate a conflict node between two nodes (either
-    pre-existing & identifed by node IDs or created by this function from supplied texts, 
-    or a mixture of the two).
+    SADFace primarily support two forms of conflict, Disagreement and attack (We consider defeat
+    to be a specific interpretation derived from the extistence of an attack relationship so do
+    not explicity represent it at present). Disagreements create a relationship between two or 
+    more arguments to indicate that the arguments mutually disagree with each other.
+
+    A single disagreement node is used to point, via edge nodes to the collection of arguments
+    that disagree with each other. A disagreement must link at least two different argument nodes,
+    identifed by different node IDs, in order to create the relationship between them.
+
+
+    We depict conflict through the use of a node that represent the conflict relationship. This
+    function will instantiate a conflict node between two nodes (either pre-existing & identifed by 
+    node IDs or created by this function from supplied texts, or a mixture of the two).
 
     Returns a conflict dict, e.g.
 
@@ -386,8 +394,6 @@ def build_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disag
             }
         }
     }
-
-
 
     Returns: a dict
     """
