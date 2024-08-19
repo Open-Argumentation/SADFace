@@ -338,6 +338,101 @@ def build_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
         return arg
     return None
 
+def build_attack(attacker_text=None, target_text=None, attacker_id=None, target_id=None):
+    """
+    SADFace primarily support two forms of conflict, Disagreement and attack (We consider defeat
+    to be a specific interpretation derived from the extistence of an attack relationship so do
+    not explicity represent it at present. Defeat might be better represented as a status, perhaps 
+    transient, that is either derived at runtime from the state of the graph or else is stored 
+    more permanently within the metadata for a given attack). 
+
+    A single attack node is used to point, via edge nodes from one atom node, the source of the 
+    attack, to another atom node, the destination of the attack. Attack is a binary relationship 
+    that has exactly two forms within SADFace:
+
+    -- An argument may attack itself, i.e. the source and destination ends of the attack relate
+    to the same atom.
+    -- An argument may attack another argument, i.e. the source and destination are different
+    atoms.
+
+    We depict attack through the use of a node that represent the attack relationship. This
+    function will instantiate a conflict node between two nodes (either pre-existing & identifed by 
+    node IDs or created by this function from supplied texts, or a mixture of the two).
+
+    Returns a conflict dict, e.g.
+
+    {
+        "attacker": atom,
+        "conflict": atom,
+        "target": atom
+    }
+    (where the scheme just happens to depict a conflict)
+
+    
+    For example:
+
+    {
+        "attacker": {
+            "id": "6399c86d-3c07-4223-ae91-bb989b6dc21e",
+            "type": "atom",
+            "text": "You are going to die",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        },
+        "conflict": {
+            "id": "7b4b7d23-7386-470e-ad48-56a655812218",
+            "type": "conflict",
+            "name": "attack",
+            "metadata": {
+                "core": {}
+            }
+        },
+        "target": {
+            "id": "777a21cf-6c60-44cc-9b3f-bfe1f2e342d6",
+            "type": "atom",
+            "text": "I might live forever",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        }
+    }
+
+    Returns: a dict
+    """
+    if((attacker_text is not None or attacker_id is not None) and (target_text is not None or target_id is not None)):
+        
+        if attacker_text is not None:
+            a = add_atom(attacker_text)
+        else:
+            a = get_atom(attacker_id)
+
+        c = add_conflict("attack")
+
+        try:
+            add_edge(c["id"], a["id"])
+        except Exception as ex:
+            print(ex)
+            raise Exception("Could not create new argument")
+
+        if target_text is not None:
+            d = add_atom(target_text)
+        else:
+            d = get_atom(target_id)
+
+        try:
+            add_edge(d["id"], c["id"])
+        except Exception as ex:
+            print(ex)
+            raise Exception("Could not create new argument")
+
+        arg = {"attacker":a, "conflict":c, "target":d}
+        return arg
+    return None
+
+
 def build_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagreement_id=None):
     """
     SADFace primarily support two forms of conflict, Disagreement and attack (We consider defeat
