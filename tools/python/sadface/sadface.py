@@ -378,8 +378,8 @@ def build_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disag
         },
         "conflict": {
             "id": "7b4b7d23-7386-470e-ad48-56a655812218",
-            "type": "scheme",
-            "name": "conflict",
+            "type": "conflict",
+            "name": "disagreement",
             "metadata": {
                 "core": {}
             }
@@ -387,7 +387,7 @@ def build_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disag
         "argument_2": {
             "id": "777a21cf-6c60-44cc-9b3f-bfe1f2e342d6",
             "type": "atom",
-            "text": "YOLO",
+            "text": "I might live forever",
             "sources": [],
             "metadata": {
                 "core": {}
