@@ -616,7 +616,7 @@ def export_cytoscape():
     elements, useful to Cytoscape's visualisation, but having no place in SADFace.
 
     Both nodes & edges in a Cytoscape graph are collated together into a single
-    eleents object so we need to do that to the SADFace nodea & edges. Furthemore,
+    elements object so we need to do that to the SADFace nodes & edges. Furthemore,
     each node and edge object must contain a data object. After that conversion is
     a relatively straightforward mapping:
 
