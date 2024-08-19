@@ -15,89 +15,6 @@ from . import version
 
 sd = {}
 
-def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagreement_id=None):
-    """
-    Conflicts play an important role in arguments. We depict conflict
-    through the use of a node that represent the conflict relationship. This
-    function will instantiate a conflict node between two nodes (either
-    pre-existing & identifed by node IDs or created by this function from supplied texts, 
-    or a mixture of the two).
-
-    Returns a conflict dict, e.g.
-
-    {
-        "argument_1": atom,
-        "conflict": atom,
-        "argument_2": atom
-    }
-    (where the scheme just happens to depict a conflict)
-
-    
-    For example:
-
-    {
-        "argument_1": {
-            "id": "6399c86d-3c07-4223-ae91-bb989b6dc21e",
-            "type": "atom",
-            "text": "You are going to die",
-            "sources": [],
-            "metadata": {
-                "core": {}
-            }
-        },
-        "conflict": {
-            "id": "7b4b7d23-7386-470e-ad48-56a655812218",
-            "type": "scheme",
-            "name": "conflict",
-            "metadata": {
-                "core": {}
-            }
-        },
-        "argument_2": {
-            "id": "777a21cf-6c60-44cc-9b3f-bfe1f2e342d6",
-            "type": "atom",
-            "text": "YOLO",
-            "sources": [],
-            "metadata": {
-                "core": {}
-            }
-        }
-    }
-
-
-
-    Returns: a dict
-    """
-    if((arg_text is not None or arg_id is not None) and (disagreement_text is not None or disagreement_id is not None)):
-        
-        if arg_text is not None:
-            a = add_atom(arg_text)
-        else:
-            a = get_atom(arg_id)
-
-        c = add_conflict("disagree")
-
-        try:
-            add_edge(c["id"], a["id"])
-        except Exception as ex:
-            print(ex)
-            raise Exception("Could not create new argument")
-
-        if disagreement_text is not None:
-            d = add_atom(disagreement_text)
-        else:
-            d = get_atom(disagreement_id)
-
-        try:
-            add_edge(d["id"], c["id"])
-        except Exception as ex:
-            print(ex)
-            raise Exception("Could not create new argument")
-
-        arg = {"argument_1":a, "conflict":c, "argument_2":d}
-        return arg
-    return None
-
 def add_support(con_text=None, prem_text=None, con_id=None, prem_id=None):
     """
     Syntactic sugar to create an argument structure from a set of texts.
@@ -418,6 +335,89 @@ def build_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
                     raise Exception("Could not create new argument")
 
         arg = {"conclusion":c, "inference":i, "premises":p_list}
+        return arg
+    return None
+
+def build_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagreement_id=None):
+    """
+    Conflicts play an important role in arguments. We depict conflict
+    through the use of a node that represent the conflict relationship. This
+    function will instantiate a conflict node between two nodes (either
+    pre-existing & identifed by node IDs or created by this function from supplied texts, 
+    or a mixture of the two).
+
+    Returns a conflict dict, e.g.
+
+    {
+        "argument_1": atom,
+        "conflict": atom,
+        "argument_2": atom
+    }
+    (where the scheme just happens to depict a conflict)
+
+    
+    For example:
+
+    {
+        "argument_1": {
+            "id": "6399c86d-3c07-4223-ae91-bb989b6dc21e",
+            "type": "atom",
+            "text": "You are going to die",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        },
+        "conflict": {
+            "id": "7b4b7d23-7386-470e-ad48-56a655812218",
+            "type": "scheme",
+            "name": "conflict",
+            "metadata": {
+                "core": {}
+            }
+        },
+        "argument_2": {
+            "id": "777a21cf-6c60-44cc-9b3f-bfe1f2e342d6",
+            "type": "atom",
+            "text": "YOLO",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        }
+    }
+
+
+
+    Returns: a dict
+    """
+    if((arg_text is not None or arg_id is not None) and (disagreement_text is not None or disagreement_id is not None)):
+        
+        if arg_text is not None:
+            a = add_atom(arg_text)
+        else:
+            a = get_atom(arg_id)
+
+        c = add_conflict("disagree")
+
+        try:
+            add_edge(c["id"], a["id"])
+        except Exception as ex:
+            print(ex)
+            raise Exception("Could not create new argument")
+
+        if disagreement_text is not None:
+            d = add_atom(disagreement_text)
+        else:
+            d = get_atom(disagreement_id)
+
+        try:
+            add_edge(d["id"], c["id"])
+        except Exception as ex:
+            print(ex)
+            raise Exception("Could not create new argument")
+
+        arg = {"argument_1":a, "conflict":c, "argument_2":d}
         return arg
     return None
 
