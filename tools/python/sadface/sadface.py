@@ -764,8 +764,6 @@ def export_dot(trad=True):
     for edge in sd["edges"]:
         source = get_node(edge["source_id"])
         target = get_node(edge["target_id"])
-        print("S:"+json.dumps(source))
-        print("S:"+json.dumps(target))
         
         if("atom" == source["type"]):
             dot += '"{}"'.format(source["id"])
@@ -773,8 +771,6 @@ def export_dot(trad=True):
             dot += '"{}"'.format(source["id"])
         elif "conflict" == source["type"]:
             dot += '"{}"'.format(source["id"])
-        else:
-            print("borked at source")
         
         dot += edge_str
 
@@ -784,10 +780,6 @@ def export_dot(trad=True):
             dot += '"{}"'.format(target["id"])
         elif "conflict" == target["type"]:
             dot += '"{}"'.format(target["id"])
-        else:
-            print("borked at target ")
-            print(source)
-            print(target)
 
         
         dot += ";\n"
