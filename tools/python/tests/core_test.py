@@ -14,14 +14,14 @@ class TestCore(unittest.TestCase):
     def tearDown(self):
         sf.reset()
 
-    def test_add_argument(self):
+    def test_build_argument(self):
         """
-        TESTS: sadface.add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None)
+        TESTS: sadface.build_argument(con_text=None, prem_text=None, con_id=None, prem_id=None)
         """
         sf.initialise()
         con1 = "You should treasure every moment"
         prem1 = ["if you are going to die then you should treasure every moment", "You are going to die"]
-        arg1 = sf.add_argument(con_text=con1, prem_text=prem1, con_id=None, prem_id=None)
+        arg1 = sf.build_argument(con_text=con1, prem_text=prem1, con_id=None, prem_id=None)
 
         self.assertEqual(con1, arg1.get("conclusion").get("text"))
         
