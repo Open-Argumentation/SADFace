@@ -746,7 +746,12 @@ def export_dot(trad=True):
                 + " ["\
                 + "colorscheme="+colour_scheme+", fillcolor="+disagree_colour\
                 + ", shape=diamond];\n"
-
+            elif "attack" == node.get("name"):
+                line = '"{}"'.format(node['id']) + " [label=\"" + node["name"]\
+                + "\"]"\
+                + " ["\
+                + "colorscheme="+colour_scheme+", fillcolor="+disagree_colour\
+                + ", shape=diamond];\n"
             else:
                 line = '"{}"'.format(node['id']) + " [label=\"" + node["name"]\
                 + "\"]"\
@@ -759,18 +764,31 @@ def export_dot(trad=True):
     for edge in sd["edges"]:
         source = get_node(edge["source_id"])
         target = get_node(edge["target_id"])
+        print("S:"+json.dumps(source))
+        print("S:"+json.dumps(target))
         
         if("atom" == source["type"]):
             dot += '"{}"'.format(source["id"])
-        elif "scheme" == source["type"]:
+        elif "inference" == source["type"]:
             dot += '"{}"'.format(source["id"])
+        elif "conflict" == source["type"]:
+            dot += '"{}"'.format(source["id"])
+        else:
+            print("borked at source")
         
         dot += edge_str
 
         if("atom" == target["type"]):
             dot += '"{}"'.format(target["id"])
-        elif "scheme" == target["type"]:
+        elif "inference" == target["type"]:
             dot += '"{}"'.format(target["id"])
+        elif "conflict" == target["type"]:
+            dot += '"{}"'.format(target["id"])
+        else:
+            print("borked at target ")
+            print(source)
+            print(target)
+
         
         dot += ";\n"
 
