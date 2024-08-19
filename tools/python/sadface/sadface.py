@@ -15,86 +15,6 @@ from . import version
 
 sd = {}
 
-def add_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
-    """
-    Syntactic sugar to create an argument structure from a set of texts.
-    Given a conclusion text & a list of premise texts. Creates an intermediate,
-    default, "inference" node named "support".
-
-    This makes it easier to build a SADFace document without manually creating
-    and organising individual nodes.
-
-    Returns an argument dict, e.g.
-
-    {
-        "conclusion": atom,
-        "inference": atom,
-        "premises": [atom ID(s)]
-    }
-
-    e.g.
-
-    {
-        "conclusion": {
-            "id": "329aee40-b34d-4eaa-9e25-9ef3098b4cfa",
-            "type": "atom",
-            "text": "You should treasure every moment",
-            "sources": [],
-            "metadata": {
-                "core": {}
-            }
-        },
-        "inference": {
-            "id": "f4ae4161-f18b-49f7-9213-d81c2084cedd",
-            "type": "inference",
-            "name": "support",
-            "metadata": {
-                "core": {}
-            }
-        },
-        "premises": ["6b4cbe35-4e11-4126-ab25-97c9ac651647", "4cebed0d-3869-4a20-958c-9e164a019573"]
-    }
-
-    Returns: a dict
-    """
-    if((con_text is not None or con_id is not None) and (prem_text is not None or prem_id is not None)):
-
-        if con_text is not None:
-            c = add_atom(con_text)
-        else:
-            c = get_atom(con_id)
-
-        i = add_inference("support")
-        try:
-            add_edge(i["id"], c["id"])
-        except Exception as ex:
-            print(ex)
-            raise Exception("Could not create new argument")
-
-        p_list = []
-        if(prem_text is not None):
-            for text in prem_text:
-                atom = add_atom(text)
-                p_list.append(atom["id"])
-                try:
-                    add_edge(atom["id"], i["id"])
-                except Exception as ex:
-                    print(ex)
-                    raise Exception("Could not create new argument")
-        if(prem_id is not None):
-            for atom_id in prem_id:
-                atom = get_atom(atom_id)
-                p_list.append(atom["id"])
-                try:
-                    add_edge(atom["id"], i["id"])
-                except Exception as ex:
-                    print(ex)
-                    raise Exception("Could not create new argument")
-
-        arg = {"conclusion":c, "inference":i, "premises":p_list}
-        return arg
-    return None
-
 def add_disagreement(arg_text=None, disagreement_text=None, arg_id=None, disagreement_id=None):
     """
     Conflicts play an important role in arguments. We depict conflict
@@ -420,6 +340,86 @@ def append_notes(text):
         sd["metadata"]["core"]["notes"] += text
     else:
         add_notes(text)
+
+def build_argument(con_text=None, prem_text=None, con_id=None, prem_id=None):
+    """
+    Syntactic sugar to create an argument structure from a set of texts.
+    Given a conclusion text & a list of premise texts. Creates an intermediate,
+    default, "inference" node named "support".
+
+    This makes it easier to build a SADFace document without manually creating
+    and organising individual nodes.
+
+    Returns an argument dict, e.g.
+
+    {
+        "conclusion": atom,
+        "inference": atom,
+        "premises": [atom ID(s)]
+    }
+
+    e.g.
+
+    {
+        "conclusion": {
+            "id": "329aee40-b34d-4eaa-9e25-9ef3098b4cfa",
+            "type": "atom",
+            "text": "You should treasure every moment",
+            "sources": [],
+            "metadata": {
+                "core": {}
+            }
+        },
+        "inference": {
+            "id": "f4ae4161-f18b-49f7-9213-d81c2084cedd",
+            "type": "inference",
+            "name": "support",
+            "metadata": {
+                "core": {}
+            }
+        },
+        "premises": ["6b4cbe35-4e11-4126-ab25-97c9ac651647", "4cebed0d-3869-4a20-958c-9e164a019573"]
+    }
+
+    Returns: a dict
+    """
+    if((con_text is not None or con_id is not None) and (prem_text is not None or prem_id is not None)):
+
+        if con_text is not None:
+            c = add_atom(con_text)
+        else:
+            c = get_atom(con_id)
+
+        i = add_inference("support")
+        try:
+            add_edge(i["id"], c["id"])
+        except Exception as ex:
+            print(ex)
+            raise Exception("Could not create new argument")
+
+        p_list = []
+        if(prem_text is not None):
+            for text in prem_text:
+                atom = add_atom(text)
+                p_list.append(atom["id"])
+                try:
+                    add_edge(atom["id"], i["id"])
+                except Exception as ex:
+                    print(ex)
+                    raise Exception("Could not create new argument")
+        if(prem_id is not None):
+            for atom_id in prem_id:
+                atom = get_atom(atom_id)
+                p_list.append(atom["id"])
+                try:
+                    add_edge(atom["id"], i["id"])
+                except Exception as ex:
+                    print(ex)
+                    raise Exception("Could not create new argument")
+
+        arg = {"conclusion":c, "inference":i, "premises":p_list}
+        return arg
+    return None
 
 
 def clear_notes():
