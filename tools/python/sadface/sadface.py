@@ -653,23 +653,42 @@ def export_cytoscape():
         }
 
 
-    NODES - SCHEMES
+    NODES - INFERENCES
         id -> id
         type -> type
         name -> content
-        + "classes":"scheme-label"
+        + "classes":"inference-label"
         + "typeshape":"diamond"
         
         e.g.
         {
-            "classes": "scheme-label",
+            "classes": "inference-label",
             "data": {
-                "content": "Default\nSupport",
-                "type": "scheme",
+                "content": "support",
+                "type": "inference",
                 "id": "s1",
                 "typeshape": "diamond"
             }
         }
+
+        NODES - CONFLICT
+        id -> id
+        type -> type
+        name -> content
+        + "classes":"conflict-label"
+        + "typeshape":"diamond"
+        
+        e.g.
+        {
+            "classes": "inference-label",
+            "data": {
+                "content": "support",
+                "type": "inference",
+                "id": "s1",
+                "typeshape": "diamond"
+            }
+        }
+        
 
     """
     cy = {}
@@ -695,9 +714,12 @@ def export_cytoscape():
             n['classes'] = "atom-label"
             n['data']['typeshape'] = "roundrectangle"
             n['data']['content'] = node['text']
-
-        else:
-            n['classes'] = "scheme-label"
+        elif n['data']['type'] == "inference":
+            n['classes'] = "inference-label"
+            n['data']['typeshape'] = "diamond"
+            n['data']['content'] = node['name']
+        elif n['data']['type'] == "conflict":
+            n['classes'] = "conflict-label"
             n['data']['typeshape'] = "diamond"
             n['data']['content'] = node['name']
 
