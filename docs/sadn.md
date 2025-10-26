@@ -1,8 +1,10 @@
 # Simple Argument Description Notation (SADN) 
 
-SADN is a simple, text oriented, notation for describing arguments
+SADN is a simple, text oriented, notation for declaratively describing arguments in an incremental, line-oriented fashion. SADN is built upon the Simple Argument Description Format (SADFace) which provides a core ontology of argumentative concepts. 
 
 ## Simple Argument Description Notation (SADN)
+
+
 
 - **<\>** = conflicts with
 - **\>** = attacks/opposes
