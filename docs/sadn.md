@@ -15,13 +15,13 @@ SADN is a simple, text oriented, notation for declaratively describing arguments
 
 ## Efficent Notation
 
-@ -> atom()
-$ -> scheme()
-^ -> support()
-% -> disagree()
-> -> attacks
-< -> attacked by
-& -> argument
+- @ -> atom()
+- $ -> scheme()
+- ^ -> support()
+- % -> disagree()
+- > -> attacks
+- < -> attacked by
+- & -> argument
 
 ## Examples
 
