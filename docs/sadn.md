@@ -19,7 +19,7 @@ SADN is a simple, text oriented, notation for declaratively describing arguments
 - $ -> scheme()
 - ^ -> support()
 - % -> disagree()
-- > -> attacks
+- \> -> attacks
 - < -> attacked by
 - & -> argument
 
