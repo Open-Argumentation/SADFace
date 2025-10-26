@@ -2,18 +2,13 @@
 
 SADN is a simple, text oriented, notation for declaratively describing arguments in an incremental, line-oriented fashion. SADN is built upon the Simple Argument Description Format (SADFace) which provides a core ontology of argumentative concepts. 
 
-## Simple Argument Description Notation (SADN)
+## General Principles
 
+- Identifiers are either SADFace UUIDs or transient local aliases.
+- Values are double-quoted Strings.
+- Statements are separated by ,
+- One expression is allowed per line.
 
-
-- **<\>** = conflicts with
-- **\>** = attacks/opposes
-- **<** = attacked/opposed by
-- **}** = supports
-- **{** = supported by
-- Statements are identifiers, e.g. 1,2,3, UUIDS, or Double-quoted Strings
-- Statements separated by ,
-- One expression per line
 
 ## Examples
 
