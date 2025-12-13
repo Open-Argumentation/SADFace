@@ -31,7 +31,7 @@ Available commands:
 - atoms - Lists the atom nodes in the current SADFace model.
 - schemes - Lists the scheme nodes in the current SADFace model.
 - conflicts - Lists the conflict nodes, in the current SADFace model which includes both attacks and disagreements.
-- edges - Lists the atom nodes in the current SADFace model.
+- edges - Lists the edges in the current SADFace model. Useful to remove a specific relationship between a node and another without removing the nodes themselves.
 - export(type:$TYPE) – SADFace supports exporting the SADFace model into a range of other text- based forms, for example, Dot and Cytoscape. The export keyword converts the SADFace model into the nominated model and displays it in the REPL.
 - save(type:$TYPE, name:$PATHNAME) – Saves the SADFace model to a file on disk. Save supports all of the textual formats valid in the export keyword but adds binary formts that can’t be usefully displayed in the REPL including jpg, png, and svg formats.
 - load(name:$PATHNAME) – Loads the SADFace document from the supplied pathname.
